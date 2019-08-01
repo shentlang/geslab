@@ -16,12 +16,12 @@ class CrearTablaPersona extends Migration
         Schema::create('persona', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nombre', 50);
-            $table->string('apelidop', 50);
+            $table->string('apellidop', 50);
             $table->string('apellidom', 50);
             $table->string('cedula', 50);
-            $table->string('email', 50);
+            $table->string('email', 150);
             $table->string('telefono', 50);
-            $table->string('direccion', 50);
+            $table->string('direccion', 150);
             $table->string('foto', 50);
             $table->timestamps();
         });
