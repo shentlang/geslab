@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -11,10 +12,7 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
-    {
-        //
-    }
+   
 
     /**
      * Bootstrap any application services.
@@ -22,6 +20,11 @@ class AppServiceProvider extends ServiceProvider
      * @return void
      */
     public function boot()
+    {
+        View::share('theme', 'lte');
+       
+    }
+    public function register()
     {
         //
     }
