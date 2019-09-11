@@ -19,9 +19,12 @@
 </head> 
 <body class="hold-transition sidebar-mini layout-boxed">
     <!-- Site wrapper -->
+    @include("theme.$theme.aside") 
+    @include("theme.$theme.header")
+    
     <div class="wrapper">
-      @include("theme.$theme.header")
-      @include("theme.$theme.aside")  
+       
+       
             <div class="content-wrapper">
                     <!-- Content Header (Page header) -->
                     <section class="content">
@@ -42,6 +45,12 @@
                                    
 
                         </section>
+                </div>
+                <div id="app">
+       
+                    <main class="py-4">
+                        @yield('content')
+                    </main>
                 </div>
                 //inicio footer-fin
                 @include("theme.$theme.footer")
