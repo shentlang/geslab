@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CrearTablaDecano extends Migration
+class CreateDecanosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CrearTablaDecano extends Migration
      */
     public function up()
     {
-        Schema::create('decano', function (Blueprint $table) {
+        Schema::create('decanos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('persona_id');
-            $table->foreign('persona_id', 'fk_personadecano_persona')->references('id')->on('persona')->onDelete('restrict')->onUpdate('restrict');
+            $table->unsignedBigInteger('personas_id');
+            $table->foreign('personas_id', 'fk_personasdecano_personas')->references('id')->on('personas')->onDelete('restrict')->onUpdate('restrict');
             $table->date('gestion');
             $table->timestamps();
         });
@@ -29,6 +29,6 @@ class CrearTablaDecano extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('decano');
+        Schema::dropIfExists('decanos');
     }
 }

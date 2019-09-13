@@ -74,7 +74,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                  <a class="nav-link" href="#">  <i class="far fa-circle nav-icon"></i><p>estudiantes2</p></a>
+                  <a class="nav-link" href="{{route('estudiante.create')}} ">  <i class="far fa-circle nav-icon"></i><p>estudiantes2</p></a>
                
                  
                   

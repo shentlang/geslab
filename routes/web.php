@@ -14,3 +14,4 @@
 
 
 Route::get('/','inicioController@index');
+Route::resource('/estudiante', 'EstudianteController');

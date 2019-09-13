@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CrearTablaDocumentos extends Migration
+class CreateEstudiantesProyectosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CrearTablaDocumentos extends Migration
      */
     public function up()
     {
-        Schema::create('documentos', function (Blueprint $table) {
+        Schema::create('estudiantes__proyectos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('tipodoc', 50);
-            $table->date('fechadesignacion');
-            $table->string('documento', 50);
             $table->timestamps();
         });
     }
@@ -29,6 +26,6 @@ class CrearTablaDocumentos extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('documentos');
+        Schema::dropIfExists('estudiantes__proyectos');
     }
 }

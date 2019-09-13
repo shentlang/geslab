@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CrearTablaDocente extends Migration
+class CreateTutorsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CrearTablaDocente extends Migration
      */
     public function up()
     {
-        Schema::create('docente', function (Blueprint $table) {
+        Schema::create('tutors', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('carrera', 50);
-            $table->unsignedBigInteger('persona_id');
-            $table->foreign('persona_id', 'fk_personadocente_persona')->references('id')->on('persona')->onDelete('restrict')->onUpdate('restrict');
+            $table->string('rol', 10);
+            $table->unsignedBigInteger('personas_id');
+            $table->foreign('personas_id', 'fk_personastutors_personas')->references('id')->on('personas')->onDelete('restrict')->onUpdate('restrict');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CrearTablaDocente extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('docente');
+        Schema::dropIfExists('tutors');
     }
 }
