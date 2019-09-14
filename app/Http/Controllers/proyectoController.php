@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class proyectoController extends Controller
+class ProyectoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,6 +14,7 @@ class proyectoController extends Controller
     public function index()
     {
         //
+        return view('proyecto.index');
     }
 
     /**

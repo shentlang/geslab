@@ -15,6 +15,10 @@ class CreateEstudiantesProyectosTable extends Migration
     {
         Schema::create('estudiantes__proyectos', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('estudiantes_id');
+            $table->foreign('estudiantes_id', 'fk_estudiantes_proyectos_estudiantes')->references('id')->on('estudiantes')->onDelete('restrict')->onUpdate('restrict');
+            $table->unsignedBigInteger('proyectos_id');
+            $table->foreign('proyectos_id', 'fk_estudiantes_proyectos_proyectos')->references('id')->on('proyectos')->onDelete('restrict')->onUpdate('restrict');
             $table->timestamps();
         });
     }

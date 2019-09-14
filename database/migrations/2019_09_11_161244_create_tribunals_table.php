@@ -16,8 +16,8 @@ class CreateTribunalsTable extends Migration
         Schema::create('tribunals', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('rol', 10);
-            $table->unsignedBigInteger('docentes_id');
-            $table->foreign('docentes_id', 'fk_docentestribunal_docentes')->references('id')->on('docentes')->onDelete('restrict')->onUpdate('restrict');
+            $table->unsignedBigInteger('personas_id');
+            $table->foreign('personas_id', 'fk_personas_tribunals')->references('id')->on('personas')->onDelete('restrict')->onUpdate('restrict');
             $table->timestamps();
         });
     }
