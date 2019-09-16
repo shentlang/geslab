@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEstudiantesProyectosTable extends Migration
+class CreateEstudianteproyectosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateEstudiantesProyectosTable extends Migration
      */
     public function up()
     {
-        Schema::create('estudiantes__proyectos', function (Blueprint $table) {
+        Schema::create('estudianteproyectos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('estudiantes_id');
-            $table->foreign('estudiantes_id', 'fk_estudiantes_proyectos_estudiantes')->references('id')->on('estudiantes')->onDelete('restrict')->onUpdate('restrict');
+            $table->foreign('estudiantes_id', 'fk_estudianteproyectos_estudiantes')->references('id')->on('estudiantes')->onDelete('restrict')->onUpdate('restrict');
             $table->unsignedBigInteger('proyectos_id');
-            $table->foreign('proyectos_id', 'fk_estudiantes_proyectos_proyectos')->references('id')->on('proyectos')->onDelete('restrict')->onUpdate('restrict');
+            $table->foreign('proyectos_id', 'fk_estudiantesproyectos_proyectos')->references('id')->on('proyectos')->onDelete('restrict')->onUpdate('restrict');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateEstudiantesProyectosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('estudiantes__proyectos');
+        Schema::dropIfExists('estudianteproyectos');
     }
 }
