@@ -1,9 +1,25 @@
 
 
-    <label for="tutores">tutores</label>
-    <select name="tutor_id" class="form-control">
-        <option value="0" selected>ninguno</option>
-        @foreach($personas as $data)
-        <option value="{{$data->id}}">{{$data->id}} {{$data->nombre}} {{$data->apellidop}}</option>
+   <table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Cod</th>
+            
+            <th>usuario</th>
+            
+            <th>mensaje</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach($comentarios as $comentari)
+            <tr> 
+            <th>{{$comentari->id}}</th>
+              
+            <td>{{$comentari->comentario}}</td>
+            <td>{{$comentari->usuario->nombre}}</td>
+            </tr>
         @endforeach
-    </select>
+    </tbody>
+</table>
+   

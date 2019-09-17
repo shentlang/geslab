@@ -6,11 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Proyecto extends Model
 {
+    
+    protected $table="proyectos";
+    protected $guarded = ['id'] ;
     //
+  public function estudiantes(){
 
-    public function estudiantes()    {
-        return $this->belongsToMany('app\Estudiante', 'estudiantes__proyectos');
-     }
- 
+    return $this->belongsToMany(Estudiante::class, 'estudianteproyectos');
+    
+  }
+  
      
 }

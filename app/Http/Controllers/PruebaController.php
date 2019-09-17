@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Estudiante;
-use App\Proyecto;
+use App\Comentario;
+use App\Usuario;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use DB;
-class ProyectoController extends Controller
+
+class PruebaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,13 +15,21 @@ class ProyectoController extends Controller
      */
     public function index()
     {
-        $proyectos = Proyecto::paginate(10);
-        $estudiantes = Estudiante::get();
-        $selected_authors = [];
-
-	   	return view('proyecto.index', compact('proyectos', 'estudiantes', 'selected_authors'));
-      
-      
+      // $comentarios =Comentario::find(1);
+     // $comentarios->usuario;
+     // return view('prueba.index',['prueba'=>$comentarios]);
+     
+     //$comentarios = Comentario::get();
+     //return view('prueba.index',['prueba'=>$comentarios]);
+       
+     $comentarios = Comentario::orderBy('id', 'DESC')->paginate(5);
+        $comentarios->each(function($comentarios){
+            $comentarios->usuario;
+            
+        });
+        dd($comentarios);
+        //return view('prueba.index')->with([
+          //  'comentarios' => $comentarios]);
     }
 
     /**
@@ -32,17 +39,6 @@ class ProyectoController extends Controller
      */
     public function create()
     {
-        $personas = DB::table('personas')
-            ->join('tutors', 'personas.id', '=', 'tutors.personas_id')
-            ->select('personas.apellidop','personas.nombre','tutors.id')
-            ->get();
-            $tribunales = DB::table('personas')
-            ->join('tribunals', 'personas.id', '=', 'tribunals.personas_id')
-            ->select('personas.apellidop','personas.nombre','tribunals.id')
-            ->get();
-           
-            return view('proyecto.create', compact('personas','tribunales'));
-
         //
     }
 
