@@ -41,22 +41,22 @@
 						<label for="nombre">Nombres del proyecto:</label>
 				<input type="text" class="form-control tuInput" name="nombre" autocomplete="off">
 				<label for="nombre">Tipo de proyecto:</label>
-				<input type="text" class="form-control tuInput" name="nombre" autocomplete="off">
+				<input type="text" class="form-control tuInput" name="tipo" autocomplete="off">
 				
 				  </div>
 				  <!-- /.form-group estudiante -->
 				  <div class="form-group">
 						
 				<label for="tutores">tutor</label>
-				<select name="tutor_id" class="form-control">
+				<select name="tutor" class="form-control">
 					<option value="0" selected>ninguno</option>
 					@foreach($personas as $data)
 					<option value="{{$data->id}}">{{$data->id}} {{$data->nombre}} {{$data->apellidop}}</option>
 					@endforeach
 				</select>
 
-				<label for="tutores">tribunal</label>
-				<select name="tutor_id" class="form-control">
+				<label for="tribunales">tribunal</label>
+				<select name="tribunal" class="form-control">
 					<option value="0" selected>ninguno</option>
 					@foreach($tribunales as $datas)
 					<option value="{{$datas->id}}">{{$datas->id}} {{$datas->nombre}} {{$datas->apellidop}}</option>
@@ -74,11 +74,24 @@
 				  </div>
 				  <div class="form-group">
 						<label for="curso">fecha defensa final</label>
-						<input type="date" class="form-control" name="fechadefensa" required>
+						<input type="date" class="form-control" name="fechadefensa2" required>
 				  </div>
+
+				  <div class="form-group">
+						<label>Multiple</label>
+						<select class="select2" multiple="multiple" name="estudiantes[]" data-placeholder="Select a State"
+								style="width: 100%;">
+						  
+						  @foreach($alumnos as $author)
+                                    <option value="{{ $author->id }}">{{ $author->persona->nombre }}</option>
+                                    @endforeach()
+						</select>
+					  </div>
+					
+
 				  <br>
 				<a href="{{ route('estudiante.index') }}" class="btn btn-danger">Cancelar</a>
-				<button type="button" class="btn btn-success ">registrar</button>
+				<button type="submit" class="btn btn-success ">registrar</button>
 				</div>
 				<!-- /.col -->
 			  </div>

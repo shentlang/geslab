@@ -8,9 +8,12 @@ class Persona extends Model
 {
     //
     protected $table = "personas";
-    public function Estudiantes(){
+
+    public function estudiantes(){
 
 return $this->hasMany(Estudiante::class);
 
     }
+
+   
 }

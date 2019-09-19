@@ -12,7 +12,7 @@ class Proyecto extends Model
     //
   public function estudiantes(){
 
-    return $this->belongsToMany(Estudiante::class, 'estudianteproyectos');
+    return $this->belongsToMany(Estudiante::class, 'estudianteproyectos','proyectos_id','estudiantes_id');
     
   }
   
