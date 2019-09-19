@@ -16,8 +16,10 @@
   <link rel="stylesheet" href="{{asset("assets/$theme/dist/css/adminlte.min.css")}}">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-
+    <!-- css selec proyecto -->
   <link rel="stylesheet" href="{{asset("assets/$theme/plugins/select2/css/select2.min.css")}}">
+  <!-- estilo de tablas -->
+  <link rel="stylesheet" href="{{asset("assets/$theme/plugins/datatables/dataTables.bootstrap4.css")}}">
 </head> 
 <body class="hold-transition sidebar-mini layout-boxed">
     <!-- Site wrapper -->
@@ -48,8 +50,11 @@
 <script src="{{asset("assets/$theme/dist/js/adminlte.min.js")}}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset("assets/$theme/dist/js/demo.js")}}"></script>
-
+<!-- selec for proyect -->
 <script src="{{asset("assets/$theme/plugins/select2/js/select2.full.min.js")}}"></script>
+<!-- listar el proyecto -->
+<script src="{{asset("assets/$theme/plugins/datatables/jquery.dataTables.js")}}"></script>
+<script src="{{asset("assets/$theme/plugins/datatables/dataTables.bootstrap4.js")}}"></script>
 
 <script>
     $(function () {
@@ -110,6 +115,19 @@
       });
     })
   </script>
+  <script>
+      $(function () {
+        $("#example1").DataTable();
+        $('#example2').DataTable({
+          "paging": true,
+          "lengthChange": false,
+          "searching": false,
+          "ordering": true,
+          "info": true,
+          "autoWidth": false,
+        });
+      });
+    </script>
 
         </body>
         

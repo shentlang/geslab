@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Estudiante;
+use App\Persona;
 use Illuminate\Http\Request;
 
 class EstudianteController extends Controller
@@ -13,7 +15,11 @@ class EstudianteController extends Controller
      */
     public function index()
     {
-        //
+        
+        $estudiantes = Estudiante::get();
+        $selected_authors = [];
+
+	   	return view('estudiante.index', compact('estudiantes', 'selected_authors'));
     }
 
     /**
@@ -36,7 +42,7 @@ class EstudianteController extends Controller
     public function store(Request $request)
     {
         //
-        $persona=new persona();
+        $persona=new Persona();
         $persona->nombre=$request->nombre; 
         $persona->apellidop=$request->apellidop;
         $persona->apellidom=$request->apellidom;
@@ -48,7 +54,7 @@ class EstudianteController extends Controller
         $persona->save();
 
 
-        $estu=new estudiante();
+        $estu=new Estudiante();
         $estu->ru=$request->ru; 
         $estu->carrera=$request->carrera;
         $estu->personas_id=persona::get()->max('id'); 
