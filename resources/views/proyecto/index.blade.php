@@ -1,32 +1,71 @@
-<table class="table table-bordered table-striped">
-    <thead>
-        <tr>
-            <th>Cod</th>
-            <th width="20">Imagem</th>
-            <th>Título</th>
-            <th>Autor(es)</th>
-            <th>Descrição</th>
-            <th>Ação</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach($proyectos as $book)
-            <tr>
-                <th scope="row" class="text-center">{{ $book->id }}</th>
-                <td class="center">
-                    jjj
-                </td>
-                <td>{{ $book->nombreproyecto }}</td>
-                <td>
-                    @foreach($book->estudiantes as $author)
-                    <li>{{ $author->curso }}</li>
-                @endforeach
-                </td>
-                <td>{{ $book->tipo }}</td>
-                <td width="155" class="text-center">
-                   kkk
-                </td>
-            </tr>
-        @endforeach
-    </tbody>
-</table>
+@extends("theme.$theme.layout")
+@section('content')
+
+<div class="content-wrapper">
+        <section class="content">
+                <section class="content">
+                        <div class="row">
+                          <div class="col-12">
+                            <div class="card">
+                             
+                             
+                              <!-- /.card-body -->
+                            </div>
+                            <!-- /.card -->
+                            
+                  
+                            <div class="card">
+                              <div class="card-header">
+                                <h3 class="card-title">listado estudiantil</h3>
+                              </div>
+                              <!-- /.card-header -->
+                              <div class="card-body">
+                                <table id="example1" class="table table-bordered table-striped">
+                                  <thead class="thead-dark">
+                                  <tr>
+                                    <th>identificador del proyecto</th>
+                                   
+                                    <th>nombre del proyecto</th>
+                                    <th>tipo</th>
+                                    <th>defensa inicial</th>
+                                    <th>defensa final</th>
+                                    <th>tribunal</th>
+                                    <th>tutor</th>
+                                    <th>autores</th>
+
+                                   
+                                  </tr>
+                                  </thead>
+                                  <tbody>
+                                    @foreach($proyectos as $proyecto)
+<tr>
+    <th scope="row" class="text-center">{{ $proyecto->id }}</th>
+    
+    <td>{{ $proyecto->nombreproyecto }}</td>
+    <td>
+     
+    </td>
+    <td>{{ $proyecto->tipo }}</td>
+    <td width="155" class="text-center">
+      
+    </td>
+</tr>
+@endforeach
+                                </table>
+                              </div>
+                              <!-- /.card-body -->
+                            </div>
+                            <!-- /.card -->
+                          </div>
+                          <!-- /.col -->
+                        </div>
+                        <!-- /.row -->
+                      </section>
+                      <!-- /.content -->
+                    
+        </section>
+        
+    </div>
+    @endsection
+
+  

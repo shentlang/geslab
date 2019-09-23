@@ -36,10 +36,11 @@
                         @yield('content')
                     </main>
                 </div>
-                //inicio footer-fin
+              <!-- inicio footer -fin footer -->
                 @include("theme.$theme.footer")
               
         </div>
+        
       <!-- jQuery -->
 <script src="{{asset("assets/$theme/plugins/jquery/jquery.min.js")}}"></script>
 <!-- Bootstrap 4 -->

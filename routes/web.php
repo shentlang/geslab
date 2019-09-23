@@ -13,7 +13,7 @@
 
 
 
-Route::get('/','inicioController@index');
+Route::get('/','inicioController@index')->name('home');
 Route::resource('/estudiante', 'EstudianteController');
 Route::resource('/director', 'DirectorController');
 Route::resource('/estudiante', 'EstudianteController');

@@ -78,7 +78,7 @@
 				  </div>
 
 				  <div class="form-group">
-						<label>Multiple</label>
+						<label>seleccionar autores</label>
 						<select class="select2" multiple="multiple" name="estudiantes[]" data-placeholder="Select a State"
 								style="width: 100%;">
 						  

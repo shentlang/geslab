@@ -68,7 +68,7 @@ class ProyectoController extends Controller
         if($proyecto){
             $proyecto->estudiantes()->sync($request->input('estudiantes'));
         }
-        return 'asdasdasd';
+        return redirect()->route('proyecto.index');  
     }
 
     /**

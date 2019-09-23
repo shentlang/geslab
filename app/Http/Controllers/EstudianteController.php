@@ -59,6 +59,10 @@ class EstudianteController extends Controller
         $estu->carrera=$request->carrera;
         $estu->personas_id=persona::get()->max('id'); 
         $estu->save();
+ 
+
+        return redirect()->route('estudiante.index');        
+        
     }
 
     /**
