@@ -32,18 +32,18 @@ class ProyectoController extends Controller
      */
     public function create()
     {
-        $personas = DB::table('personas')
+       /* $personas = DB::table('personas')
             ->join('tutors', 'personas.id', '=', 'tutors.personas_id')
             ->select('personas.apellidop','personas.nombre','tutors.id')
             ->get();
             $tribunales = DB::table('personas')
             ->join('tribunals', 'personas.id', '=', 'tribunals.personas_id')
             ->select('personas.apellidop','personas.nombre','tribunals.id')
-            ->get();
+            ->get();*/
             $alumnos = Estudiante::get();
             $selected_alumnos = [];
            
-            return view('proyecto.create', compact('personas','tribunales','alumnos','selected_alumnos'));
+            return view('proyecto.create', compact('alumnos','selected_alumnos'));
 
         //
     }
@@ -61,8 +61,7 @@ class ProyectoController extends Controller
             'tipo' => $request->input('tipo'), 
             'defensaini' => $request->input('fechadefensa'), 
             'defensafinal' => $request->input('fechadefensa2'), 
-            'tribunals_id' => $request->input('tribunal'), 
-            'tutors_id' => $request->input('tutor')
+            'estado' => $request->input('estado')
             
         ]);
         if($proyecto){

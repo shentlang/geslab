@@ -46,24 +46,14 @@
 				  </div>
 				  <!-- /.form-group estudiante -->
 				  <div class="form-group">
-						
-				<label for="tutores">tutor</label>
-				<select name="tutor" class="form-control">
-					<option value="0" selected>ninguno</option>
-					@foreach($personas as $data)
-					<option value="{{$data->id}}">{{$data->id}} {{$data->nombre}} {{$data->apellidop}}</option>
-					@endforeach
-				</select>
-
-				<label for="tribunales">tribunal</label>
-				<select name="tribunal" class="form-control">
-					<option value="0" selected>ninguno</option>
-					@foreach($tribunales as $datas)
-					<option value="{{$datas->id}}">{{$datas->id}} {{$datas->nombre}} {{$datas->apellidop}}</option>
-					@endforeach
-				</select>
-				
-				  </div>
+			<label for="estado">Estado proyecto</label>
+			<select name="estado" class="form-control">
+				<option value="A">APROBADO</option>
+				<option value="R" selected>REPROBADO</option>	
+				<option value="P" selected>PENDIENTE</option>	
+			</select>
+			
+			  </div>
 				  <!-- /.form-group -->
 				</div>
 				<!-- /.col -->

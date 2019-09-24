@@ -11,12 +11,12 @@ class Estudiante extends Model
     //
     public function persona(){
 
-    return $this->belongsTo(Persona::class,'personas_id');
+    return $this->belongsTo(Persona::class,'estudiante_proyectos');
 
     }
     public function proyectos(){
 
-        return $this->belongsToMany(Proyecto::class,'estudianteproyectos','estudiantes_id','proyectos_id');
+        return $this->belongsToMany(Proyecto::class);
     
         }
 

@@ -19,10 +19,7 @@ class CreateProyectosTable extends Migration
             $table->string('tipo', 30);
             $table->date('defensaini');
             $table->date('defensafinal');
-            $table->unsignedBigInteger('tribunals_id');
-            $table->foreign('tribunals_id', 'fk_tribunals_proyectos')->references('id')->on('tribunals')->onDelete('restrict')->onUpdate('restrict');
-            $table->unsignedBigInteger('tutors_id');
-            $table->foreign('tutors_id', 'fk_tutors_proyectos')->references('id')->on('tutors')->onDelete('restrict')->onUpdate('restrict');
+            $table->string('estado')->default('Pendiente');
             $table->timestamps();
         });
     }

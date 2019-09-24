@@ -57,7 +57,7 @@ class EstudianteController extends Controller
         $estu=new Estudiante();
         $estu->ru=$request->ru; 
         $estu->carrera=$request->carrera;
-        $estu->personas_id=persona::get()->max('id'); 
+        $estu->persona_id=persona::get()->max('id'); 
         $estu->save();
  
 

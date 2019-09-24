@@ -15,8 +15,8 @@ class CreateDecanosTable extends Migration
     {
         Schema::create('decanos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('personas_id');
-            $table->foreign('personas_id', 'fk_personasdecano_personas')->references('id')->on('personas')->onDelete('restrict')->onUpdate('restrict');
+            $table->unsignedBigInteger('persona_id');
+            $table->foreign('persona_id')->references('id')->on('personas')->onDelete('cascade');
             $table->date('gestion');
             $table->timestamps();
         });

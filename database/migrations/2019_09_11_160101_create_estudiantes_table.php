@@ -17,8 +17,8 @@ class CreateEstudiantesTable extends Migration
             $table->bigIncrements('id');
             $table->string('carrera', 50);
             $table->integer('ru');
-            $table->unsignedBigInteger('personas_id');
-            $table->foreign('personas_id', 'fk_personasestudiante_personas')->references('id')->on('personas')->onDelete('restrict')->onUpdate('restrict');
+            $table->unsignedBigInteger('persona_id');
+            $table->foreign('persona_id')->references('id')->on('personas')->onDelete('cascade');
             $table->timestamps();
         });
     }
