@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Estudiante;
+use App\Http\Requests\CreateMessageRequest;
 use App\Persona;
 use Illuminate\Http\Request;
 
@@ -39,10 +40,10 @@ class EstudianteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateMessageRequest $request)
     {
         //
-        $persona=new Persona();
+      /*  $persona=new Persona();
         $persona->nombre=$request->nombre; 
         $persona->apellidop=$request->apellidop;
         $persona->apellidom=$request->apellidom;
@@ -61,7 +62,9 @@ class EstudianteController extends Controller
         $estu->save();
  
 
-        return redirect()->route('estudiante.index');        
+        return redirect()->route('estudiante.index'); */
+           
+        return $request->all();       
         
     }
 

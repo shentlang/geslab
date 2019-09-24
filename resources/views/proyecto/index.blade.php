@@ -29,8 +29,6 @@
                                     <th>tipo</th>
                                     <th>defensa inicial</th>
                                     <th>defensa final</th>
-                                    <th>tribunal</th>
-                                    <th>tutor</th>
                                     <th>autores</th>
 
                                    
@@ -43,12 +41,19 @@
     
     <td>{{ $proyecto->nombreproyecto }}</td>
     <td>
-     
+      {{ $proyecto->tipo }}
     </td>
-    <td>{{ $proyecto->tipo }}</td>
+    <td>{{ $proyecto->defensaini }}</td>
     <td width="155" class="text-center">
-      
+      {{$proyecto->defensafinal}}
     </td>
+    <td><ul class="list-unstyled">
+      @foreach($proyecto->estudiantes as $estudiante)
+          <li>{{ $estudiante->persona->nombre }}</li>
+      @endforeach
+    </td>
+    
+      </ul>
 </tr>
 @endforeach
                                 </table>

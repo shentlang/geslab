@@ -42,7 +42,8 @@
 					<div class="col-md-6">
 					  <div class="form-group">
 							<label for="nombre">Nombres:</label>
-					<input type="text" class="form-control tuInput" name="nombre" autocomplete="off">
+					<input type="text" class="form-control tuInput"  value="{{old('nombre')}}" name="nombre" autocomplete="off" >
+					{{$errors->first('nombre')}} <br>
 					<label for="ape-p">Apellido Paterno:</label>
 					<input type="text" class="form-control tuInput" name="apellidop" autocomplete="off">
 					<label for="ape-m">Apellido Materno</label>
@@ -74,13 +75,16 @@
 					<div class="col-md-6">
 					  <div class="form-group">
 							<label for="usuario">Cedula:</label>
-							<input type="text" class="form-control" name="cedula" autocomplete="off">
+					  <input type="text" class="form-control" name="cedula" autocomplete="off" value="{{old('cedula')}}">
+							{{$errors->first('cedula')}} <br>
 							<label for="password">telefono:</label>
 							<input type="text" class="form-control" name="telefono" autocomplete="off">
 							<label for="password">direccion:</label>
 							<input type="text" class="form-control" name="direccion" autocomplete="off">
-							<label for="password">email:</label>
-							<input type="text" class="form-control" name="email" autocomplete="off">
+							
+							<label for="email">email:</label>
+							<input type="email" class="form-control" name="email" autocomplete="off">
+							{{$errors->first('email')}} <br>
 					  </div>
 					  <br>
 					<a href="{{ route('estudiante.index') }}" class="btn btn-danger">Cancelar</a>
