@@ -14,8 +14,18 @@
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset("assets/$theme/dist/css/adminlte.min.css")}}">
+  <!-- daterange picker -->
+  <link rel="stylesheet" href="{{asset("assets/$theme/plugins/daterangepicker/daterangepicker.css")}}">
+  <!-- iCheck for checkboxes and radio inputs -->
+  <link rel="stylesheet" href="{{asset("assets/$theme/plugins/icheck-bootstrap/icheck-bootstrap.min.css")}}">
+  <!-- Bootstrap Color Picker -->
+  <link rel="stylesheet" href="{{asset("assets/$theme/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css")}}">
+  <!-- Tempusdominus Bbootstrap 4 -->
+  <link rel="stylesheet" href="{{asset("assets/$theme/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css")}}">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <!-- Bootstrap4 Duallistbox -->
+  <link rel="stylesheet" href="{{asset("assets/$theme/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css")}}">
     <!-- css selec proyecto -->
   <link rel="stylesheet" href="{{asset("assets/$theme/plugins/select2/css/select2.min.css")}}">
   <!-- estilo de tablas -->
@@ -56,6 +66,17 @@
 <!-- listar el proyecto -->
 <script src="{{asset("assets/$theme/plugins/datatables/jquery.dataTables.js")}}"></script>
 <script src="{{asset("assets/$theme/plugins/datatables/dataTables.bootstrap4.js")}}"></script>
+ <!-- bootstrap color picker -->
+<script src="{{asset("assets/$theme/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js")}}"></script>
+<!-- date-range-picker -->
+      <script src="{{asset("assets/$theme/plugins/daterangepicker/daterangepicker.js")}}"></script>
+      <!-- Tempusdominus Bootstrap 4 -->
+      <script src="{{asset("assets/$theme/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js")}}"></script>   
+<!-- InputMask -->
+<script src="{{asset("assets/$theme/plugins/inputmask/jquery.inputmask.bundle.js")}}"></script>
+<script src="{{asset("assets/$theme/plugins/moment/moment.min.js")}}"></script>
+<!-- Bootstrap4 Duallistbox -->
+<script src="{{asset("assets/$theme/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js")}}"></script>
 
 <script>
     $(function () {

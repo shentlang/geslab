@@ -15,11 +15,16 @@
                             
                   
                             <div class="card">
+                               
                               <div class="card-header">
                                 <h3 class="card-title">listado estudiantil</h3>
+                                <p class="float-right"><a href="{{ route('estudiante.create') }}"  class="btn btn-outline-primary">Registrar Estudiante</a></p>
+                                
                               </div>
                               <!-- /.card-header -->
                               <div class="card-body">
+                                  
+                                  
                                 <table id="example1" class="table table-bordered table-striped">
                                   <thead class="thead-dark">
                                   <tr>
@@ -27,22 +32,29 @@
                                     <th>Apellido Paterno</th>
                                     <th>apellido Materno</th>
                                     <th>C.I</th>
-                                    <th>R.U</th>
                                     <th>Genero</th>
+                                    <th>R.U</th>
                                     <th>Carrera</th>
+                                    <th>Editar</th>
                                   </tr>
                                   </thead>
                                   <tbody>
                                       @foreach ($estudiantes as $item)
                                       <tr>
-                                      <td>{{$item->persona->nombre}}</td>
+                                      <td><a href="{{ route ('estudiante.show', $item->id)}}">
+                                                 {{$item->persona->id}}
+                                              --{{$item->persona->nombre}} 
+                                          </a>
+                                      </td>
                                       <td>{{$item->persona->apellidop}}</td>
                                       <td>{{$item->persona->apellidom}}</td>
                                       <td>{{$item->persona->cedula}}</td>
-                                      <td>{{$item->ru}}</td>
                                       <td>{{$item->persona->genero}}</td>
+                                      <td>{{$item->id}}--{{$item->ru}}</td>
                                       <td>{{$item->carrera}}</td>
-                                       
+                                    <td><a class="btn btn-app" href="{{route('estudiante.edit',$item->id)}}">
+                                      <i class="fas fa-edit"></i> editar</a> </td>
+                                   
                                           </tr>  
                                       @endforeach
                                  
@@ -53,9 +65,10 @@
                                                 <th>Apellido Paterno</th>
                                                 <th>apellido Materno</th>
                                                 <th>C.I</th>
-                                                <th>R.U</th>
                                                 <th>Genero</th>
+                                                <th>R.U</th>
                                                 <th>Carrera</th>
+                                                <th>Editar</th>
                                               </tr>
                                   </tfoot>
                                 </table>

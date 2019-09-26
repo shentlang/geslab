@@ -17,6 +17,7 @@
                             <div class="card">
                               <div class="card-header">
                                 <h3 class="card-title">listado estudiantil</h3>
+                                <p class="float-right"><a href="{{ route('proyecto.create') }}"  class="btn btn-outline-primary">Registrar Proyecto</a></p>
                               </div>
                               <!-- /.card-header -->
                               <div class="card-body">
@@ -49,11 +50,13 @@
     </td>
     <td><ul class="list-unstyled">
       @foreach($proyecto->estudiantes as $estudiante)
-          <li>{{ $estudiante->persona->nombre }}</li>
+          <button disabled="disabled"><li>{{ $estudiante->persona->nombre }} {{ $estudiante->persona->apellidop }} </li></button>
       @endforeach
+    </ul>
+  
     </td>
     
-      </ul>
+      
 </tr>
 @endforeach
                                 </table>

@@ -69,7 +69,7 @@
 
 				  <div class="form-group">
 						<label>seleccionar autores</label>
-						<select class="select2" multiple="multiple" name="estudiantes[]" data-placeholder="Select a State"
+						<select class="select2" multiple="multiple" name="estudiantes[]" data-placeholder="Seleccione Estudiantes"
 								style="width: 100%;">
 						  
 						  @foreach($alumnos as $author)

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Estudiante;
 use App\Http\Requests\CreateMessageRequest;
 use App\Persona;
+use DB;
 use Illuminate\Http\Request;
 
 class EstudianteController extends Controller
@@ -77,6 +78,11 @@ class EstudianteController extends Controller
     public function show($id)
     {
         //
+        $estudiantes = Estudiante::find($id);
+    //dd($estudiantes);
+    //$estudiantes = DB::table('estudiantes')->where('id', $id)->first();
+
+     return view('estudiante.show', compact('estudiantes'));
     }
 
     /**
@@ -88,6 +94,9 @@ class EstudianteController extends Controller
     public function edit($id)
     {
         //
+        $estudiantes = Estudiante::find($id);
+
+        return view('estudiante.edit', compact('estudiantes'));
     }
 
     /**
@@ -100,6 +109,25 @@ class EstudianteController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $estudiantes = Estudiante::find($id);
+        $estudiantes->ru=$request->ru; 
+        $estudiantes->carrera=$request->carrera;
+        $estudiantes->save();
+   //$prueba = $request->nombre;
+        $persona = Persona::find($estudiantes->persona->id);
+       
+        $persona->nombre=$request->nombre; 
+        $persona->apellidop=$request->apellidop;
+        $persona->apellidom=$request->apellidom;
+        $persona->genero=$request->genero;
+        $persona->cedula=$request->cedula;
+        $persona->email=$request->email;
+        $persona->telefono=$request->telefono;
+        $persona->direccion=$request->direccion;
+        $persona->save();
+        return redirect()->route('estudiante.index');
+      //dd($prueba);
+       // return $request->all();
     }
 
     /**
