@@ -13,10 +13,13 @@
 
 
 
-Route::get('/','inicioController@index')->name('home');
+Route::get('/','inicioController@index');
 Route::resource('/estudiante', 'EstudianteController');
 Route::resource('/director', 'DirectorController');
 Route::resource('/estudiante', 'EstudianteController');
 Route::resource('/tutor', 'TutorController');
 Route::resource('/proyecto', 'ProyectoController');
 Route::resource('/prueba', 'PruebaController');
+Auth::routes();
+
+

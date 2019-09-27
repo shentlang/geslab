@@ -26,7 +26,8 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
          
-          <li class="nav-item has-treeview">
+        @auth
+        <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
@@ -49,6 +50,8 @@
               </li> 
             </ul>
           </li>
+            
+        @endauth
           
         
           <li class="nav-item has-treeview">
@@ -114,7 +117,7 @@
             <a href="../calendar.html" class="nav-link">
               <i class="nav-icon far fa-calendar-alt"></i>
               <p>
-                Calendar
+                Calendario
                 <span class="badge badge-info right">2</span>
               </p>
             </a>
@@ -123,7 +126,7 @@
             <a href="#" class="nav-link">
               <i class="nav-icon far fa-envelope"></i>
               <p>
-                Mailbox
+                Notificaciones
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
@@ -152,7 +155,7 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>
-                Pages
+                info
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
@@ -276,7 +279,7 @@
           <li class="nav-item">
             <a href="https://adminlte.io/docs/3.0" class="nav-link">
               <i class="nav-icon fas fa-file"></i>
-              <p>Documentation</p>
+              <p>informes</p>
             </a>
           </li>
           <li class="nav-header">LABELS</li>

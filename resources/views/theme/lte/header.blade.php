@@ -5,11 +5,31 @@
             <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
           </li>
           <li class="nav-item d-none d-sm-inline-block">
-            <a href="{{route('home')}}" class="nav-link">inicio</a>
+            <a href="/" class="nav-link">inicio</a>
           </li>
           <li class="nav-item d-none d-sm-inline-block">
             <a href="#" class="nav-link">Contactos</a>
           </li>
+          @guest
+          <li class="nav-item d-none d-sm-inline-block" >
+              <a href="{{route('login')}}" class="btn btn-outline-info ">iniciar sesion</a>
+                </li> 
+              
+                    
+                @else
+              <li class="nav-item d-none d-sm-inline-block"><a href="#"onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();" class="btn btn-outline-warning">cerrar sesion</a></li>      
+              
+          @endguest
+          <li class="nav-item d-none d-sm-inline-block">
+              <form class="nav-link" id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                  @csrf
+              </form>
+          </li>
+          
+          
+          
+          
         </ul>
     
         <!-- SEARCH FORM -->
