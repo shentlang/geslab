@@ -15,11 +15,11 @@
 
 Route::get('/','inicioController@index');
 Route::resource('/estudiante', 'EstudianteController');
-Route::resource('/director', 'DirectorController');
-Route::resource('/estudiante', 'EstudianteController');
-Route::resource('/tutor', 'TutorController');
+
+
+
 Route::resource('/proyecto', 'ProyectoController');
 Route::resource('/prueba', 'PruebaController');
 Auth::routes();
-
+Route::resource('/user', 'UserController');
 

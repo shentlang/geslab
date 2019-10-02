@@ -23,30 +23,27 @@
                               <div class="card-body">
                                 <table id="example1" class="table table-bordered table-striped">
                                   <thead class="thead-dark">
-                                        <tr>
-                                                <th>Cod</th>
-                                                
-                                                <th>id_proyecto</th>
-                                                
-                                                <th>id_estudiante</th>
-                                                 <th>nota</th>
-                                                 <th>editar nota</th>
-                                            </tr>
+                                  <tr>
+                                    <th>identificador</th>
+                                    <th>usuario</th>
+                                    <th>email</th>
+                                    <th>role</th>
+                                    <th>acciones</th>
+                                   
+
+                                   
+                                  </tr>
                                   </thead>
                                   <tbody>
-                                        @foreach ($notas as $item)
-            
-        
-                                        <tr> 
-                                        <th>{{$item->id}}</th>
-                                        <td>{{$item->proyecto->nombreproyecto}}</td>
-                                        <td>{{$item->estudiante->persona->nombre}}</td>
-                                        <td>{{$item->puntos}}</td>
-                                        <td><a class="btn btn-app" href="{{route('prueba.edit',$item->id)}}">
-                                                <i class="fas fa-edit"></i> editar</a> </td>
-                                        </tr>
-                                
-                                        @endforeach         
+                  @foreach ($users as $user)
+                  <tr>
+                  <td>{{$user->id}}</td>
+                  <td>{{$user->name}}</td>
+                  <td>{{$user->email}}</td>
+                  <td>{{$user->role}}</td>
+                  <td></td>
+                  </tr>
+                  @endforeach                
 
 
                                 </table>
@@ -65,3 +62,5 @@
         
     </div>
     @endsection
+
+  

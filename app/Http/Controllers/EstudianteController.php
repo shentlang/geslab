@@ -49,7 +49,7 @@ $this->middleware('auth');
     public function store(CreateMessageRequest $request)
     {
         //
-      /*  $persona=new Persona();
+        $persona=new Persona();
         $persona->nombre=$request->nombre; 
         $persona->apellidop=$request->apellidop;
         $persona->apellidom=$request->apellidom;
@@ -68,9 +68,9 @@ $this->middleware('auth');
         $estu->save();
  
 
-        return redirect()->route('estudiante.index'); */
+        return redirect()->route('estudiante.index'); 
            
-        return $request->all();       
+       // return $request->all();       
         
     }
 

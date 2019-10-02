@@ -2,14 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Comentario;
-use App\Estudiante;
-use App\Estudiante_proyecto;
-use App\Usuario;
-use DB;
+use App\User;
 use Illuminate\Http\Request;
 
-class PruebaController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,28 +14,9 @@ class PruebaController extends Controller
      */
     public function index()
     {
-      // $comentarios =Comentario::find(1);
-     // $comentarios->usuario;
-     // return view('prueba.index',['prueba'=>$comentarios]);
-     
-     //$comentarios = Comentario::get();
-     //return view('prueba.index',['prueba'=>$comentarios]);
-       
-     /*$comentarios = Comentario::orderBy('id', 'DESC')->paginate(5);
-        $comentarios->each(function($comentarios){
-            $comentarios->usuario;
-            
-        });
-        dd($comentarios);*/
-        //return view('prueba.index')->with([
-          //  'comentarios' => $comentarios]);
-
-          $notas = Estudiante_proyecto::all();
-
-          // dd($notas);
-
-          return view('prueba.index', compact('notas'));
-
+        //
+        $users = User::all();
+        return view('user.index',compact('users'));
     }
 
     /**
@@ -83,8 +60,6 @@ class PruebaController extends Controller
     public function edit($id)
     {
         //
-        $notas = Estudiante_proyecto::find($id);
-        return view('notas.edit', compact('notas'));
     }
 
     /**
@@ -97,10 +72,6 @@ class PruebaController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $notas = Estudiante_proyecto::find($id);
-        $notas->puntos=$request->punto;
-        $notas->save();
-        return redirect()->route('prueba.index');
     }
 
     /**

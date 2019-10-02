@@ -20,6 +20,12 @@ class Estudiante extends Model
     
         }
 
+        public function estudiante_proyectos(){
+
+            return $this->hasMany(Estudiante_proyecto::class);
+            
+                }
+
 
     
 

@@ -15,6 +15,11 @@ class Proyecto extends Model
     return $this->belongsToMany(Estudiante::class,'estudiante_proyectos');
     
   }
+  public function estudiante_proyectos(){
+
+    return $this->hasMany(Estudiante_proyecto::class);
+    
+        }
   
      
 }

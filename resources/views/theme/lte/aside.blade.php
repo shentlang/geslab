@@ -28,30 +28,49 @@
          
         @auth
         <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-copy"></i>
-              <p>
-                F. DOCENTES
-                <i class="fas fa-angle-left right"></i>
-               
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                  <a class="nav-link" href="{{route('estudiante.index')}} ">  <i class="far fa-circle nav-icon"></i><p>estudiantes</p></a>
-               
-                 
-                  
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href= "{{route('proyecto.index')}}">  <i class="far fa-circle nav-icon"></i><p>proyectos</p>   
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-copy"></i>
+            <p>
+              Usuarios
+              <i class="fas fa-angle-left right"></i>
+             
+            </p>
+          </a>
+          @if (auth()->user()->role === 'admin')
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a class="nav-link" href= "{{route('user.index')}}">  <i class="far fa-circle nav-icon"></i><p>lista de usuarios</p>   
                 </a>
               </li> 
             </ul>
-          </li>
+          @endif
+        </li>
             
         @endauth
+
+        <li class="nav-item has-treeview">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-copy"></i>
+            <p>
+              F. DOCENTES
+              <i class="fas fa-angle-left right"></i>
+             
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('estudiante.index')}} ">  <i class="far fa-circle nav-icon"></i><p>estudiantes</p></a>
+             
+               
+                
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href= "{{route('proyecto.index')}}">  <i class="far fa-circle nav-icon"></i><p>proyectos</p>   
+              </a>
+            </li> 
+          </ul>
+        </li>
           
         
           <li class="nav-item has-treeview">
