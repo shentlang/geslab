@@ -14,6 +14,11 @@ class Persona extends Model
 return $this->hasMany(Estudiante::class);
 
     }
+    public function docentes(){
+
+        return $this->hasMany(Docente::class);
+        
+            }
 
    
 }
