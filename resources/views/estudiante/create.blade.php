@@ -64,7 +64,7 @@
 						<option value="ING.COMERCIAL">ING.COMERCIAL</option>
 						<option value="ING.AMBIENTAL" selected>ING.AMBIENTAL</option>
 						<option value="ING.RECURSOS HIDRICOS">ING.RECURSOS HIDRICOS</option>
-						<option value="CONTADURIA" selected>CONTADURIA</option>
+						<option value="CONTADURIA PUBLICA" selected>CONTADURIA PUBLICA</option>
 						
 					</select>
 					

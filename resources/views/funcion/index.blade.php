@@ -24,20 +24,42 @@
                                 <table id="example1" class="table table-bordered table-striped">
                                   <thead class="thead-dark">
                                         <tr>
-                                                <th>Cod</th>
-                                                
-                                                <th>docente</th>
+                                                <th>cod</th>
                                                 
                                                 <th>proyecto</th>
+                                                
+                                                <th>docentes guias</th>
                                                  
-                                                <th class="col-3">editar asignacion</th>
+                                                <th class="col-3">asignacion guias</th>
                                                 
                                             </tr>
                                   </thead>
                                   <tbody>
-                                          
+                                      @foreach ($funciones as $item)
+                                    <tr>
+                                      
+                                        <th>{{$item->id}}</th>
+                                      
+                                        <td>{{ $item->nombreproyecto }}</td>
+                                        
+                                        <td><ul class="list-unstyled">
+                                            @foreach($item->docente_proyectos as $docen)
+                                        <button type="reset">{{$docen->id}} {{$docen->funcion}} {{$docen->docente->persona->nombre}}</button><br>
+                                            @endforeach
+                                          </ul>
+                                        
+                                          </td>
+                                          <td><a class="btn btn-app" href="{{route('funcion.show',$item->id)}}">
+                                              <i class="fas fa-edit"></i> editar</a> </td>
+                                    </tr>
+                                    @endforeach
+                                    
+                                        
+                                    
+                                        
+                                        
 
-
+                                  
                                 </table>
                               </div>
                               <!-- /.card-body -->

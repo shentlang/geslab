@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Docente_proyecto;
+use App\Docente;
+use App\Proyecto;
 use Illuminate\Http\Request;
 
 class DocenteproyectoController extends Controller
@@ -15,8 +16,7 @@ class DocenteproyectoController extends Controller
     public function index()
     {
     
-        $funciones = Docente_proyecto::all();
-
+        $funciones = Proyecto::all();
         // dd($notas);
 
         return view('funcion.index', compact('funciones'));
@@ -30,6 +30,7 @@ class DocenteproyectoController extends Controller
     public function create()
     {
         //
+       
         return view('funcion.create');
     }
 
@@ -42,6 +43,12 @@ class DocenteproyectoController extends Controller
     public function store(Request $request)
     {
         //
+        $proyectos = Proyecto::find($request->proyecto);
+        if($proyectos){
+            $proyectos->docentes()->syncWithoutDetaching([$request->input('docente')=>['funcion' => $request->funcion]]);
+        }
+
+        return redirect()->route('funcion.index');  
     }
 
     /**
@@ -53,6 +60,10 @@ class DocenteproyectoController extends Controller
     public function show($id)
     {
         //
+        $proyectos = Proyecto::find($id);
+        $docentes = Docente::all();
+        return view('funcion.show', compact('proyectos','docentes'));
+
     }
 
     /**

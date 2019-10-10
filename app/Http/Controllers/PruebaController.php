@@ -37,8 +37,9 @@ class PruebaController extends Controller
           $notas = Estudiante_proyecto::all();
 
           // dd($notas);
-
-          return view('prueba.index', compact('notas'));
+       //   $notas->estudiante()->where('id', 2);
+          dd($notas);
+         // return view('prueba.index', compact('notas'));
 
     }
 

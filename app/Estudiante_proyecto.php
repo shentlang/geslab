@@ -9,7 +9,7 @@ class Estudiante_proyecto extends Model
     //
     public function estudiante(){
 
-        return $this->belongsTo(Estudiante::class);
+        return $this->belongsTo('App\Estudiante');
     
         }
         public function proyecto(){

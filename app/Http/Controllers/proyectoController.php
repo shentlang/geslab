@@ -40,8 +40,20 @@ class ProyectoController extends Controller
             ->join('tribunals', 'personas.id', '=', 'tribunals.personas_id')
             ->select('personas.apellidop','personas.nombre','tribunals.id')
             ->get();*/
-            $alumnos = Estudiante::get();
-            $selected_alumnos = [];
+           
+           
+            if (auth()->user()->role === 'admin') {
+                $alumnos = Estudiante::where('carrera','=', 'ING.COMERCIAL')->get();
+                $selected_alumnos = [];
+            } else {
+                $alumnos = Estudiante::where('carrera','=', 'ING.INFORMATICA')->get();
+                $selected_alumnos = [];
+            }
+            
+
+            
+
+           /* */
            
             return view('proyecto.create', compact('alumnos','selected_alumnos'));
 
