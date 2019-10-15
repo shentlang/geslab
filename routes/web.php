@@ -21,6 +21,7 @@ Route::resource('/estudiante', 'EstudianteController');
 Route::resource('/proyecto', 'ProyectoController');
 Route::resource('/docente', 'DocenteController');
 Route::resource('/prueba', 'PruebaController');
+Route::resource('/notas', 'NotasController');
 Auth::routes();
 Route::resource('/user', 'UserController');
 Route::resource('/funcion', 'DocenteproyectoController');

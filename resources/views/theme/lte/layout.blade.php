@@ -31,12 +31,13 @@
   <!-- estilo de tablas -->
   <link rel="stylesheet" href="{{asset("assets/$theme/plugins/datatables/dataTables.bootstrap4.css")}}">
 </head> 
-<body class="hold-transition sidebar-mini layout-boxed">
+<body class=" sidebar-mini">
     <!-- Site wrapper -->
-    @include("theme.$theme.aside") 
+  
     
     
     <div class="wrapper">
+        @include("theme.$theme.aside") 
         @include("theme.$theme.header")
        
            
@@ -45,9 +46,10 @@
                     <main class="py-4">
                         @yield('content')
                     </main>
+                    @include("theme.$theme.footer")
                 </div>
               <!-- inicio footer -fin footer -->
-                @include("theme.$theme.footer")
+                
               
         </div>
         

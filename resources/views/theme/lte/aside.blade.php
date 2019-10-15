@@ -57,19 +57,23 @@
              
             </p>
           </a>
+          @auth
+          @if (auth()->user()->role === 'gespublic'||auth()->user()->role === 'contpublic'||auth()->user()->role === 'ingagro'||auth()->user()->role === 'ingcomer'||auth()->user()->role === 'inginfor'||auth()->user()->role === 'inghidric'||auth()->user()->role === 'ingsanit')
           <ul class="nav nav-treeview">
             <li class="nav-item">
-                <a class="nav-link" href="{{route('estudiante.index')}} ">  <i class="far fa-circle nav-icon"></i><p>estudiantes</p></a>
-             
-               
-                
-              </a>
+                <a class="nav-link" href="{{route('estudiante.index')}} ">  <i class="far fa-circle nav-icon"></i><p>estudiantes</p>
+                </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href= "{{route('proyecto.index')}}">  <i class="far fa-circle nav-icon"></i><p>proyectos</p>   
               </a>
             </li> 
-          </ul>
+          </ul>  
+          @endif
+         
+      
+        
+          @endauth
         </li>
           
         
@@ -81,26 +85,30 @@
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="../forms/general.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>General Elements</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../forms/advanced.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Advanced Elements</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../forms/editors.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Editors</p>
-                </a>
-              </li>
-            </ul>
+            @auth
+                @if (auth()->user()->role === 'DDCCFJ'||auth()->user()->role === 'DDICE'||auth()->user()->role === 'DDCEE')
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="{{route('docente.index')}}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Docentes</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{{route('funcion.index')}}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Asignar funciones</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="../forms/editors.html" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Editors</p>
+                      </a>
+                    </li>
+                  </ul>  
+                @endif
+            @endauth
           </li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">

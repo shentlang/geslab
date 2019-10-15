@@ -22,11 +22,49 @@ $this->middleware('auth');
 
     public function index()
     {
+        if (auth()->user()->role === 'secret') {
+            $estudiantes = Estudiante::get();
+        } else {
+            if (auth()->user()->role === 'gespublic') {
+                $estudiantes = Estudiante::where('carrera','=', 'ADMINISTRACION Y GESTION PUBLICA')->get();
+            } else {
+                if (auth()->user()->role === 'contpublic') {
+                    $estudiantes = Estudiante::where('carrera','=', 'CONTADURIA PUBLICA')->get();
+               } else {
+                if (auth()->user()->role === 'ingagro') {
+                    $estudiantes = Estudiante::where('carrera','=', 'INGENIERIA AGRONOMICA')->get();
+                   } else {
+                    if (auth()->user()->role === 'ingcomer') {
+                        $estudiantes = Estudiante::where('carrera','=', 'INGENIERIA COMERCIAL')->get();
+                       } else {
+                        if (auth()->user()->role === 'inginfor') {
+                            $estudiantes = Estudiante::where('carrera','=', 'INGENIERIA INFORMATICA')->get();
+                           } else {
+                            if (auth()->user()->role === 'inghidric') {
+                                $estudiantes = Estudiante::where('carrera','=', 'INGENIERIA DE RECURSOS HIDRICOS')->get();
+                               } else {
+                                if (auth()->user()->role === 'ingsanit') {
+                                    $estudiantes = Estudiante::where('carrera','=', 'INGENIERIA SANITARIA Y AMBIENTAL')->get();
+                                }else{
+                                   return redirect('/') ;
+                                }
+                               }
+                               
+                           }
+                           
+                       }
+                       
+                   }
+                   
+               }
+                
+            }
+            
         
-        $estudiantes = Estudiante::get();
-        $selected_authors = [];
-
-	   	return view('estudiante.index', compact('estudiantes', 'selected_authors'));
+        }
+        
+        
+	   	return view('estudiante.index', compact('estudiantes'));
     }
 
     /**

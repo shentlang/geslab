@@ -59,14 +59,56 @@
 							<label for="password">ru:</label>
 					<input type="text" class="form-control" name="ru" autocomplete="off">
 					<label for="carrera">carrera</label>
+
+					@if (auth()->user()->role === 'gespublic')
 					<select name="carrera" class="form-control">
-						<option value="ING.INFORMATICA" selected>ING.INFORMATICA</option>
-						<option value="ING.COMERCIAL">ING.COMERCIAL</option>
-						<option value="ING.AMBIENTAL" selected>ING.AMBIENTAL</option>
-						<option value="ING.RECURSOS HIDRICOS">ING.RECURSOS HIDRICOS</option>
-						<option value="CONTADURIA PUBLICA" selected>CONTADURIA PUBLICA</option>
-						
-					</select>
+							<option value="ADMINISTRACION Y GESTION PUBLICA" >ADM. GESTION PUBLICA</option>
+						</select>	
+					@else
+					@if (auth()->user()->role === 'contpublic')
+					<select name="carrera" class="form-control">
+							<option value="CONTADURIA PUBLICA" selected>CONTADURIA PUBLICA</option>
+						</select>	
+							
+						@else
+						@if (auth()->user()->role === 'ingagro')
+						<select name="carrera" class="form-control">
+								<option value="INGENIERIA AGRONOMICA">ING. AGRONOMICA</option>
+							</select>	
+								
+							@else
+							@if (auth()->user()->role === 'ingcomer')
+							<select name="carrera" class="form-control">
+									<option value="INGENIERIA COMERCIAL">ING.COMERCIAL</option>
+								</select>	
+									
+								@else
+								@if (auth()->user()->role === 'inginfor')
+					<select name="carrera" class="form-control">
+							<option value="INGENIERIA INFORMATICA" >ING.INFORMATICA</option>
+						</select>	
+									
+								@else
+								@if (auth()->user()->role === 'inghidric')
+								<select name="carrera" class="form-control">
+										<option value="INGENIERIA DE RECURSOS HIDRICOS">ING.RECURSOS HIDRICOS</option>
+									</select>	
+										
+									@else
+									@if (auth()->user()->role === 'ingsanit')
+					<select name="carrera" class="form-control">
+							<option value="INGENIERIA SANITARIA Y AMBIENTAL" >ING.AMBIENTAL</option>
+						</select>	
+										
+									@endif	
+									@endif
+								@endif
+									
+								@endif
+							@endif
+						@endif
+					@endif
+				
 					
 					  </div>
 					  <!-- /.form-group -->

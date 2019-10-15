@@ -55,22 +55,31 @@
 						<option value="Femenino">Femenino</option>
 						<option value="Masculino">Masculino</option>
                     </select>
-                    
+					
 					  </div>
 					  <!-- /.form-group estudiante -->
 					  <div class="form-group">
 							<label for="password">ru:</label>
 					<input type="text" class="form-control" value="{{$estudiantes->ru}}" name="ru" autocomplete="off">
 					<label for="carrera">carrera</label>
+					@if (auth()->user()->role === 'admin')
 					<select name="carrera" class="form-control">
-                        <option value="{{$estudiantes->carrera}}"select>{{$estudiantes->carrera}} V.anterior</option>
-						<option value="ING.INFORMATICA" >ING.INFORMATICA</option>
-						<option value="ING.COMERCIAL">ING.COMERCIAL</option>
-						<option value="ING.AMBIENTAL" >ING.AMBIENTAL</option>
-						<option value="ING.RECURSOS HIDRICOS">ING.RECURSOS HIDRICOS</option>
-						<option value="CONTADURIA" >CONTADURIA</option>
-						
-					</select>
+							<option value="{{$estudiantes->carrera}}"select>{{$estudiantes->carrera}} V.anterior</option>
+							<option value="INGENIERIA INFORMATICA" >ING.INFORMATICA</option>
+							<option value="INGENIERIA COMERCIAL">ING.COMERCIAL</option>
+							<option value="INGENIERIA SANITARIA Y AMBIENTAL" >ING.AMBIENTAL</option>
+							<option value="INGENIERIA DE RECURSOS HIDRICOS">ING.RECURSOS HIDRICOS</option>
+							<option value="INGENIERIA AGRONOMICA">ING. AGRONOMICA</option>
+							<option value="CONTADURIA PUBLICA" >CONTADURIA PUBLICA</option>
+							<option value="ADMINISTRACION Y GESTION PUBLICA" >ADM. GESTION PUBLICA</option>
+							
+						</select>
+					@else
+					<select name="carrera" class="form-control">
+							<option value="{{$estudiantes->carrera}}"select>{{$estudiantes->carrera}} V.anterior</option>
+						</select>
+					@endif
+				
 					
 					  </div>
 					  <!-- /.form-group -->

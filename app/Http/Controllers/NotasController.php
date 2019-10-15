@@ -2,15 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Comentario;
-use App\Estudiante;
 use App\Estudiante_proyecto;
 use App\Proyecto;
-use App\Usuario;
-use DB;
 use Illuminate\Http\Request;
 
-class PruebaController extends Controller
+class NotasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,30 +15,9 @@ class PruebaController extends Controller
      */
     public function index()
     {
-      // $comentarios =Comentario::find(1);
-     // $comentarios->usuario;
-     // return view('prueba.index',['prueba'=>$comentarios]);
-     
-     //$comentarios = Comentario::get();
-     //return view('prueba.index',['prueba'=>$comentarios]);
-       
-     /*$comentarios = Comentario::orderBy('id', 'DESC')->paginate(5);
-        $comentarios->each(function($comentarios){
-            $comentarios->usuario;
-            
-        });
-        dd($comentarios);*/
-        //return view('prueba.index')->with([
-          //  'comentarios' => $comentarios]);
-
-         // $notas = Estudiante_proyecto::all();
-
-          // dd($notas);
-       //   $notas->estudiante()->where('id', 2);
-         // dd($notas);
-         $proyectos = Proyecto::all();
-         return view('prueba.index', compact('proyectos'));
-
+        //
+        $proyectos = Proyecto::all();
+        return view('notas.index', compact('proyectos'));
     }
 
     /**
@@ -103,7 +78,7 @@ class PruebaController extends Controller
         $notas = Estudiante_proyecto::find($id);
         $notas->puntos=$request->punto;
         $notas->save();
-        return redirect()->route('prueba.index');
+        return redirect()->route('notas.index');
     }
 
     /**
