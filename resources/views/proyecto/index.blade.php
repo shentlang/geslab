@@ -1,7 +1,7 @@
 @extends("theme.$theme.layout")
 @section('content')
 
-<div class="content-wrapper">
+
   <section class="content">
     <section class="content">
       <div class="row">
@@ -52,7 +52,7 @@
                     <td>
                       <ul class="list-unstyled">
                         @foreach($proyecto->estudiantes as $estudiante)
-                        <button disabled="disabled">
+                        <button disabled="disabled" class="btn btn-light">
                           <li>{{ $estudiante->persona->nombre }} {{ $estudiante->persona->apellidop }} </li>
                         </button>
                         @endforeach
@@ -77,5 +77,5 @@
 
   </section>
 
-</div>
+
 @endsection

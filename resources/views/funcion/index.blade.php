@@ -1,7 +1,7 @@
 @extends("theme.$theme.layout")
 @section('content')
 
-<div class="content-wrapper">
+
         <section class="content">
                 <section class="content">
                         <div class="row">
@@ -74,5 +74,5 @@
                     
         </section>
         
-    </div>
+    
     @endsection

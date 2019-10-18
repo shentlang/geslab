@@ -8,7 +8,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Font Awesome -->
-  
+  <style>
+  .portada{
+   background: url() no-repeat fixed center;
+   -webkit-background-size: cover;
+   -moz-background-size: cover;
+   -o-background-size: cover;
+   background-size: cover;
+   height: 100%;
+   width: 100% ;
+   text-align: center;
+ 
+}
+  </style>
   <link rel="stylesheet" href="{{asset("assets/$theme/plugins/fontawesome-free/css/all.min.css")}}">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
@@ -33,7 +45,7 @@
  <!-- date range picker -->
   <link rel="stylesheet" href="{{asset("assets/$theme/plugins/daterangepicker/daterangepicker.css")}}">
 </head> 
-<body class=" sidebar-mini" style="background-image: url({{asset("assets/lte/dist/img/giphy.gif")}})">
+<body class=" sidebar-mini">
 
     <!-- Site wrapper -->
   
@@ -44,17 +56,17 @@
         @include("theme.$theme.header")
        
            
-                <div id="app" >
+                <div class="content-wrapper" style="background-image: url({{asset("assets/lte/dist/img/maxresdefault.jpg")}})" id="app" >
                     <main class="py-4">
                         @yield('content')
                     </main>
-                    
+                   
                 </div>
               <!-- inicio footer -fin footer -->
-                
+              
               
         </div>
-        
+        @include("theme.$theme.footer")
       <!-- jQuery -->
 <script src="{{asset("assets/$theme/plugins/jquery/jquery.min.js")}}"></script>
 <!-- Bootstrap 4 -->

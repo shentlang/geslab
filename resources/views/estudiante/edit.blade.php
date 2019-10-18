@@ -1,7 +1,7 @@
 @extends("theme.$theme.layout")
 @section('content')
 
-<div class="content-wrapper">
+
     <!-- Content (pagina titulo) -->
     <section class="content-header">
       <div class="container-fluid">
@@ -113,5 +113,5 @@
               </div>
     </section>
 	</form>
-</div>
+
 @endsection
