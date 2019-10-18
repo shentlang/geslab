@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Estudiante;
 use App\Http\Requests\CreateMessageRequest;
 use App\Persona;
+use Illuminate\Support\Facades\Crypt;
 use DB;
 use Illuminate\Http\Request;
 
@@ -22,7 +23,7 @@ $this->middleware('auth');
 
     public function index()
     {
-        if (auth()->user()->role === 'secret') {
+        if (auth()->user()->role === 'admin') {
             $estudiantes = Estudiante::get();
         } else {
             if (auth()->user()->role === 'gespublic') {
@@ -121,7 +122,7 @@ $this->middleware('auth');
     public function show($id)
     {
         //
-        $estudiantes = Estudiante::find($id);
+        $estudiantes = Estudiante::findorfail($id);
     //dd($estudiantes);
     //$estudiantes = DB::table('estudiantes')->where('id', $id)->first();
 
@@ -137,7 +138,8 @@ $this->middleware('auth');
     public function edit($id)
     {
         //
-        $estudiantes = Estudiante::find($id);
+        $id =  Crypt::decrypt($id);
+        $estudiantes = Estudiante::findorfail($id);
 
         return view('estudiante.edit', compact('estudiantes'));
     }

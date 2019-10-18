@@ -66,13 +66,14 @@
 						<label for="curso">fecha defensa final</label>
 						<input type="date" class="form-control" name="fechadefensa2" required>
 				  </div>
+				  
 
 				  <div class="form-group">
 						<label>seleccionar autores</label>
-						<select class="select2" multiple="multiple" name="estudiantes[]" data-placeholder="Seleccione Estudiantes"
-								style="width: 100%;">
+						<select class="select2" multiple="multiple" id="estudiantes"  name="estudiantes[]" data-placeholder="Seleccione Estudiantes"
+								style="width: 100%;"  >
 						  
-						  @foreach($alumnos as $author)
+						  @foreach($estudiantes as $author)
                                     <option value="{{ $author->id }}">{{ $author->persona->nombre }}</option>
                                     @endforeach()
 						</select>
@@ -80,8 +81,10 @@
 					
 
 				  <br>
-				<a href="{{ route('estudiante.index') }}" class="btn btn-danger">Cancelar</a>
-				<button type="submit" class="btn btn-success ">registrar</button>
+				<a href="{{ route('proyecto.index') }}" class="btn btn-danger"><i class="fas fa-arrow-left"></i>  Cancelar</a>
+				<button type="submit" class="btn btn-success"><i class="fas fa-save"></i> guardar</button>
+				
+					</a>
 				</div>
 				<!-- /.col -->
 			  </div>

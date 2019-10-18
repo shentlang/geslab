@@ -28,14 +28,14 @@
                                 <table id="example1" class="table table-bordered table-striped">
                                   <thead class="thead-dark">
                                   <tr>
-                                    <th>Nombre (es) del estudiante</th>
-                                    <th>Apellido Paterno</th>
-                                    <th>apellido Materno</th>
-                                    <th>C.I</th>
-                                    <th>Genero</th>
-                                    <th>R.U</th>
-                                    <th>Carrera</th>
-                                    <th>Editar</th>
+                                    <th class="col-auto">Nombre (es) del estudiante</th>
+                                    <th class="col-auto">Apellido Paterno</th>
+                                    <th class="col-auto">apellido Materno</th>
+                                    <th class="col-auto">C.I</th>
+                                    <th class="col-auto">Genero</th>
+                                    <th class="col-auto">R.U</th>
+                                    <th class="col-auto">Carrera</th>
+                                    <th class="col-1 text-center">Editar</th>
                                   </tr>
                                   </thead>
                                   <tbody>
@@ -52,8 +52,7 @@
                                       <td>{{$item->persona->genero}}</td>
                                       <td>{{$item->id}}--{{$item->ru}}</td>
                                       <td>{{$item->carrera}}</td>
-                                    <td><a class="btn btn-app" href="{{route('estudiante.edit',$item->id)}}">
-                                      <i class="fas fa-edit"></i> editar</a> </td>
+                                    <td><a class="btn btn-outline-danger btn-sm" href="{{route('estudiante.edit',Crypt::encrypt($item->id))}}"><i class="fas fa-edit"></i> editar</a> </td>
                                    
                                           </tr>  
                                       @endforeach

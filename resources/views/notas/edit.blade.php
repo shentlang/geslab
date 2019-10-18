@@ -25,12 +25,12 @@
                     </p>
                       <p><b>Carrera:</b> {{$notas->estudiante->carrera}}  </p>  
                       <p><b>titulo del proyecto:</b> {{$notas->proyecto->nombreproyecto}}</p>
-                      <form action="{{route('prueba.update', $notas->id)}}" method="POST">
+                      <form action="{{route('notas.update', $notas->id)}}" method="POST">
                        @csrf
                        {!! method_field('PUT') !!}
-                       <input type="text" class="form-control"  value="{{$notas->puntos}}" name="punto" autocomplete="off" >
+                       <input type="number" class="form-control"  value="{{$notas->puntos}}" max="100"  name="punto" autocomplete="off" >
                        <br>
-                       <a href="{{ route('prueba.index') }}" class="btn btn-danger">Cancelar</a>
+                       <a href="{{ route('notas.index') }}" class="btn btn-danger">Cancelar</a>
                        <button type="submit" class="btn btn-primary">editar nota</button>
                       </form>
                         

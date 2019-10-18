@@ -30,8 +30,11 @@
   <link rel="stylesheet" href="{{asset("assets/$theme/plugins/select2/css/select2.min.css")}}">
   <!-- estilo de tablas -->
   <link rel="stylesheet" href="{{asset("assets/$theme/plugins/datatables/dataTables.bootstrap4.css")}}">
+ <!-- date range picker -->
+  <link rel="stylesheet" href="{{asset("assets/$theme/plugins/daterangepicker/daterangepicker.css")}}">
 </head> 
-<body class=" sidebar-mini">
+<body class=" sidebar-mini" style="background-image: url({{asset("assets/lte/dist/img/giphy.gif")}})">
+
     <!-- Site wrapper -->
   
     
@@ -41,12 +44,11 @@
         @include("theme.$theme.header")
        
            
-                <div id="app">
-       
+                <div id="app" >
                     <main class="py-4">
                         @yield('content')
                     </main>
-                    @include("theme.$theme.footer")
+                    
                 </div>
               <!-- inicio footer -fin footer -->
                 
@@ -80,6 +82,7 @@
 <!-- Bootstrap4 Duallistbox -->
 <script src="{{asset("assets/$theme/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js")}}"></script>
 
+<script src="{{asset("assets/$theme/plugins/daterangepicker/daterangepicker.js")}}"></script>
 <script>
     $(function () {
       //Initialize Select2 Elements
@@ -88,7 +91,7 @@
       //Datemask dd/mm/yyyy
       $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
       //Datemask2 mm/dd/yyyy
-      $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
+      $('#datemask2').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
       //Money Euro
       $('[data-mask]').inputmask()
   
@@ -99,7 +102,7 @@
         timePicker: true,
         timePickerIncrement: 30,
         locale: {
-          format: 'MM/DD/YYYY hh:mm A'
+          format: 'DD/MM/YYYY hh:mm A'
         }
       })
       //Date range as a button
@@ -151,6 +154,16 @@
           "autoWidth": false,
         });
       });
+    </script>
+    <script>
+    var ultimoValorValido = null;
+$("#estudiantes").on("change", function() {
+  if ($("#estudiantes option:checked").length > 2) {
+    $("#estudiantes").val(ultimoValorValido);
+  } else {
+    ultimoValorValido = $("#estudiantes").val();
+  }
+});
     </script>
 
         </body>

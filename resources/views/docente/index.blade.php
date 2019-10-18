@@ -30,10 +30,10 @@
                                   <tr>
                                     <th>Nombre (es) del docente</th>
                                     <th>Apellido Paterno</th>
-                                    <th>apellido Materno</th>
+                                    <th>Apellido Materno</th>
                                     <th>C.I</th>
                                     <th>Genero</th>
-                                    <th>R.U</th>
+                                    <th>titulado</th>
                                     <th>Editar</th>
                                   </tr>
                                   </thead>

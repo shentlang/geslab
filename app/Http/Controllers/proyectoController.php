@@ -41,21 +41,55 @@ class ProyectoController extends Controller
             ->select('personas.apellidop','personas.nombre','tribunals.id')
             ->get();*/
            
-           
-            if (auth()->user()->role === 'admin') {
-                $alumnos = Estudiante::where('carrera','=', 'ING.COMERCIAL')->get();
-                $selected_alumnos = [];
+            if (auth()->user()->role === 'secret') {
+                $estudiantes = Estudiante::get();
             } else {
-                $alumnos = Estudiante::where('carrera','=', 'ING.INFORMATICA')->get();
-                $selected_alumnos = [];
+                if (auth()->user()->role === 'gespublic') {
+                    $estudiantes = Estudiante::where('carrera','=', 'ADMINISTRACION Y GESTION PUBLICA')->get();
+                } else {
+                    if (auth()->user()->role === 'contpublic') {
+                        $estudiantes = Estudiante::where('carrera','=', 'CONTADURIA PUBLICA')->get();
+                   } else {
+                    if (auth()->user()->role === 'ingagro') {
+                        $estudiantes = Estudiante::where('carrera','=', 'INGENIERIA AGRONOMICA')->get();
+                       } else {
+                        if (auth()->user()->role === 'ingcomer') {
+                            $estudiantes = Estudiante::where('carrera','=', 'INGENIERIA COMERCIAL')->get();
+                           } else {
+                            if (auth()->user()->role === 'inginfor') {
+                                $estudiantes = Estudiante::where('carrera','=', 'INGENIERIA INFORMATICA')->get();
+                               } else {
+                                if (auth()->user()->role === 'inghidric') {
+                                    $estudiantes = Estudiante::where('carrera','=', 'INGENIERIA DE RECURSOS HIDRICOS')->get();
+                                   } else {
+                                    if (auth()->user()->role === 'ingsanit') {
+                                        $estudiantes = Estudiante::where('carrera','=', 'INGENIERIA SANITARIA Y AMBIENTAL')->get();
+                                    }else{
+                                       return redirect('/') ;
+                                    }
+                                   }
+                                   
+                               }
+                               
+                           }
+                           
+                       }
+                       
+                   }
+                    
+                }
+                
+            
             }
+         
             
 
             
 
            /* */
+          
            
-            return view('proyecto.create', compact('alumnos','selected_alumnos'));
+            return view('proyecto.create', compact('estudiantes','selected_alumnos'));
 
         //
     }

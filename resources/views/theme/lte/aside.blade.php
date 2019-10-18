@@ -42,6 +42,7 @@
                 <a class="nav-link" href= "{{route('user.index')}}">  <i class="far fa-circle nav-icon"></i><p>lista de usuarios</p>   
                 </a>
               </li> 
+              
             </ul>
           @endif
         </li>
@@ -66,6 +67,10 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href= "{{route('proyecto.index')}}">  <i class="far fa-circle nav-icon"></i><p>proyectos</p>   
+              </a>
+            </li> 
+            <li class="nav-item">
+              <a class="nav-link" href= "{{route('notas.index')}}">  <i class="far fa-circle nav-icon"></i><p>notas</p>   
               </a>
             </li> 
           </ul>  
@@ -120,23 +125,10 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../tables/simple.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Simple Tables</p>
+                <a class="nav-link" href= "{{route('register')}}">  <i class="far fa-circle nav-icon"></i><p>Registrar usuarios</p>   
                 </a>
-              </li>
-              <li class="nav-item">
-                <a href="../tables/data.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>DataTables</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../tables/jsgrid.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>jsGrid</p>
-                </a>
-              </li>
+              </li> 
+             
             </ul>
           </li>
           <li class="nav-header">EXAMPLES</li>
