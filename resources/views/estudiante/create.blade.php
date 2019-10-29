@@ -57,44 +57,53 @@
 					  <div class="form-group">
 							<label for="password">ru:</label>
 					<input type="text" class="form-control" name="ru" autocomplete="off">
+					{{$errors->first('ru')}} <br>
+					<label for="password">plan:</label>
+					<select name="numplan" class="form-control">
+						@foreach ($plan as $plans)
+					<option value="{{$plans->id}}" >{{$plans->numplan}}</option>	
+						@endforeach
+					
+					</select>
+
 					<label for="carrera">carrera</label>
 
-					@if (auth()->user()->role === 'gespublic')
+					@if (auth()->user()->role_id === 9)
 					<select name="carrera" class="form-control">
 							<option value="ADMINISTRACION Y GESTION PUBLICA" >ADM. GESTION PUBLICA</option>
 						</select>	
 					@else
-					@if (auth()->user()->role === 'contpublic')
+					@if (auth()->user()->role_id === 5)
 					<select name="carrera" class="form-control">
 							<option value="CONTADURIA PUBLICA" selected>CONTADURIA PUBLICA</option>
 						</select>	
 							
 						@else
-						@if (auth()->user()->role === 'ingagro')
+						@if (auth()->user()->role_id === 6)
 						<select name="carrera" class="form-control">
 								<option value="INGENIERIA AGRONOMICA">ING. AGRONOMICA</option>
 							</select>	
 								
 							@else
-							@if (auth()->user()->role === 'ingcomer')
+							@if (auth()->user()->role_id === 4)
 							<select name="carrera" class="form-control">
 									<option value="INGENIERIA COMERCIAL">ING.COMERCIAL</option>
 								</select>	
 									
 								@else
-								@if (auth()->user()->role === 'inginfor')
+								@if (auth()->user()->role_id === 3)
 					<select name="carrera" class="form-control">
 							<option value="INGENIERIA INFORMATICA" >ING.INFORMATICA</option>
 						</select>	
 									
 								@else
-								@if (auth()->user()->role === 'inghidric')
+								@if (auth()->user()->role_id === 7)
 								<select name="carrera" class="form-control">
 										<option value="INGENIERIA DE RECURSOS HIDRICOS">ING.RECURSOS HIDRICOS</option>
 									</select>	
 										
 									@else
-									@if (auth()->user()->role === 'ingsanit')
+									@if (auth()->user()->role_id === 8)
 					<select name="carrera" class="form-control">
 							<option value="INGENIERIA SANITARIA Y AMBIENTAL" >ING.AMBIENTAL</option>
 						</select>	

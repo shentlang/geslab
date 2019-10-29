@@ -82,8 +82,33 @@
 
 				  <br>
 				<a href="{{ route('proyecto.index') }}" class="btn btn-danger"><i class="fas fa-arrow-left"></i>  Cancelar</a>
-				<button type="submit" class="btn btn-success"><i class="fas fa-save"></i> guardar</button>
 				
+				<button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-success">
+					<i class="fas fa-save"></i> guardar
+				  </button>
+				
+				  <div class="modal fade" id="modal-success">
+					<div class="modal-dialog">
+					  <div class="modal-content bg-success">
+						<div class="modal-header">
+						  <h4 class="modal-title">desea guardar proyecto?</h4>
+						  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span></button>
+						</div>
+						<div class="modal-body">
+						  <p>el proyecto se guardara en el Sis. Doc.&hellip;</p>
+						</div>
+						<div class="modal-footer justify-content-between">
+						  <button type="button" class="btn btn-outline-light" data-dismiss="modal">Cerrar</button>
+						  <button type="submit" class="btn btn-outline-light">guardar datos</button>
+						</div>
+					  </div>
+					  <!-- /.modal-content -->
+					</div>
+					<!-- /.modal-dialog -->
+				  </div>
+				  <!-- /.modal -->
+
 					</a>
 				</div>
 				<!-- /.col -->

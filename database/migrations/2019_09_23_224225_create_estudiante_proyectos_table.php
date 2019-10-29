@@ -19,7 +19,7 @@ class CreateEstudianteProyectosTable extends Migration
             $table->foreign('estudiante_id')->references('id')->on('estudiantes')->onDelete('cascade');
             $table->unsignedBigInteger('proyecto_id');
             $table->foreign('proyecto_id')->references('id')->on('proyectos')->onDelete('cascade');
-            $table->integer('puntos')->default(0);
+            $table->integer('nota')->default(0);
             $table->timestamps();
         });
     }

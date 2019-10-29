@@ -5,13 +5,13 @@
         <div class="col-md-8" >
             <div class="card" >
                 <div class="card-header" style="background-color:lightblue">
-                    <h1 class="font-weight-light">bienvenido
-                            @auth
-                               <li class="nav-item d-none d-sm-inline-block">
-                                <h2><p class="text-white" >{{auth()->user()->name}}</p></h2>   
-                                 </li>
-                               @endauth
-                                </h1><h1 class="font-weight-light"> al Sistema Ges. Doc</h1>
+                   
+                                <div class="card-body">
+                                   
+                                    <h1 class="font-weight-light"> Bienvenido  @auth<span style="color: mediumblue">{{auth()->user()->name}} </span> @endauth al Sis. Doc.</h1>   
+ 
+                                   
+                                    </div>
                 </div>
 
               

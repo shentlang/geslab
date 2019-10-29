@@ -15,11 +15,14 @@ class CreateProyectosTable extends Migration
     {
         Schema::create('proyectos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nombreproyecto', 50);
-            $table->string('tipo', 30);
-            $table->date('defensaini');
-            $table->date('defensafinal');
+            $table->text('nombreproyecto');
+            $table->text('lugar')->nullable();
+            $table->date('fechadefensa')->nullable();
             $table->string('estado')->default('Pendiente');
+            $table->unsignedBigInteger('materia_id');
+            $table->foreign('materia_id')->references('id')->on('materias')->onDelete('cascade');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

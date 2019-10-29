@@ -21,7 +21,7 @@
                   Proyecto</a></p>
             </div>
             <!-- /.card-header -->
-            <div class="card-body">
+            <div class="card-body table-responsive p-0">
               <table id="example1" class="table table-bordered table-striped">
                 <thead class="thead-dark">
                   <tr>
@@ -36,7 +36,7 @@
 
                   </tr>
                 </thead>
-                <tbody>
+               
                   @foreach($proyectos as $proyecto)
                   <tr>
                     <th scope="row" class="text-center">{{ $proyecto->id }}</th>

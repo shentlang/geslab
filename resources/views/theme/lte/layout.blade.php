@@ -8,19 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Font Awesome -->
-  <style>
-  .portada{
-   background: url() no-repeat fixed center;
-   -webkit-background-size: cover;
-   -moz-background-size: cover;
-   -o-background-size: cover;
-   background-size: cover;
-   height: 100%;
-   width: 100% ;
-   text-align: center;
  
-}
-  </style>
   <link rel="stylesheet" href="{{asset("assets/$theme/plugins/fontawesome-free/css/all.min.css")}}">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
@@ -44,19 +32,24 @@
   <link rel="stylesheet" href="{{asset("assets/$theme/plugins/datatables/dataTables.bootstrap4.css")}}">
  <!-- date range picker -->
   <link rel="stylesheet" href="{{asset("assets/$theme/plugins/daterangepicker/daterangepicker.css")}}">
+   <!-- SweetAlert2 -->
+   <link rel="stylesheet" href="{{asset("assets/$theme/plugins/sweetalert2/sweetalert2.min.css")}}">
+   <!-- Toastr -->
+  <link rel="stylesheet" href="{{asset("assets/$theme/plugins/toastr/toastr.min.css")}}">
 </head> 
-<body class=" sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini">
 
     <!-- Site wrapper -->
   
     
     
     <div class="wrapper">
-        @include("theme.$theme.aside") 
         @include("theme.$theme.header")
+        @include("theme.$theme.aside") 
+        
        
            
-                <div class="content-wrapper" style="background-image: url({{asset("assets/lte/dist/img/maxresdefault.jpg")}})" id="app" >
+                <div class="content-wrapper " style="background-image: url({{asset("assets/lte/dist/img/maxresdefault.jpg")}})" id="app" >
                     <main class="py-4">
                         @yield('content')
                     </main>
@@ -64,9 +57,9 @@
                 </div>
               <!-- inicio footer -fin footer -->
               
-              
+              @include("theme.$theme.footer")
         </div>
-        @include("theme.$theme.footer")
+        
       <!-- jQuery -->
 <script src="{{asset("assets/$theme/plugins/jquery/jquery.min.js")}}"></script>
 <!-- Bootstrap 4 -->
@@ -93,8 +86,15 @@
 <script src="{{asset("assets/$theme/plugins/moment/moment.min.js")}}"></script>
 <!-- Bootstrap4 Duallistbox -->
 <script src="{{asset("assets/$theme/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js")}}"></script>
+<!-- daterange picker -->
 
 <script src="{{asset("assets/$theme/plugins/daterangepicker/daterangepicker.js")}}"></script>
+<!-- aqui ruta css <script src="{{asset("assets/$theme")}}"></script>  -->
+<script src="{{asset("assets/$theme/plugins/sweetalert2/sweetalert2.min.js")}}"></script> 
+<script src="{{asset("assets/$theme/plugins/toastr/toastr.min.js")}}"></script> 
+<script src="{{asset("assets/$theme/dist/js/adminlte.min.js")}}"></script> 
+<script src="{{asset("assets/$theme/dist/js/demo.js")}}"></script> 
+
 <script>
     $(function () {
       //Initialize Select2 Elements
@@ -176,6 +176,61 @@ $("#estudiantes").on("change", function() {
     ultimoValorValido = $("#estudiantes").val();
   }
 });
+    </script>
+    <script type="text/javascript">
+      $(function() {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000
+        });
+    
+        $('.swalDefaultSuccess').click(function() {
+          Toast.fire({
+            type: 'success',
+            title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+          })
+        });
+        $('.swalDefaultInfo').click(function() {
+          Toast.fire({
+            type: 'info',
+            title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+          })
+        });
+        $('.swalDefaultError').click(function() {
+          Toast.fire({
+            type: 'error',
+            title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+          })
+        });
+        $('.swalDefaultWarning').click(function() {
+          Toast.fire({
+            type: 'warning',
+            title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+          })
+        });
+        $('.swalDefaultQuestion').click(function() {
+          Toast.fire({
+            type: 'question',
+            title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
+          })
+        });
+    
+        $('.toastrDefaultSuccess').click(function() {
+          toastr.success('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
+        });
+        $('.toastrDefaultInfo').click(function() {
+          toastr.info('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
+        });
+        $('.toastrDefaultError').click(function() {
+          toastr.error('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
+        });
+        $('.toastrDefaultWarning').click(function() {
+          toastr.warning('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
+        });
+      });
+    
     </script>
 
         </body>

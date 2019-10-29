@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Estudiante;
 use App\Http\Requests\CreateMessageRequest;
 use App\Persona;
+use App\Plan;
 use Illuminate\Support\Facades\Crypt;
 use DB;
 use Illuminate\Http\Request;
@@ -23,43 +24,12 @@ $this->middleware('auth');
 
     public function index()
     {
-        if (auth()->user()->role === 'admin') {
+        if (auth()->user()->role_id === 2) {
             $estudiantes = Estudiante::get();
         } else {
-            if (auth()->user()->role === 'gespublic') {
-                $estudiantes = Estudiante::where('carrera','=', 'ADMINISTRACION Y GESTION PUBLICA')->get();
-            } else {
-                if (auth()->user()->role === 'contpublic') {
-                    $estudiantes = Estudiante::where('carrera','=', 'CONTADURIA PUBLICA')->get();
-               } else {
-                if (auth()->user()->role === 'ingagro') {
-                    $estudiantes = Estudiante::where('carrera','=', 'INGENIERIA AGRONOMICA')->get();
-                   } else {
-                    if (auth()->user()->role === 'ingcomer') {
-                        $estudiantes = Estudiante::where('carrera','=', 'INGENIERIA COMERCIAL')->get();
-                       } else {
-                        if (auth()->user()->role === 'inginfor') {
-                            $estudiantes = Estudiante::where('carrera','=', 'INGENIERIA INFORMATICA')->get();
-                           } else {
-                            if (auth()->user()->role === 'inghidric') {
-                                $estudiantes = Estudiante::where('carrera','=', 'INGENIERIA DE RECURSOS HIDRICOS')->get();
-                               } else {
-                                if (auth()->user()->role === 'ingsanit') {
-                                    $estudiantes = Estudiante::where('carrera','=', 'INGENIERIA SANITARIA Y AMBIENTAL')->get();
-                                }else{
-                                   return redirect('/') ;
-                                }
-                               }
-                               
-                           }
-                           
-                       }
-                       
-                   }
-                   
-               }
-                
-            }
+            
+                $estudiantes = Estudiante::where('user_id','=', auth()->user()->id)->get();
+           
             
         
         }
@@ -76,7 +46,8 @@ $this->middleware('auth');
     public function create()
     {
         //
-        return view('estudiante.create');
+        $plan = Plan::all();
+        return view('estudiante.create', compact('plan'));
     }
 
     /**
@@ -103,13 +74,15 @@ $this->middleware('auth');
         $estu=new Estudiante();
         $estu->ru=$request->ru; 
         $estu->carrera=$request->carrera;
+        $estu->user_id= auth()->user()->id;
+        $estu->plan_id=$request->numplan;
         $estu->persona_id=persona::get()->max('id'); 
         $estu->save();
- 
 
-        return redirect()->route('estudiante.index'); 
+        return redirect()->route('estudiante.index')->with('mensaje', 'Estudiante registrado exitosamente');
            
-       // return $request->all();       
+          
+       return $request->all();       
         
     }
 
@@ -140,7 +113,6 @@ $this->middleware('auth');
         //
         $id =  Crypt::decrypt($id);
         $estudiantes = Estudiante::findorfail($id);
-
         return view('estudiante.edit', compact('estudiantes'));
     }
 
@@ -170,7 +142,7 @@ $this->middleware('auth');
         $persona->telefono=$request->telefono;
         $persona->direccion=$request->direccion;
         $persona->save();
-        return redirect()->route('estudiante.index');
+        return redirect()->route('estudiante.index')->with('mensaje', 'Datos actualizados exitosamente');
       //dd($prueba);
        // return $request->all();
     }

@@ -19,7 +19,7 @@ class CreatePersonasTable extends Migration
             $table->string('apellidop', 50);
             $table->string('apellidom', 50);
             $table->string('genero', 9);
-            $table->string('cedula', 50);
+            $table->string('cedula', 50)->unique();
             $table->string('email', 150);
             $table->string('telefono', 50);
             $table->string('direccion', 150);

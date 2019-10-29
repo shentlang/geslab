@@ -27,7 +27,9 @@ class CreateMessageRequest extends FormRequest
             //
             'nombre'=>'required',
             'email'=>'email',
-            'cedula'=>'required'
+            'cedula'=>'required',
+            'ru' => 'unique:estudiantes,ru'
+
 
         ];
     }

@@ -36,7 +36,7 @@
              
             </p>
           </a>
-          @if (auth()->user()->role === 'admin')
+          @if (auth()->user()->role_id === 2)
           <ul class="nav nav-treeview">
             <li class="nav-item">
                 <a class="nav-link" href= "{{route('user.index')}}">  <i class="far fa-circle nav-icon"></i><p>lista de usuarios</p>   
@@ -59,7 +59,7 @@
             </p>
           </a>
           @auth
-          @if (auth()->user()->role === 'gespublic'||auth()->user()->role === 'contpublic'||auth()->user()->role === 'ingagro'||auth()->user()->role === 'ingcomer'||auth()->user()->role === 'inginfor'||auth()->user()->role === 'inghidric'||auth()->user()->role === 'ingsanit')
+          @if (auth()->user()->role_id === 3 ||auth()->user()->role_id === 2 ||auth()->user()->role_id === 4 ||auth()->user()->role === 5||auth()->user()->role === 6||auth()->user()->role === 7||auth()->user()->role === 8||auth()->user()->role === 9 )
           <ul class="nav nav-treeview">
             <li class="nav-item">
                 <a class="nav-link" href="{{route('estudiante.index')}} ">  <i class="far fa-circle nav-icon"></i><p>estudiantes</p>
