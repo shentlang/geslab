@@ -27,13 +27,14 @@ $this->middleware('auth');
         if (auth()->user()->role_id === 2) {
             $estudiantes = Estudiante::get();
         } else {
-            
+             if (auth()->user()->role_id === 3||auth()->user()->role_id === 4||auth()->user()->role_id === 5||auth()->user()->role_id === 6||auth()->user()->role_id === 7||auth()->user()->role_id === 8||auth()->user()->role_id === 9) {
                 $estudiantes = Estudiante::where('user_id','=', auth()->user()->id)->get();
-           
-            
+             } else {
+                return redirect('/') ;
+             }
         
         }
-        
+            
         
 	   	return view('estudiante.index', compact('estudiantes'));
     }
@@ -113,7 +114,8 @@ $this->middleware('auth');
         //
         $id =  Crypt::decrypt($id);
         $estudiantes = Estudiante::findorfail($id);
-        return view('estudiante.edit', compact('estudiantes'));
+        $planes = Plan::all();
+        return view('estudiante.edit', compact('estudiantes','planes'));
     }
 
     /**
@@ -125,9 +127,16 @@ $this->middleware('auth');
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request,[
+            'ru' => 'unique:estudiantes,ru,'.$id,
+            'cedula' => 'unique:personas,cedula,'.$request->idpersona
+           
+
+        ]);
         //
         $estudiantes = Estudiante::find($id);
-        $estudiantes->ru=$request->ru; 
+        $estudiantes->ru=$request->ru;
+        $estudiantes->plan_id=$request->numplan; 
         $estudiantes->carrera=$request->carrera;
         $estudiantes->save();
    //$prueba = $request->nombre;

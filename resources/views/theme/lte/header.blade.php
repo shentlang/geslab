@@ -1,33 +1,33 @@
-<div class="card-body">
+
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
         <!-- Left navbar links -->
         <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
-          </li>
-          <li class="nav-item ">
-            <a href="/" class="nav-link">inicio</a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">Contactos</a>
-          </li>
-          @guest
-          <li class="nav-item" >
-              <a href="{{route('login')}}" class="btn btn-outline-info ">iniciar sesion</a>
-                </li> 
-              
+            <li class="nav-item">
+                <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+              </li>
+              <li class="nav-item ">
+                  <a href="/" class="nav-link">inicio</a>
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link">Contactos</a>
+                </li>
+                @guest
+                <li class="nav-item" >
+                    <a href="{{route('login')}}" class="btn btn-outline-info ">iniciar sesion</a>
+                      </li> 
                     
-                @else
-              <li class="nav-item"><a href="#"onclick="event.preventDefault();
-                document.getElementById('logout-form').submit();" class="btn btn-outline-warning">cerrar sesion</a></li>      
-              
-          @endguest
-          <li class="nav-item">
-              <form class="nav-link" id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                  @csrf
-              </form>
-          </li>
-          
+                          
+                      @else
+                    <li class="nav-item"><a href="#"onclick="event.preventDefault();
+                      document.getElementById('logout-form').submit();" class="btn btn-outline-warning">cerrar sesion</a></li>      
+                    
+                @endguest
+                <li class="nav-item">
+                    <form class="nav-link" id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                </li>
+                
           
           
           
@@ -124,4 +124,3 @@
          
         </ul>
       </nav>
-</div>

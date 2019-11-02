@@ -38,10 +38,10 @@
 			  <div class="row">
 				<div class="col-md-6">
 				  <div class="form-group">
-						<label for="nombre">Nombres del proyecto:</label>
+						<label for="nombre">Nombre del proyecto:</label>
 				<input type="text" class="form-control tuInput" name="nombre" autocomplete="off">
-				<label for="nombre">Tipo de proyecto:</label>
-				<input type="text" class="form-control tuInput" name="tipo" autocomplete="off">
+				<label for="nombre">lugar de defensa:</label>
+				<input type="text" class="form-control tuInput" name="lugar" autocomplete="off">
 				
 				  </div>
 				  <!-- /.form-group estudiante -->
@@ -58,19 +58,25 @@
 				</div>
 				<!-- /.col -->
 				<div class="col-md-6">
+						<div class="form-group">
+								<label>materia</label>
+								<select class="select2" name="materias" data-placeholder="Seleccione materias"
+										style="width: 100%;"  >
+								  
+								  @foreach($materia as $materias)
+											<option value="{{ $materias->id }}">{{ $materias->nombremateria }}</option>
+											@endforeach()
+								</select>
+							  </div>
 				  <div class="form-group">
-						<label for="curso">fecha inicial </label>
+						<label for="curso">fecha de defensa</label>
 						<input type="date" class="form-control" name="fechadefensa" required>
-				  </div>
-				  <div class="form-group">
-						<label for="curso">fecha defensa final</label>
-						<input type="date" class="form-control" name="fechadefensa2" required>
 				  </div>
 				  
 
 				  <div class="form-group">
 						<label>seleccionar autores</label>
-						<select class="select2" multiple="multiple" id="estudiantes"  name="estudiantes[]" data-placeholder="Seleccione Estudiantes"
+						<select class="select2" multiple="multiple"   name="estudiantes[]" data-placeholder="Seleccione Estudiantes"
 								style="width: 100%;"  >
 						  
 						  @foreach($estudiantes as $author)

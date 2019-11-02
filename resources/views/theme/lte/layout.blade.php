@@ -37,7 +37,7 @@
    <!-- Toastr -->
   <link rel="stylesheet" href="{{asset("assets/$theme/plugins/toastr/toastr.min.css")}}">
 </head> 
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition sidebar-mini">
 
     <!-- Site wrapper -->
   
@@ -89,11 +89,10 @@
 <!-- daterange picker -->
 
 <script src="{{asset("assets/$theme/plugins/daterangepicker/daterangepicker.js")}}"></script>
-<!-- aqui ruta css <script src="{{asset("assets/$theme")}}"></script>  -->
+
 <script src="{{asset("assets/$theme/plugins/sweetalert2/sweetalert2.min.js")}}"></script> 
 <script src="{{asset("assets/$theme/plugins/toastr/toastr.min.js")}}"></script> 
-<script src="{{asset("assets/$theme/dist/js/adminlte.min.js")}}"></script> 
-<script src="{{asset("assets/$theme/dist/js/demo.js")}}"></script> 
+
 
 <script>
     $(function () {

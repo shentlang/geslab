@@ -16,7 +16,18 @@ class NotasController extends Controller
     public function index()
     {
         //
-        $proyectos = Proyecto::all();
+        if (auth()->user()->role_id === 2) {
+            $proyectos = Proyecto::all();
+        } else {
+             if (auth()->user()->role_id === 3||auth()->user()->role_id === 4||auth()->user()->role_id === 5||auth()->user()->role_id === 6||auth()->user()->role_id === 7||auth()->user()->role_id === 8||auth()->user()->role_id === 9) {
+                $proyectos = Proyecto::where('user_id','=', auth()->user()->id)->get();
+             } else {
+                return redirect('/') ;
+             }
+        
+        }
+
+        
         return view('notas.index', compact('proyectos'));
     }
 
@@ -76,7 +87,7 @@ class NotasController extends Controller
     {
         //
         $notas = Estudiante_proyecto::find($id);
-        $notas->puntos=$request->punto;
+        $notas->nota=$request->punto;
         $notas->save();
         return redirect()->route('notas.index');
     }

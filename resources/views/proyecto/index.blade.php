@@ -25,13 +25,14 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead class="thead-dark">
                   <tr>
-                    <th>identificador del proyecto</th>
+                    <th>id</th>
 
                     <th>nombre del proyecto</th>
-                    <th>tipo</th>
-                    <th>defensa inicial</th>
-                    <th>defensa final</th>
-                    <th>autores</th>
+                    <th>lugar de defensa</th>
+                    <th>fecha de defensa</th>
+                    <th>estado</th>
+                    <th>sigla</th>
+                    <th width="220" class="text-center">autores</th>
 
 
                   </tr>
@@ -41,19 +42,24 @@
                   <tr>
                     <th scope="row" class="text-center">{{ $proyecto->id }}</th>
 
-                    <td>{{ $proyecto->nombreproyecto }}</td>
-                    <td>
-                      {{ $proyecto->tipo }}
-                    </td>
-                    <td>{{ $proyecto->defensaini }}</td>
+                    <td class="lead">{{ $proyecto->nombreproyecto }}</td>
+                   
+                    <td>{{ $proyecto->lugar }}</td>
+                    
                     <td width="155" class="text-center">
-                      {{$proyecto->defensafinal}}
+                        <small class="badge badge-success"><i class="far fa-clock"></i>    {{$proyecto->fechadefensa}}</small>
+                   
                     </td>
+                  <td>{{$proyecto->estado}}</td>
+                  <td><span class="badge badge-primary">{{$proyecto->materia->nombremateria}}</span> </td>
                     <td>
                       <ul class="list-unstyled">
                         @foreach($proyecto->estudiantes as $estudiante)
-                        <button disabled="disabled" class="btn btn-light">
-                          <li>{{ $estudiante->persona->nombre }} {{ $estudiante->persona->apellidop }} </li>
+                        <button type="button" class="btn-danger">{{ $estudiante->persona->nombre }} {{ $estudiante->persona->apellidop }} {{ $estudiante->persona->apellidom }}
+                        </button>  
+
+                       
+                         
                         </button>
                         @endforeach
                       </ul>

@@ -6,6 +6,7 @@ use App\Estudiante;
 use App\Proyecto;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Materia;
 use DB;
 class ProyectoController extends Controller
 {
@@ -16,9 +17,18 @@ class ProyectoController extends Controller
      */
     public function index()
     {
-        $proyectos = Proyecto::paginate(10);
-        $estudiantes = Estudiante::get();
-        $selected_authors = [];
+        if (auth()->user()->role_id === 2) {
+            $proyectos = Proyecto::paginate(10);
+        } else {
+             if (auth()->user()->role_id === 3||auth()->user()->role_id === 4||auth()->user()->role_id === 5||auth()->user()->role_id === 6||auth()->user()->role_id === 7||auth()->user()->role_id === 8||auth()->user()->role_id === 9) {
+                $proyectos = Proyecto::where('user_id','=', auth()->user()->id)->get();
+             } else {
+                return redirect('/') ;
+             }
+        
+        }
+        
+   
 
 	   	return view('proyecto.index', compact('proyectos', 'estudiantes', 'selected_authors'));
       
@@ -41,55 +51,68 @@ class ProyectoController extends Controller
             ->select('personas.apellidop','personas.nombre','tribunals.id')
             ->get();*/
            
-            if (auth()->user()->role === 'secret') {
+            if (auth()->user()->role_id === 2) {
                 $estudiantes = Estudiante::get();
+                $materia = Materia::get();
             } else {
-                if (auth()->user()->role === 'gespublic') {
-                    $estudiantes = Estudiante::where('carrera','=', 'ADMINISTRACION Y GESTION PUBLICA')->get();
+                if (auth()->user()->role_id === 3) {
+                    $estudiantes = Estudiante::where('user_id','=', auth()->user()->id)->get();
+                    $materia = Materia::all()->where('nombremateria','=', "INF - 501");
                 } else {
-                    if (auth()->user()->role === 'contpublic') {
-                        $estudiantes = Estudiante::where('carrera','=', 'CONTADURIA PUBLICA')->get();
-                   } else {
-                    if (auth()->user()->role === 'ingagro') {
-                        $estudiantes = Estudiante::where('carrera','=', 'INGENIERIA AGRONOMICA')->get();
-                       } else {
-                        if (auth()->user()->role === 'ingcomer') {
-                            $estudiantes = Estudiante::where('carrera','=', 'INGENIERIA COMERCIAL')->get();
-                           } else {
-                            if (auth()->user()->role === 'inginfor') {
-                                $estudiantes = Estudiante::where('carrera','=', 'INGENIERIA INFORMATICA')->get();
-                               } else {
-                                if (auth()->user()->role === 'inghidric') {
-                                    $estudiantes = Estudiante::where('carrera','=', 'INGENIERIA DE RECURSOS HIDRICOS')->get();
-                                   } else {
-                                    if (auth()->user()->role === 'ingsanit') {
-                                        $estudiantes = Estudiante::where('carrera','=', 'INGENIERIA SANITARIA Y AMBIENTAL')->get();
-                                    }else{
-                                       return redirect('/') ;
+                    if (auth()->user()->role_id === 4) {
+                        $estudiantes = Estudiante::where('user_id','=', auth()->user()->id)->get();
+                        $materia = Materia::all()->where('nombremateria','=','ICT - 011');
+                    } else {
+                        if (auth()->user()->role_id === 5) {
+                            $estudiantes = Estudiante::where('user_id','=', auth()->user()->id)->get();
+                            $materia = Materia::all()->where('nombremateria','=','AUD - 610');
+                        } else {
+                            if (auth()->user()->role_id === 6) {
+                                $estudiantes = Estudiante::where('user_id','=', auth()->user()->id)->get();
+                                $materia = Materia::all()->where('nombremateria','=','AGR - 521');
+                            } else {
+                                if (auth()->user()->role_id === 7) {
+                                    $estudiantes = Estudiante::where('user_id','=', auth()->user()->id)->get();
+                                    $materia = Materia::all()->where('nombremateria','=','IRG - 001');
+                                } else {
+                                    if (auth()->user()->role_id === 8) {
+                                        $estudiantes = Estudiante::where('user_id','=', auth()->user()->id)->get();
+                                        $materia = Materia::all()->where('nombremateria','=','ISA 092');
+                                    } else {
+                                          if (auth()->user()->role_id === 9) {
+                                            $estudiantes = Estudiante::where('user_id','=', auth()->user()->id)->get();
+                                            $materia = Materia::all()->where('nombremateria','=','LAA - 100');
+                                          } else {
+                                            return redirect('/') ;
+                                          }
+                                          
                                     }
-                                   }
-                                   
-                               }
-                               
-                           }
-                           
-                       }
-                       
-                   }
+                                    
+                                }
+                                
+                            }
+                            
+                        }
+                        
+                    }
                     
                 }
+                
+                 
+                   
+               
                 
             
             }
          
             
 
-            
+         //   dd($materia);
 
            /* */
           
            
-            return view('proyecto.create', compact('estudiantes','selected_alumnos'));
+            return view('proyecto.create', compact('estudiantes','materia'));
 
         //
     }
@@ -102,18 +125,20 @@ class ProyectoController extends Controller
      */
     public function store(Request $request)
     {
-        $proyecto = Proyecto::create([
+       $proyecto = Proyecto::create([
             'nombreproyecto' => $request->input('nombre'), 
-            'tipo' => $request->input('tipo'), 
-            'defensaini' => $request->input('fechadefensa'), 
-            'defensafinal' => $request->input('fechadefensa2'), 
-            'estado' => $request->input('estado')
+            'lugar' => $request->input('lugar'), 
+            'fechadefensa' => $request->input('fechadefensa'), 
+            'estado' => $request->input('estado'),
+            'materia_id' => $request->input('materias'),
+            'user_id' => auth()->user()->id
             
         ]);
         if($proyecto){
             $proyecto->estudiantes()->sync($request->input('estudiantes'));
         }
         return redirect()->route('proyecto.index');  
+      //  return $request->all();
     }
 
     /**

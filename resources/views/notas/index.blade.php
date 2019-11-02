@@ -20,7 +20,7 @@
                                 
                               </div>
                               <!-- /.card-header -->
-                              <div class="card-body">
+                              <div class="card-body table-responsive p-0">
                                   <table id="example1" class="table table-bordered table-striped">
                                       <thead class="thead-dark">
                                             <tr>
@@ -41,7 +41,7 @@
                                           
                                            
                                           
-                                            <td  class="text-center">{{ $item->nombreproyecto }}</td>
+                                            <td  class="text-center"> <ul class="list-unstyled">{{ $item->nombreproyecto }}</ul></td>
                                             
                                             <td class="text-center"><ul class="list-unstyled">
                                                 @foreach($item->estudiante_proyectos as $estudiante)
@@ -54,10 +54,10 @@
                                                     {{$estudiante->estudiante->persona->apellidom}} </small>
                                                     
                                                   </button>
-                                                 @if ($estudiante->puntos>=51)
-                                                 <button class="btn note-btn-block btn-primary">{{$estudiante->puntos}}</button> 
+                                                 @if ($estudiante->nota>=51)
+                                                 <button type="button" class="btn-primary"><small>{{$estudiante->nota}}</small></button> 
                                                  @else
-                                                 <button class="btn note-btn-block btn-danger">{{$estudiante->puntos}}</button>  
+                                                 <button type="button" class="btn-danger">{{$estudiante->nota}}</button>  
                                                  @endif
                                                  
                                                  <a class="btn btn-warning btn-sm" href="{{route('prueba.edit',$estudiante->id)}}">

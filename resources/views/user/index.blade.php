@@ -41,7 +41,11 @@
                   <td>{{$user->name}}</td>
                   <td>{{$user->email}}</td>
                   <td>{{$user->role->nombrerol}}</td>
-                  <td></td>
+                  <td> <a class="btn btn-warning btn-sm" href="{{route('user.edit',$user->id)}}">
+                      <i class="fas fa-pencil-alt">
+                      </i>
+                      Editar
+                  </a></td>
                   </tr>
                   @endforeach                
 
