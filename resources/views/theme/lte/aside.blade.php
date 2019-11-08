@@ -36,7 +36,7 @@
              
             </p>
           </a>
-          @if (auth()->user()->role_id === 2)
+          @if (auth()->user()->role->nombrerol === 2)
           <ul class="nav nav-treeview">
             <li class="nav-item">
                 <a class="nav-link" href= "{{route('user.index')}}">  <i class="far fa-circle nav-icon"></i><p>lista de usuarios</p>   
@@ -59,7 +59,7 @@
             </p>
           </a>
           @auth
-          @if (auth()->user()->role_id === 3 ||auth()->user()->role_id === 2 ||auth()->user()->role_id === 4 ||auth()->user()->role === 5||auth()->user()->role === 6||auth()->user()->role === 7||auth()->user()->role === 8||auth()->user()->role === 9 )
+          @if (auth()->user()->role->nombrerol === "informatica" ||auth()->user()->role->nombrerol === "admin" ||auth()->user()->role->nombrerol === "comercial" ||auth()->user()->role->nombrerol === "contaduria" ||auth()->user()->role->nombrerol === "agronomia" ||auth()->user()->role->nombrerol === "rec.hidricos"||auth()->user()->role->nombrerol === "ambiental"||auth()->user()->role->nombrerol === "ges.publica" )
           <ul class="nav nav-treeview">
             <li class="nav-item">
                 <a class="nav-link" href="{{route('estudiante.index')}} ">  <i class="far fa-circle nav-icon"></i><p>estudiantes</p>
@@ -91,7 +91,7 @@
               </p>
             </a>
             @auth
-                @if (auth()->user()->role === 'DDCCFJ'||auth()->user()->role === 'DDICE'||auth()->user()->role === 'DDCEE')
+                @if (auth()->user()->role->nombrerol === 'Dir. Informatica y Ciencias Exactas'||auth()->user()->role === 'DDICE'||auth()->user()->role === 'DDCEE')
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
                       <a href="{{route('docente.index')}}" class="nav-link">

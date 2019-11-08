@@ -30,6 +30,11 @@ class Proyecto extends Model
 
     return $this->hasMany(Docente_proyecto::class);
   }
+  public function informes()
+  {
+
+    return $this->hasMany(Informe::class);
+  }
 
   public function materia()
   {

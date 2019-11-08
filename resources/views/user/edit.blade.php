@@ -30,7 +30,7 @@
                                             <form action="{{route('user.update', $user->id)}}" method="POST">
                                                 @csrf
                                                 {!! method_field('PUT') !!}
-                                                <select name="numplan" class="form-control">
+                                                <select name="role" class="form-control">
                                                     <option value="{{$user->role_id}}" select>{{$user->role->nombrerol}}
                                                         V.anterior</option>
                                                         @foreach ($rol as $item)

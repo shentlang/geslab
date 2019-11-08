@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Estudiante;
+use App\Estudiante_proyecto;
 use App\Http\Requests\CreateMessageRequest;
 use App\Persona;
 use App\Plan;
@@ -17,26 +18,31 @@ class EstudianteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    function __construct(){
+    function __construct()
+    {
 
-$this->middleware('auth');
+        $this->middleware('auth');
     }
 
     public function index()
     {
-        if (auth()->user()->role_id === 2) {
+        if (auth()->user()->role->nombrerol === "admin") {
             $estudiantes = Estudiante::get();
         } else {
-             if (auth()->user()->role_id === 3||auth()->user()->role_id === 4||auth()->user()->role_id === 5||auth()->user()->role_id === 6||auth()->user()->role_id === 7||auth()->user()->role_id === 8||auth()->user()->role_id === 9) {
-                $estudiantes = Estudiante::where('user_id','=', auth()->user()->id)->get();
-             } else {
-                return redirect('/') ;
-             }
-        
+            if (auth()->user()->role->nombrerol === "informatica" || auth()->user()->role->nombrerol === "comercial" || auth()->user()->role->nombrerol === "contaduria" || auth()->user()->role->nombrerol === "agronomia" || auth()->user()->role->nombrerol === "rec.hidricos" || auth()->user()->role->nombrerol === "ambiental" || auth()->user()->role->nombrerol === "ges.publica") {
+                $estudiantes = Estudiante::where('user_id', '=', auth()->user()->id)->get();
+            } else {
+                return redirect('/');
+            }
         }
-            
-        
-	   	return view('estudiante.index', compact('estudiantes'));
+
+
+        return view('estudiante.index', compact('estudiantes'));
+
+        /* $users = Estudiante::join("personas","estudiantes.persona_id","=","personas.id")
+           ->where('estudiantes.carrera','=','INGENIERIA INFORMATICA')
+           ->get();
+           dd($users);*/
     }
 
     /**
@@ -47,7 +53,12 @@ $this->middleware('auth');
     public function create()
     {
         //
-        $plan = Plan::all();
+        if (auth()->user()->role->nombrerol === "informatica" || auth()->user()->role->nombrerol === "comercial" || auth()->user()->role->nombrerol === "contaduria" || auth()->user()->role->nombrerol === "agronomia" || auth()->user()->role->nombrerol === "rec.hidricos" || auth()->user()->role->nombrerol === "ambiental" || auth()->user()->role->nombrerol === "ges.publica" || auth()->user()->role->nombrerol === "admin") {
+            $plan = Plan::all();
+        } else {
+            return redirect('/');
+        }
+
         return view('estudiante.create', compact('plan'));
     }
 
@@ -60,31 +71,30 @@ $this->middleware('auth');
     public function store(CreateMessageRequest $request)
     {
         //
-        $persona=new Persona();
-        $persona->nombre=$request->nombre; 
-        $persona->apellidop=$request->apellidop;
-        $persona->apellidom=$request->apellidom;
-        $persona->genero=$request->genero;
-        $persona->cedula=$request->cedula;
-        $persona->email=$request->email;
-        $persona->telefono=$request->telefono;
-        $persona->direccion=$request->direccion;
+        $persona = new Persona();
+        $persona->nombre = $request->nombre;
+        $persona->apellidop = $request->apellidop;
+        $persona->apellidom = $request->apellidom;
+        $persona->genero = $request->genero;
+        $persona->cedula = $request->cedula;
+        $persona->email = $request->email;
+        $persona->telefono = $request->telefono;
+        $persona->direccion = $request->direccion;
         $persona->save();
 
 
-        $estu=new Estudiante();
-        $estu->ru=$request->ru; 
-        $estu->carrera=$request->carrera;
-        $estu->user_id= auth()->user()->id;
-        $estu->plan_id=$request->numplan;
-        $estu->persona_id=persona::get()->max('id'); 
+        $estu = new Estudiante();
+        $estu->ru = $request->ru;
+        $estu->carrera = $request->carrera;
+        $estu->user_id = auth()->user()->id;
+        $estu->plan_id = $request->numplan;
+        $estu->persona_id = persona::get()->max('id');
         $estu->save();
 
         return redirect()->route('estudiante.index')->with('mensaje', 'Estudiante registrado exitosamente');
-           
-          
-       return $request->all();       
-        
+
+
+        return $request->all();
     }
 
     /**
@@ -97,10 +107,10 @@ $this->middleware('auth');
     {
         //
         $estudiantes = Estudiante::findorfail($id);
-    //dd($estudiantes);
-    //$estudiantes = DB::table('estudiantes')->where('id', $id)->first();
+        //dd($estudiantes);
+        //$estudiantes = DB::table('estudiantes')->where('id', $id)->first();
 
-     return view('estudiante.show', compact('estudiantes'));
+        return view('estudiante.show', compact('estudiantes'));
     }
 
     /**
@@ -115,7 +125,7 @@ $this->middleware('auth');
         $id =  Crypt::decrypt($id);
         $estudiantes = Estudiante::findorfail($id);
         $planes = Plan::all();
-        return view('estudiante.edit', compact('estudiantes','planes'));
+        return view('estudiante.edit', compact('estudiantes', 'planes'));
     }
 
     /**
@@ -127,33 +137,33 @@ $this->middleware('auth');
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request,[
-            'ru' => 'unique:estudiantes,ru,'.$id,
-            'cedula' => 'unique:personas,cedula,'.$request->idpersona
-           
+        $this->validate($request, [
+            'ru' => 'unique:estudiantes,ru,' . $id,
+            'cedula' => 'unique:personas,cedula,' . $request->idpersona
+
 
         ]);
         //
         $estudiantes = Estudiante::find($id);
-        $estudiantes->ru=$request->ru;
-        $estudiantes->plan_id=$request->numplan; 
-        $estudiantes->carrera=$request->carrera;
+        $estudiantes->ru = $request->ru;
+        $estudiantes->plan_id = $request->numplan;
+        $estudiantes->carrera = $request->carrera;
         $estudiantes->save();
-   //$prueba = $request->nombre;
+        //$prueba = $request->nombre;
         $persona = Persona::find($estudiantes->persona->id);
-       
-        $persona->nombre=$request->nombre; 
-        $persona->apellidop=$request->apellidop;
-        $persona->apellidom=$request->apellidom;
-        $persona->genero=$request->genero;
-        $persona->cedula=$request->cedula;
-        $persona->email=$request->email;
-        $persona->telefono=$request->telefono;
-        $persona->direccion=$request->direccion;
+
+        $persona->nombre = $request->nombre;
+        $persona->apellidop = $request->apellidop;
+        $persona->apellidom = $request->apellidom;
+        $persona->genero = $request->genero;
+        $persona->cedula = $request->cedula;
+        $persona->email = $request->email;
+        $persona->telefono = $request->telefono;
+        $persona->direccion = $request->direccion;
         $persona->save();
         return redirect()->route('estudiante.index')->with('mensaje', 'Datos actualizados exitosamente');
-      //dd($prueba);
-       // return $request->all();
+        //dd($prueba);
+        // return $request->all();
     }
 
     /**

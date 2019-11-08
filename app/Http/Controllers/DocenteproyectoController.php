@@ -15,8 +15,37 @@ class DocenteproyectoController extends Controller
      */
     public function index()
     {
+        if (auth()->user()->role->nombrerol === "admin") {
+            $funciones = Proyecto::all();
+        } else {
+            
+            if (auth()->user()->role->nombrerol === "Dir. Informatica y Ciencias Exactas") {
+                $funciones = Proyecto::where('materia_id','=',5)
+                ->orWhere('materia_id', 7)->get();
+            } else {
+                if (auth()->user()->role->nombrerol === "Dir. Ciencias Economicas y Empresariales") {
+                    # code...
+                } else {
+                    # code...
+                    if (auth()->user()->role->nombrerol === "Dir. Ciencias Contables, Financieras y Economicas") {
+                        # code...
+                    } else {
+                    if (auth()->user()->role->nombrerol === "Dir. Ciencias Agronomicas") {
+                        # code...
+                    } else {
+                        # code...
+                    }
+                    
+                    }
+                    
+                }
+                
+            }
+            
+        }
+        
     
-        $funciones = Proyecto::all();
+        
         // dd($notas);
 
         return view('funcion.index', compact('funciones'));

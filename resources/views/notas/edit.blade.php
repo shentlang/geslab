@@ -28,7 +28,7 @@
             <form action="{{route('notas.update', $notas->id)}}" method="POST">
               @csrf
               {!! method_field('PUT') !!}
-              <input type="number" class="form-control" value="{{$notas->puntos}}" max="100" name="punto"
+              <input type="number" class="form-control" value="{{$notas->puntos}}" min="0" max="100" name="punto"
                 autocomplete="off">
               <br>
               <a href="{{ route('notas.index') }}" class="btn btn-danger">Cancelar</a>

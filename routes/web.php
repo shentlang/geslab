@@ -25,4 +25,5 @@ Route::resource('/notas', 'NotasController');
 Auth::routes();
 Route::resource('/user', 'UserController');
 Route::resource('/funcion', 'DocenteproyectoController');
-
+Route::resource('informe', 'InformeController');
+Route::get('/muestra/{muestra}','MostrarController@mostrar')->name('muestra.show');

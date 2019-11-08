@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Roles;
-use App\User;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class InformeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +14,8 @@ class UserController extends Controller
     public function index()
     {
         //
-        $users = User::all();
-        return view('user.index',compact('users'));
+        
+
     }
 
     /**
@@ -28,6 +26,7 @@ class UserController extends Controller
     public function create()
     {
         //
+        
     }
 
     /**
@@ -47,9 +46,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+   
     public function show($id)
     {
         //
+    
     }
 
     /**
@@ -61,9 +62,6 @@ class UserController extends Controller
     public function edit($id)
     {
         //
-        $user = User::find($id);
-        $rol = Roles::all();
-        return view('user.edit', compact('user','rol'));
     }
 
     /**
@@ -76,10 +74,6 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $user = User::find($id);
-        $user->role_id=$request->role;
-        $user->save();
-        return redirect()->route('user.index');
     }
 
     /**

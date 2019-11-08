@@ -13,21 +13,26 @@ class NotasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    function __construct()
+    {
+
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         //
-        if (auth()->user()->role_id === 2) {
+        if (auth()->user()->role->nombrerol === "admin") {
             $proyectos = Proyecto::all();
         } else {
-             if (auth()->user()->role_id === 3||auth()->user()->role_id === 4||auth()->user()->role_id === 5||auth()->user()->role_id === 6||auth()->user()->role_id === 7||auth()->user()->role_id === 8||auth()->user()->role_id === 9) {
-                $proyectos = Proyecto::where('user_id','=', auth()->user()->id)->get();
-             } else {
-                return redirect('/') ;
-             }
-        
+            if (auth()->user()->role->nombrerol === "informatica" || auth()->user()->role->nombrerol === "comercial" || auth()->user()->role->nombrerol === "contaduria" || auth()->user()->role->nombrerol === "agronomia" || auth()->user()->role->nombrerol === "rec.hidricos" || auth()->user()->role->nombrerol === "ambiental" || auth()->user()->role->nombrerol === "ges.publica") {
+                $proyectos = Proyecto::where('user_id', '=', auth()->user()->id)->get();
+            } else {
+                return redirect('/');
+            }
         }
 
-        
+
         return view('notas.index', compact('proyectos'));
     }
 
@@ -72,7 +77,15 @@ class NotasController extends Controller
     public function edit($id)
     {
         //
-        $notas = Estudiante_proyecto::find($id);
+
+        if (auth()->user()->role->nombrerol === "admin" ||auth()->user()->role->nombrerol === "informatica" || auth()->user()->role->nombrerol === "comercial" || auth()->user()->role->nombrerol === "contaduria" || auth()->user()->role->nombrerol === "agronomia" || auth()->user()->role->nombrerol === "rec.hidricos" || auth()->user()->role->nombrerol === "ambiental" || auth()->user()->role->nombrerol === "ges.publica") {
+            $notas = Estudiante_proyecto::find($id);
+        } else {
+            return redirect('/');
+        }
+
+
+
         return view('notas.edit', compact('notas'));
     }
 
@@ -87,7 +100,7 @@ class NotasController extends Controller
     {
         //
         $notas = Estudiante_proyecto::find($id);
-        $notas->nota=$request->punto;
+        $notas->nota = $request->punto;
         $notas->save();
         return redirect()->route('notas.index');
     }

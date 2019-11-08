@@ -15,12 +15,17 @@ class ProyectoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    function __construct(){
+
+        $this->middleware('auth');
+            }
+
     public function index()
     {
-        if (auth()->user()->role_id === 2) {
+        if (auth()->user()->role->nombrerol === "admin") {
             $proyectos = Proyecto::paginate(10);
         } else {
-             if (auth()->user()->role_id === 3||auth()->user()->role_id === 4||auth()->user()->role_id === 5||auth()->user()->role_id === 6||auth()->user()->role_id === 7||auth()->user()->role_id === 8||auth()->user()->role_id === 9) {
+             if (auth()->user()->role->nombrerol === "informatica"||auth()->user()->role->nombrerol === "comercial" ||auth()->user()->role->nombrerol === "contaduria" ||auth()->user()->role->nombrerol === "agronomia"||auth()->user()->role->nombrerol === "rec.hidricos"||auth()->user()->role->nombrerol === "ambiental"||auth()->user()->role->nombrerol === "ges.publica" ) {
                 $proyectos = Proyecto::where('user_id','=', auth()->user()->id)->get();
              } else {
                 return redirect('/') ;
@@ -51,37 +56,37 @@ class ProyectoController extends Controller
             ->select('personas.apellidop','personas.nombre','tribunals.id')
             ->get();*/
            
-            if (auth()->user()->role_id === 2) {
+            if (auth()->user()->role->nombrerol === 2) {
                 $estudiantes = Estudiante::get();
                 $materia = Materia::get();
             } else {
-                if (auth()->user()->role_id === 3) {
+                if (auth()->user()->role->nombrerol === "informatica") {
                     $estudiantes = Estudiante::where('user_id','=', auth()->user()->id)->get();
                     $materia = Materia::all()->where('nombremateria','=', "INF - 501");
                 } else {
-                    if (auth()->user()->role_id === 4) {
+                    if (auth()->user()->role->nombrerol === "comercial") {
                         $estudiantes = Estudiante::where('user_id','=', auth()->user()->id)->get();
-                        $materia = Materia::all()->where('nombremateria','=','ICT - 011');
+                        $materia = Materia::all()->where('nombremateria','=',"ICT - 011");
                     } else {
-                        if (auth()->user()->role_id === 5) {
+                        if (auth()->user()->role->nombrerol === "contaduria") {
                             $estudiantes = Estudiante::where('user_id','=', auth()->user()->id)->get();
-                            $materia = Materia::all()->where('nombremateria','=','AUD - 610');
+                            $materia = Materia::all()->where('nombremateria','=',"AUD - 610");
                         } else {
-                            if (auth()->user()->role_id === 6) {
+                            if (auth()->user()->role->nombrerol === "agronomia") {
                                 $estudiantes = Estudiante::where('user_id','=', auth()->user()->id)->get();
-                                $materia = Materia::all()->where('nombremateria','=','AGR - 521');
+                                $materia = Materia::all()->where('nombremateria','=',"AGR - 521");
                             } else {
-                                if (auth()->user()->role_id === 7) {
+                                if (auth()->user()->role->nombrerol === "rec.hidricos") {
                                     $estudiantes = Estudiante::where('user_id','=', auth()->user()->id)->get();
-                                    $materia = Materia::all()->where('nombremateria','=','IRG - 001');
+                                    $materia = Materia::all()->where('nombremateria','=',"IRG - 001");
                                 } else {
-                                    if (auth()->user()->role_id === 8) {
+                                    if (auth()->user()->role->nombrerol === "ambiental") {
                                         $estudiantes = Estudiante::where('user_id','=', auth()->user()->id)->get();
-                                        $materia = Materia::all()->where('nombremateria','=','ISA 092');
+                                        $materia = Materia::all()->where('nombremateria','=',"ISA - 092 ");
                                     } else {
-                                          if (auth()->user()->role_id === 9) {
+                                          if (auth()->user()->role->nombrerol === "ges.publica") {
                                             $estudiantes = Estudiante::where('user_id','=', auth()->user()->id)->get();
-                                            $materia = Materia::all()->where('nombremateria','=','LAA - 100');
+                                            $materia = Materia::all()->where('nombremateria','=',"LAA - 100");
                                           } else {
                                             return redirect('/') ;
                                           }

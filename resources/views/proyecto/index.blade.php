@@ -27,13 +27,13 @@
                   <tr>
                     <th>id</th>
 
-                    <th>nombre del proyecto</th>
+                    <th width="220" class="text-center">nombre del proyecto</th>
                     <th>lugar de defensa</th>
-                    <th>fecha de defensa</th>
+                    <th class="text-center">fecha de defensa</th>
                     <th>estado</th>
                     <th>sigla</th>
-                    <th width="220" class="text-center">autores</th>
-
+                    <th  class="text-center">autores</th>
+                    <th width="200" class="text-center">informes</th>
 
                   </tr>
                 </thead>
@@ -42,30 +42,49 @@
                   <tr>
                     <th scope="row" class="text-center">{{ $proyecto->id }}</th>
 
-                    <td class="lead">{{ $proyecto->nombreproyecto }}</td>
+                    <td >
+                        <a>
+                            {{ $proyecto->nombreproyecto }}
+                        </a>
+                        <br/>
+                        <small>
+                            {{ $proyecto->created_at->format('d/m/Y')}} 
+                        </small>
+                    </td>
                    
                     <td>{{ $proyecto->lugar }}</td>
                     
                     <td width="155" class="text-center">
-                        <small class="badge badge-success"><i class="far fa-clock"></i>    {{$proyecto->fechadefensa}}</small>
+                        <small class="badge badge-success"><i class="far fa-clock"></i> {{ date('d-m-Y', strtotime($proyecto->fechadefensa)) }}  </small>
                    
                     </td>
                   <td>{{$proyecto->estado}}</td>
                   <td><span class="badge badge-primary">{{$proyecto->materia->nombremateria}}</span> </td>
-                    <td>
+                    <td class="text-center">
                       <ul class="list-unstyled">
                         @foreach($proyecto->estudiantes as $estudiante)
-                        <button type="button" class="btn-danger">{{ $estudiante->persona->nombre }} {{ $estudiante->persona->apellidop }} {{ $estudiante->persona->apellidom }}
-                        </button>  
-
-                       
-                         
-                        </button>
+                        <small class="badge badge-info">{{ $estudiante->persona->nombre }} {{ $estudiante->persona->apellidop }} {{ $estudiante->persona->apellidom }}</small>
                         @endforeach
                       </ul>
 
                     </td>
-
+                    <td class="project-actions text-right">
+                      <a class="btn btn-primary btn-sm" href="{{ route ('muestra.show', $proyecto->id)}}">
+                          <i class="fas fa-eye">
+                          </i>
+                          listar informes
+                      </a>
+                      <a class="btn btn-info btn-sm" href="#">
+                          <i class="fas fa-pencil-alt">
+                          </i>
+                          Edit
+                      </a>
+                      <a class="btn btn-danger btn-sm" href="#">
+                          <i class="fas fa-trash">
+                          </i>
+                          Delete
+                      </a>
+                  </td>
 
                   </tr>
                   @endforeach
