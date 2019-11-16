@@ -59,7 +59,7 @@
                    
                     </td>
                   <td>{{$proyecto->estado}}</td>
-                  <td><span class="badge badge-primary">{{$proyecto->materia->nombremateria}}</span> </td>
+                  <td><span class="badge badge-primary">{{$proyecto->materia->sigla}}</span> </td>
                     <td class="text-center">
                       <ul class="list-unstyled">
                         @foreach($proyecto->estudiantes as $estudiante)

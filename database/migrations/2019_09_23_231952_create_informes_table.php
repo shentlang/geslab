@@ -15,6 +15,7 @@ class CreateInformesTable extends Migration
     {
         Schema::create('informes', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('descripcion');
             $table->longText('comentario');
             $table->date('fpublicacion');
             $table->integer('avance');

@@ -63,12 +63,12 @@
 						<div class="col-md-6">
 
 							<div class="form-group">
-								<label>materia</label>
-								<select class="form-control" name="materias" data-placeholder="Seleccione materias"
+								<label>sigla</label>
+								<select class="form-control" name="sigla" data-placeholder="Seleccione materias"
 									style="width: 100%;">
 
 									@foreach($materia as $materias)
-									<option value="{{ $materias->id }}">{{ $materias->nombremateria }}</option>
+									<option value="{{ $materias->id }}">{{ $materias->sigla }}</option>
 									@endforeach()
 								</select>
 							</div>

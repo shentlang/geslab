@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Informe;
+use App\Proyecto;
 use Illuminate\Http\Request;
 
 class InformeController extends Controller
@@ -25,7 +27,7 @@ class InformeController extends Controller
      */
     public function create()
     {
-        //
+      
         
     }
 
@@ -38,6 +40,16 @@ class InformeController extends Controller
     public function store(Request $request)
     {
         //
+        $informe = new Informe();
+        $informe->comentario = $request->comentario;
+        $informe->descripcion = $request->descripcion;
+        $informe->fpublicacion = $request->fpublicacion;
+        $informe->avance = $request->avance;
+        $informe->proyecto_id = $request->proyectoid;
+        $informe->save();
+        return redirect()->route('muestra.show', $request->proyectoid)->with('mensaje', 'Informe registrado exitosamente');
+       
+        
     }
 
     /**
@@ -49,7 +61,8 @@ class InformeController extends Controller
    
     public function show($id)
     {
-        //
+        $proyecto = Proyecto::findorfail($id);
+        return view('informe.create',compact('proyecto'));
     
     }
 

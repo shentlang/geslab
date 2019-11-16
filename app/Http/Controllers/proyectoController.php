@@ -62,31 +62,31 @@ class ProyectoController extends Controller
             } else {
                 if (auth()->user()->role->nombrerol === "informatica") {
                     $estudiantes = Estudiante::where('user_id','=', auth()->user()->id)->get();
-                    $materia = Materia::all()->where('nombremateria','=', "INF - 501");
+                    $materia = Materia::all()->where('sigla','=', "INF - 501");
                 } else {
                     if (auth()->user()->role->nombrerol === "comercial") {
                         $estudiantes = Estudiante::where('user_id','=', auth()->user()->id)->get();
-                        $materia = Materia::all()->where('nombremateria','=',"ICT - 011");
+                        $materia = Materia::all()->where('sigla','=',"ICT - 011");
                     } else {
                         if (auth()->user()->role->nombrerol === "contaduria") {
                             $estudiantes = Estudiante::where('user_id','=', auth()->user()->id)->get();
-                            $materia = Materia::all()->where('nombremateria','=',"AUD - 610");
+                            $materia = Materia::all()->where('sigla','=',"AUD - 610");
                         } else {
                             if (auth()->user()->role->nombrerol === "agronomia") {
                                 $estudiantes = Estudiante::where('user_id','=', auth()->user()->id)->get();
-                                $materia = Materia::all()->where('nombremateria','=',"AGR - 521");
+                                $materia = Materia::all()->where('sigla','=',"AGR - 521");
                             } else {
                                 if (auth()->user()->role->nombrerol === "rec.hidricos") {
                                     $estudiantes = Estudiante::where('user_id','=', auth()->user()->id)->get();
-                                    $materia = Materia::all()->where('nombremateria','=',"IRG - 001");
+                                    $materia = Materia::all()->where('sigla','=',"IRG - 001");
                                 } else {
                                     if (auth()->user()->role->nombrerol === "ambiental") {
                                         $estudiantes = Estudiante::where('user_id','=', auth()->user()->id)->get();
-                                        $materia = Materia::all()->where('nombremateria','=',"ISA - 092 ");
+                                        $materia = Materia::all()->where('sigla','=',"ISA - 092 ");
                                     } else {
                                           if (auth()->user()->role->nombrerol === "ges.publica") {
                                             $estudiantes = Estudiante::where('user_id','=', auth()->user()->id)->get();
-                                            $materia = Materia::all()->where('nombremateria','=',"LAA - 100");
+                                            $materia = Materia::all()->where('sigla','=',"LAA - 100");
                                           } else {
                                             return redirect('/') ;
                                           }
@@ -135,7 +135,7 @@ class ProyectoController extends Controller
             'lugar' => $request->input('lugar'), 
             'fechadefensa' => $request->input('fechadefensa'), 
             'estado' => $request->input('estado'),
-            'materia_id' => $request->input('materias'),
+            'materia_id' => $request->input('sigla'),
             'user_id' => auth()->user()->id
             
         ]);
