@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Docente;
 use App\Persona;
+use App\Proyecto;
 use Illuminate\Http\Request;
 
 class DocenteController extends Controller
@@ -84,6 +85,8 @@ class DocenteController extends Controller
     public function edit($id)
     {
         //
+        $docente = Docente::findorfail($id);
+        return view('docente.edit', compact('docente'));
     }
 
     /**
@@ -96,6 +99,35 @@ class DocenteController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $this->validate($request, [
+           
+            'cedula' => 'required||unique:personas,cedula,' . $request->idpersona,
+            'email'=>'required|email',
+            'nombre'=>'required',
+            'apellidop'=>'required',
+            'telefono'=>'required',
+            
+
+        ]);
+
+        $docente = Docente::find($id);
+        $docente->titulado = $request->titulado;
+        $docente->save();
+        //
+        $persona = Persona::find($docente->persona->id);
+
+        $persona->nombre = $request->nombre;
+        $persona->apellidop = $request->apellidop;
+        $persona->apellidom = $request->apellidom;
+        $persona->genero = $request->genero;
+        $persona->cedula = $request->cedula;
+        $persona->email = $request->email;
+        $persona->telefono = $request->telefono;
+        $persona->direccion = $request->direccion;
+        $persona->save();
+       // return $request->all();
+       return redirect()->route('docente.index')->with('mensaje', 'Datos actualizados exitosamente');
+
     }
 
     /**

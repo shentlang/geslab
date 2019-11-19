@@ -51,7 +51,7 @@
                     <td>{{$item->persona->cedula}}</td>
                     <td>{{$item->persona->genero}}</td>
                     <td>{{$item->id}}--{{$item->titulado}}</td>
-                    <td><a class="btn btn-app" href="#">
+                    <td><a class="btn btn-app" href="{{ route ('docente.edit', $item->id)}}">
                         <i class="fas fa-edit"></i> editar</a> </td>
 
                   </tr>

@@ -47,12 +47,17 @@
 									autocomplete="off">
 								{!!$errors->first('nombre','<div class="alert alert-danger alert-dismissible">
 										<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-										<h5><i class="icon fas fa-ban"></i> Alerta!:message</h5>
+										<small><i class="icon fas fa-ban"></i> Alerta!:message</small>
 									  </div>')!!} <br>
 								<label for="ape-p">Apellido Paterno:</label>
-								<input type="text" class="form-control tuInput" name="apellidop" autocomplete="off">
+								<input type="text" class="form-control tuInput" value="{{old('apellidop')}}" name="apellidop" autocomplete="off">
+								{!!$errors->first('apellidop','<div class="alert alert-danger alert-dismissible">
+										<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+										<small><i class="icon fas fa-ban"></i> Alerta!:message</small>
+									  </div>')!!} <br>
+
 								<label for="ape-m">Apellido Materno</label>
-								<input type="text" class="form-control" name="apellidom" autocomplete="off">
+								<input type="text" class="form-control" value="{{old('apellidom')}}" name="apellidom" autocomplete="off">
 								<label for="genero">Genero</label>
 								<select name="genero"  class="form-control">
 									<option value="Femenino">Femenino</option>
@@ -62,10 +67,10 @@
 							<!-- /.form-group estudiante -->
 							<div class="form-group">
 								<label for="password">ru:</label>
-								<input type="text" class="form-control" name="ru" autocomplete="off">
+								<input type="text" class="form-control" name="ru" value="{{old('ru')}}" autocomplete="off">
 								{!!$errors->first('ru','<div class="alert alert-danger alert-dismissible">
 										<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-										<h5><i class="icon fas fa-ban"></i> Alerta!:message</h5>
+										<small><i class="icon fas fa-ban"></i> Alerta! :message</small>
 									  </div>')!!}
 								<label for="password">plan:</label>
 								<select name="numplan" class="form-control">
@@ -147,27 +152,56 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label for="usuario">Cedula:</label>
-								<input type="text" class="form-control" name="cedula" autocomplete="off"
+								<input type="text" class="form-control" value="{{old('cedula')}}" name="cedula" autocomplete="off"
 									value="{{old('cedula')}}">
 									{!!$errors->first('cedula','<div class="alert alert-danger alert-dismissible">
 											<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-											<h5><i class="icon fas fa-ban"></i> Alerta!:message</h5>
+											<small><i class="icon fas fa-ban"></i> Alerta!:message</small>
 										  </div>')!!} <br>
 								<label for="password">telefono:</label>
-								<input type="text" class="form-control" name="telefono" autocomplete="off">
+								<input type="text" class="form-control" name="telefono" value="{{old('telefono')}}" autocomplete="off">
+								{!!$errors->first('telefono','<div class="alert alert-danger alert-dismissible">
+										<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+										<small><i class="icon fas fa-ban"></i> Alerta!:message</small>
+									  </div>')!!} <br>
 								<label for="password">direccion:</label>
-								<input type="text" class="form-control" name="direccion" autocomplete="off">
+								<input type="text" class="form-control" name="direccion" value="{{old('direccion')}}" autocomplete="off">
 
 								<label for="email">email:</label>
-								<input type="email" class="form-control" name="email" autocomplete="off">
+								<input type="email" class="form-control" name="email" value="{{old('email')}}" autocomplete="off">
 								{!!$errors->first('email','<div class="alert alert-danger alert-dismissible">
 										<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-										<h5><i class="icon fas fa-ban"></i> Alerta!:message</h5>
+										<small><i class="icon fas fa-ban"></i> Alerta!:message</small>
 									  </div>')!!} <br>
 							</div>
 							<br>
 							<a href="{{ route('estudiante.index') }}" class="btn btn-danger">Cancelar</a>
-							<button type="submit" class="btn btn-primary">Registrar</button>
+							<button type="button" class="btn btn-primary" data-toggle="modal"
+								data-target="#modal-primary">
+								<i class="fas fa-save"></i> guardar
+							</button>
+
+							<div class="modal fade" id="modal-primary">
+								<div class="modal-dialog">
+									<div class="modal-content bg-primary">
+										<div class="modal-header">
+											<h4 class="modal-title">desea Registrar Estudiante?</h4>
+											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+												<span aria-hidden="true">&times;</span></button>
+										</div>
+										<div class="modal-body">
+											<p>el estudiante se guardara en el Sis. Doc.&hellip;</p>
+										</div>
+										<div class="modal-footer justify-content-between">
+											<button type="button" class="btn btn-outline-light"
+												data-dismiss="modal">Cerrar</button>
+											<button type="submit" class="btn btn-outline-light">guardar datos</button>
+										</div>
+									</div>
+									<!-- /.modal-content -->
+								</div>
+								<!-- /.modal-dialog -->
+							</div>
 						</div>
 						<!-- /.col -->
 					</div>

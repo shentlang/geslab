@@ -138,9 +138,13 @@ class EstudianteController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'ru' => 'unique:estudiantes,ru,' . $id,
-            'cedula' => 'unique:personas,cedula,' . $request->idpersona
-
+            'ru' => 'required||unique:estudiantes,ru,' . $id,
+            'cedula' => 'required||unique:personas,cedula,' . $request->idpersona,
+            'email'=>'required|email',
+            'nombre'=>'required',
+            'apellidop'=>'required',
+            'telefono'=>'required',
+            
 
         ]);
         //

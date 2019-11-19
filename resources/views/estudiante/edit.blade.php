@@ -47,10 +47,17 @@
 								<label for="nombre">Nombres:</label>
 								<input type="text" class="form-control tuInput"
 									value="{{$estudiantes->persona->nombre}}" name="nombre" autocomplete="off">
-								{{$errors->first('nombre')}} <br>
+									{!!$errors->first('nombre','<div class="alert alert-danger alert-dismissible">
+											<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+											<small><i class="icon fas fa-ban"></i> Alerta!:message</small>
+										  </div>')!!} <br>
 								<label for="ape-p">Apellido Paterno:</label>
 								<input type="text" class="form-control tuInput" name="apellidop"
 									value="{{$estudiantes->persona->apellidop}}" autocomplete="off">
+									{!!$errors->first('apellidop','<div class="alert alert-danger alert-dismissible">
+											<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+											<small><i class="icon fas fa-ban"></i> Alerta!:message</small>
+										  </div>')!!} <br>
 								<label for="ape-m">Apellido Materno</label>
 								<input type="text" class="form-control" name="apellidom"
 									value="{{$estudiantes->persona->apellidom}}" autocomplete="off">
@@ -68,7 +75,10 @@
 								<label for="password">ru:</label>
 								<input type="text" class="form-control" value="{{$estudiantes->ru}}" name="ru"
 									autocomplete="off">
-								{{$errors->first('ru')}} <br>
+									{!!$errors->first('ru','<div class="alert alert-danger alert-dismissible">
+											<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+											<small><i class="icon fas fa-ban"></i> Alerta!:message</small>
+										  </div>')!!} <br>
 								<label for="password">plan:</label>
 								<select name="numplan" class="form-control">
 									<option value="{{$estudiantes->plan_id}}" select>{{$estudiantes->plan->numplan}}
@@ -110,7 +120,10 @@
 								<label for="usuario">Cedula:</label>
 								<input type="text" class="form-control" name="cedula" autocomplete="off"
 									value="{{$estudiantes->persona->cedula}}">
-								{{$errors->first('cedula')}} <br>
+									{!!$errors->first('cedula','<div class="alert alert-danger alert-dismissible">
+											<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+											<small><i class="icon fas fa-ban"></i> Alerta!:message</small>
+										  </div>')!!} <br>
 								<label for="password">telefono:</label>
 								<input type="text" class="form-control" name="telefono" autocomplete="off"
 									value="{{$estudiantes->persona->telefono}}">

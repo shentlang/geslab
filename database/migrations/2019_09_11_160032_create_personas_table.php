@@ -17,12 +17,12 @@ class CreatePersonasTable extends Migration
             $table->bigIncrements('id');
             $table->string('nombre', 50);
             $table->string('apellidop', 50);
-            $table->string('apellidom', 50);
+            $table->string('apellidom', 50)->nullable();
             $table->string('genero', 9);
             $table->string('cedula', 50)->unique();
             $table->string('email', 150);
             $table->string('telefono', 50);
-            $table->string('direccion', 150);
+            $table->string('direccion', 150)->nullable();
             $table->timestamps();
         });
     }

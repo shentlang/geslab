@@ -26,9 +26,11 @@ class CreateMessageRequest extends FormRequest
         return [
             //
             'nombre'=>'required',
-            'email'=>'required|email',
-            'ru' => 'unique:estudiantes,ru',
-            'cedula' => 'required||unique:personas,cedula'
+            'apellidop'=>'required',
+            'email'=>'required||email',
+            'ru' => 'unique:estudiantes,ru||required',
+            'cedula' => 'required||unique:personas,cedula',
+            'telefono'=> 'required'
 
            
 
