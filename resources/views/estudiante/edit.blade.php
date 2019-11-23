@@ -90,7 +90,7 @@
 
 								</select>
 								<label for="carrera">carrera</label>
-								@if (auth()->user()->role_id === 2)
+								@if (auth()->user()->role->nombrerol === 'admin')
 								<select name="carrera" class="form-control">
 									<option value="{{$estudiantes->carrera}}" select>{{$estudiantes->carrera}}
 										V.anterior</option>

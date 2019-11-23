@@ -6,7 +6,7 @@
 	<div class="container-fluid">
 		<div class="row mb-2">
 			<div class="col-sm-6">
-				<h1>Registro de proyectos</h1>
+				<h1>edicion de proyectos</h1>
 			</div>
 			<div class="col-sm-6">
 				<ol class="breadcrumb float-sm-right">
@@ -18,8 +18,9 @@
 	</div>
 </section>
 
-<form action="{{route('proyecto.store')}}" method="POST">
-	@csrf
+<form action="{{route('proyecto.update', $proyecto->id)}}" method="POST">
+        @csrf
+        {!! method_field('PUT') !!}
 	<section class="content">
 		<div class="container-fluid">
 			<!-- SELECT2 EXAMPLE -->
@@ -41,18 +42,29 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label for="nombre">Nombre del proyecto:</label>
-								<input type="text" class="form-control tuInput" name="nombre" autocomplete="off">
+                            <input type="text" class="form-control tuInput" value="{{$proyecto->nombreproyecto}}" name="nombre" autocomplete="off">
 								<label for="nombre">lugar de defensa:</label>
-								<input type="text" class="form-control tuInput" name="lugar" autocomplete="off">
+                            <input type="text" class="form-control tuInput" value="{{$proyecto->lugar}}" name="lugar" autocomplete="off">
 
 							</div>
 							<!-- /.form-group estudiante -->
 							<div class="form-group">
 								<label for="estado">Estado proyecto</label>
 								<select name="estado" class="form-control">
+                                <option value="{{$proyecto->estado}}">
+                                    @if ($proyecto->estado == "P")
+                                        PENDIENTE
+                                    @else
+                                        @if ($proyecto->estado == "R")
+                                            REPROBADO
+                                        @else
+                                            APROBADO
+                                        @endif
+                                    @endif
+                                    V. anterior</option> 
 									<option value="A">APROBADO</option>
-									<option value="R" selected>REPROBADO</option>
-									<option value="P" selected>PENDIENTE</option>
+									<option value="R">REPROBADO</option>
+									<option value="P">PENDIENTE</option>
 								</select>
 
 							</div>
@@ -66,26 +78,24 @@
 								<label>sigla</label>
 								<select class="form-control" name="sigla" data-placeholder="Seleccione materias"
 									style="width: 100%;">
-
-									@foreach($materia as $materias)
-									<option value="{{ $materias->id }}">{{ $materias->sigla }}</option>
-									@endforeach()
+                            <option value="{{$proyecto->materia->id}}">{{$proyecto->materia->sigla}}</option>
+								
 								</select>
 							</div>
 							<div class="form-group">
 								<label for="curso">fecha de defensa</label>
-								<input type="date" class="form-control" name="fechadefensa" required>
+                            <input type="date" class="form-control" value="{{$proyecto->fechadefensa}}" name="fechadefensa" required>
 							</div>
 
 
 							<div class="form-group">
 								<label>seleccionar autores</label>
-								<select class="select2" multiple="multiple" name="estudiantes[]" id="estudiantes" 
+								<select class="select2" multiple="multiple" name="estudiantes[]" id="estudiantes"
 									data-placeholder="Seleccione Estudiantes" style="width: 100%;">
 
-									@foreach($estudiantes as $author)
-									<option value="{{ $author->id }}">{{ $author->persona->nombre }}</option>
-									@endforeach()
+                                    @foreach($estudiante as $estudiantes)
+                                    <option value="{{ $estudiantes->id }}" {{ in_array($estudiantes->id, $selected_authors) ? 'selected' : '' }}>{{ $estudiantes->persona->nombre }} {{ $estudiantes->persona->apellidop }}</option>
+                                    @endforeach()
 								</select>
 							</div>
 
@@ -103,17 +113,17 @@
 								<div class="modal-dialog">
 									<div class="modal-content bg-success">
 										<div class="modal-header">
-											<h4 class="modal-title">desea guardar proyecto?</h4>
+											<h4 class="modal-title">desea actualizar datos del proyecto?</h4>
 											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 												<span aria-hidden="true">&times;</span></button>
 										</div>
 										<div class="modal-body">
-											<p>el proyecto se guardara en el Sis. Doc.&hellip;</p>
+											<p>el proyecto se actualizará en el Sis. Doc.&hellip;</p>
 										</div>
 										<div class="modal-footer justify-content-between">
 											<button type="button" class="btn btn-outline-light"
 												data-dismiss="modal">Cerrar</button>
-											<button type="submit" class="btn btn-outline-light">guardar datos</button>
+											<button type="submit" class="btn btn-outline-light">actualizar datos</button>
 										</div>
 									</div>
 									<!-- /.modal-content -->

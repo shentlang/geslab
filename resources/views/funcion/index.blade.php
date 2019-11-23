@@ -47,26 +47,33 @@
                       @foreach($item->docente_proyectos as $docen)
                       @if ($docen->funcion == 'tutor')
                       <small class="badge badge-info">
-                        {{$docen->id}} {{$docen->funcion}}
+                        {{$docen->id}} 
+                        {{$docen->funcion}}
                         {{$docen->docente->persona->nombre}}
                         {{$docen->docente->persona->apellidop}}
-                      </small><br>
-
+                        
+                        
+                      </small> <big><a style="color: crimson" href="{{route('delete.clear',[$item->id,$docen->docente_id])}}">
+                          <i class="fas fa-trash"></i> </a></big><br>
+                     
                       @else
                       <small class="badge badge-success">
                         {{$docen->id}}
                         {{$docen->funcion}}
                         {{$docen->docente->persona->nombre}}
                         {{$docen->docente->persona->apellidop}}
-                      </small><br>
-
+                      </small>
+                      <a  href="{{route('delete.clear',[$item->id,$docen->docente_id])}}">
+                          <i class="fas fa-trash"></i> </a>
+                      <br>
+                      
                       @endif
                       @endforeach
                     </ul>
 
                   </td>
-                  <td><a class="btn btn-app" href="{{route('funcion.show',$item->id)}}">
-                      <i class="fas fa-edit"></i> editar</a> </td>
+                  <td><a style="color: firebrick" href="{{route('funcion.show',$item->id)}}">
+                      <i class="fas fa-edit"></i> asignar</a> </td>
                 </tr>
                 @endforeach
 

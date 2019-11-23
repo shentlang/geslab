@@ -124,8 +124,13 @@ class DocenteproyectoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($delete,$delete2)
     {
-        //
+        /*$proyectos = Proyecto::find($id);
+        $proyectos->docentes()->detach($id2);
+        return redirect()->route('funcion.index'); */
+        
+        
+       
     }
 }

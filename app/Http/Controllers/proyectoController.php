@@ -56,7 +56,7 @@ class ProyectoController extends Controller
             ->select('personas.apellidop','personas.nombre','tribunals.id')
             ->get();*/
            
-            if (auth()->user()->role->nombrerol === 2) {
+            if (auth()->user()->role->nombrerol === "admin") {
                 $estudiantes = Estudiante::get();
                 $materia = Materia::get();
             } else {
@@ -165,7 +165,73 @@ class ProyectoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $proyecto = Proyecto::find($id);
+
+        if(!$proyecto){
+            return redirect()->route('proyecto.index');
+        }
+        if (auth()->user()->role->nombrerol === "admin") {
+            $estudiante = Estudiante::get();
+            $materia = Materia::get();
+        } else {
+            if (auth()->user()->role->nombrerol === "informatica") {
+                $estudiante = Estudiante::where('user_id','=', auth()->user()->id)->get();
+                $materia = Materia::all()->where('sigla','=', "INF - 501");
+            } else {
+                if (auth()->user()->role->nombrerol === "comercial") {
+                    $estudiante = Estudiante::where('user_id','=', auth()->user()->id)->get();
+                    $materia = Materia::all()->where('sigla','=',"ICT - 011");
+                } else {
+                    if (auth()->user()->role->nombrerol === "contaduria") {
+                        $estudiante = Estudiante::where('user_id','=', auth()->user()->id)->get();
+                        $materia = Materia::all()->where('sigla','=',"AUD - 610");
+                    } else {
+                        if (auth()->user()->role->nombrerol === "agronomia") {
+                            $estudiante = Estudiante::where('user_id','=', auth()->user()->id)->get();
+                            $materia = Materia::all()->where('sigla','=',"AGR - 521");
+                        } else {
+                            if (auth()->user()->role->nombrerol === "rec.hidricos") {
+                                $estudiante = Estudiante::where('user_id','=', auth()->user()->id)->get();
+                                $materia = Materia::all()->where('sigla','=',"IRG - 001");
+                            } else {
+                                if (auth()->user()->role->nombrerol === "ambiental") {
+                                    $estudiante = Estudiante::where('user_id','=', auth()->user()->id)->get();
+                                    $materia = Materia::all()->where('sigla','=',"ISA - 092 ");
+                                } else {
+                                      if (auth()->user()->role->nombrerol === "ges.publica") {
+                                        $estudiante = Estudiante::where('user_id','=', auth()->user()->id)->get();
+                                        $materia = Materia::all()->where('sigla','=',"LAA - 100");
+                                      } else {
+                                        return redirect('/') ;
+                                      }
+                                      
+                                }
+                                
+                            }
+                            
+                        }
+                        
+                    }
+                    
+                }
+                
+            }
+            
+             
+               
+           
+            
+        
+        }
+
+        
+        $selected_authors = array();
+
+        foreach ($proyecto->estudiantes as $author) {
+            $selected_authors[] = $author->pivot->estudiante_id;
+        }
+
+        return view('proyecto.edit', compact('proyecto', 'estudiante', 'selected_authors'));
     }
 
     /**
@@ -178,6 +244,19 @@ class ProyectoController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $proyecto = Proyecto::find($id);
+       
+        $proyecto->nombreproyecto = $request->nombre;
+        $proyecto->lugar = $request->lugar;
+        $proyecto->estado = $request->estado;
+        $proyecto->materia_id = $request->sigla;
+        $proyecto->fechadefensa = $request->fechadefensa;
+        $proyecto->save();
+        if($proyecto){
+            $proyecto->estudiantes()->sync($request->input('estudiantes'));
+        }
+        return redirect()->route('proyecto.index');  
+
     }
 
     /**

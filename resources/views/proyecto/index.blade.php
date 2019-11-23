@@ -73,11 +73,11 @@
                           <i class="fas fa-eye">
                           </i>
                           listar informes
-                      </a>
-                      <a class="btn btn-info btn-sm" href="#">
+                      </a><br><br>
+                      <a class="btn btn-info btn-sm" href="{{ route ('proyecto.edit', $proyecto->id)}}">
                           <i class="fas fa-pencil-alt">
                           </i>
-                          Edit
+                          Editar
                       </a>
                       <a class="btn btn-danger btn-sm" href="#">
                           <i class="fas fa-trash">

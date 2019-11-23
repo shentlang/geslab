@@ -36,7 +36,7 @@
              
             </p>
           </a>
-          @if (auth()->user()->role->nombrerol === 2)
+          @if (auth()->user()->role->nombrerol === "admin")
           <ul class="nav nav-treeview">
             <li class="nav-item">
                 <a class="nav-link" href= "{{route('user.index')}}">  <i class="far fa-circle nav-icon"></i><p>lista de usuarios</p>   
