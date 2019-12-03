@@ -46,6 +46,7 @@
             </ul>
           @endif
         </li>
+        <li class="header">----</li>
             
         @endauth
 
@@ -80,7 +81,7 @@
         
           @endauth
         </li>
-          
+        <li class="header">----</li>
         
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
@@ -91,7 +92,7 @@
               </p>
             </a>
             @auth
-                @if (auth()->user()->role->nombrerol === 'Dir. Informatica y Ciencias Exactas'||auth()->user()->role === 'DDICE'||auth()->user()->role === 'DDCEE')
+                @if (auth()->user()->role->nombrerol === 'Dir. Informatica y Ciencias Exactas'||auth()->user()->role->nombrerol === 'Dir. Ciencias Economicas y Empresariales'||auth()->user()->role->nombrerol === 'Dir. Ciencias Contables, Financieras y Economicas'||auth()->user()->role->nombrerol === 'Dir. Ciencias Agronomicas')
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
                       <a href="{{route('docente.index')}}" class="nav-link">
@@ -115,6 +116,7 @@
                 @endif
             @endauth
           </li>
+          <li class="header">----</li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-table"></i>
@@ -124,202 +126,50 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a class="nav-link" href= "{{route('register')}}">  <i class="far fa-circle nav-icon"></i><p>Registrar usuarios</p>   
-                </a>
-              </li> 
              
+              <li class="nav-item">
+                  <a class="nav-link" href= "{{route('doc-tutores.index')}}">  <i class="far fa-circle nav-icon"></i><p>doc. tutores</p>   
+                  </a>
+                </li> 
+                <li class="nav-item">
+                  <a class="nav-link" href= "{{route('doc-tutores.tribunal')}}">  <i class="far fa-circle nav-icon"></i><p>doc. tribunales</p>   
+                  </a>
+                </li> 
+                <li class="nav-item">
+                  <a class="nav-link" href= "{{route('notificaciones.notify')}}">  <i class="far fa-circle nav-icon"></i><p>Notificaciones</p>   
+                  </a>
+                </li> 
+                <li class="nav-item">
+                  <a class="nav-link" href= "{{route('actas.crear')}}">  <i class="far fa-circle nav-icon"></i><p>Actas</p>   
+                  </a>
+                </li> 
+                
+                  
+                    
             </ul>
+           
           </li>
-          <li class="nav-header">EXAMPLES</li>
-          <li class="nav-item">
-            <a href="../calendar.html" class="nav-link">
-              <i class="nav-icon far fa-calendar-alt"></i>
-              <p>
-                Calendario
-                <span class="badge badge-info right">2</span>
-              </p>
-            </a>
-          </li>
+          <li class="header">----</li>
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon far fa-envelope"></i>
-              <p>
-                Notificaciones
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="../mailbox/mailbox.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Inbox</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../mailbox/compose.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Compose</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../mailbox/read-mail.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Read</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-book"></i>
-              <p>
-                info
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="../examples/invoice.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Invoice</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../examples/profile.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Profile</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../examples/e_commerce.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>E-commerce</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../examples/projects.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Projects</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../examples/project_add.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Project Add</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../examples/project_edit.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Project Edit</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../examples/project_detail.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Project Detail</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../examples/contacts.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Contacts</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon far fa-plus-square"></i>
-              <p>
-                Extras
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="../examples/login.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Login</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../examples/register.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Register</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../examples/lockscreen.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Lockscreen</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../examples/legacy-user-menu.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Legacy User Menu</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../examples/language-menu.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Language Menu</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../examples/404.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Error 404</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../examples/500.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Error 500</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../examples/blank.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Blank Page</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../../starter.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Starter Page</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-header">MISCELLANEOUS</li>
-          <li class="nav-item">
-            <a href="https://adminlte.io/docs/3.0" class="nav-link">
-              <i class="nav-icon fas fa-file"></i>
-              <p>informes</p>
-            </a>
-          </li>
-          <li class="nav-header">LABELS</li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon far fa-circle text-danger"></i>
-              <p class="text">Important</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon far fa-circle text-warning"></i>
-              <p>Warning</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon far fa-circle text-info"></i>
-              <p>Informational</p>
-            </a>
-          </li>
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-laptop"></i>
+                <p>
+                  sesiones
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+               
+               
+                  
+                      <li class="nav-item">
+                          <a class="nav-link" href= "{{route('register')}}">  <i class="far fa-circle nav-icon"></i><p>Registrar usuarios</p>   
+                          </a>
+                        </li> 
+                      
+              </ul>
+             
+            </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

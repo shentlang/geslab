@@ -38,10 +38,15 @@
 					<select name="funcion" class="form-control">
                        
 						<option value="tutor" >tutor</option>
-						<option value="tribunal">tribunal</option>
+            <option value="tribunal">tribunal</option>
+            <option value="tribunal">seccionador</option>
+            <option value="tribunal">primer tribunal</option>
 					
 						
-					</select> <br>
+          </select> <br>
+          <label for="funcion">fecha del consejo curricular</label>
+          <input class="form-control" type="date" name="consejo" > <br>
+          
           <button type="submit" class="btn btn-primary">asignar</button>
 
                                </form>

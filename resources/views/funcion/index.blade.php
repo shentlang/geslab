@@ -27,6 +27,7 @@
                   <th>cod</th>
 
                   <th>proyecto</th>
+                  <th>sigla</th>
 
                   <th>docentes guias</th>
 
@@ -41,7 +42,7 @@
                   <th>{{$item->id}}</th>
 
                   <td>{{ $item->nombreproyecto }}</td>
-
+                <td>{{$item->materia->sigla}}</td>
                   <td class="text-center">
                     <ul class="list-unstyled">
                       @foreach($item->docente_proyectos as $docen)

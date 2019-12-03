@@ -22,9 +22,9 @@
               <div class="col-12 col-sm-4">
                 <div class="info-box bg-light">
                   <div class="info-box-content">
-                    <span class="info-box-text text-center text-muted">{{$proyecto->nombreproyecto}}</span>
+                  <small>  <span class="info-box-text text-center text-muted">{{$proyecto->nombreproyecto}}</span>
                     <span
-                      class="info-box-number text-center text-muted mb-0">{{$proyecto->materia->sigla}}</span>
+                      class="info-box-number text-center text-muted mb-0">{{$proyecto->materia->sigla}}</span></small>   
                   </div>
                 </div>
               </div>
@@ -106,38 +106,36 @@
             </div>
           </div>
           <div class="col-12 col-md-12 col-lg-4 order-1 order-md-2">
-            <h3 class="text-primary"><i class="fas fa-paint-brush"></i> AdminLTE v3</h3>
-            <p class="text-muted">Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu
-              stumptown aliqua butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terr.</p>
+            <h3 class="text-primary"><i class="fas fa-paint-brush"></i> Ges. Doc</h3>
+            <p class="text-muted">
+              previsualiza informes realizados por el docente. para realizar un nuevo informe pulse el boton crear informe
+            </p>
             <br>
             <div class="text-muted">
-              <p class="text-sm">Client Company
-                <b class="d-block">Deveint Inc</b>
+              <p class="text-sm">software by 
+                <b class="d-block">UAJMS-FCIGCH</b>
               </p>
-              <p class="text-sm">Project Leader
-                <b class="d-block">Tony Chicken</b>
+              <p class="text-sm">Project Create by
+                <b class="d-block">Daniel M. Nataly S. </b>
               </p>
             </div>
 
-            <h5 class="mt-5 text-muted">Project files</h5>
+            <h5 class="mt-5 text-muted">Project Function</h5>
             <ul class="list-unstyled">
               <li>
-                <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-file-word"></i>
-                  Functional-requirements.docx</a>
+                <a  class="btn-link text-secondary"><i class="far fa-fw fa-file-word"></i>
+                  elaboracion documentos</a>
               </li>
               <li>
-                <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-file-pdf"></i> UAT.pdf</a>
+                <a class="btn-link text-secondary"><i class="far fa-fw fa-file-pdf"></i> informes pdf</a>
               </li>
               <li>
-                <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-envelope"></i>
-                  Email-from-flatbal.mln</a>
+                <a  class="btn-link text-secondary"><i class="far fa-fw fa-envelope"></i>
+                  notificaciones correo</a>
               </li>
               <li>
-                <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-image "></i> Logo.png</a>
-              </li>
-              <li>
-                <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-file-word"></i>
-                  Contract-10_12_2014.docx</a>
+                <a  class="btn-link text-secondary"><i class="far fa-fw fa-file-word"></i>
+                  Registro estudiantil</a>
               </li>
             </ul>
             <div class="text-center mt-5 mb-3">

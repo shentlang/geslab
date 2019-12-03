@@ -44,20 +44,20 @@
 							<div class="form-group">
 								<label for="nombre">Nombres:</label>
 								<input type="text" class="form-control tuInput" value="{{old('nombre')}}" name="nombre"
-									autocomplete="off">
+									autocomplete="off" onkeyup="javascript:this.value=this.value.toUpperCase();" >
 								{!!$errors->first('nombre','<div class="alert alert-danger alert-dismissible">
 										<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
 										<small><i class="icon fas fa-ban"></i> Alerta!:message</small>
 									  </div>')!!} <br>
 								<label for="ape-p">Apellido Paterno:</label>
-								<input type="text" class="form-control tuInput" value="{{old('apellidop')}}" name="apellidop" autocomplete="off">
+								<input type="text" class="form-control tuInput" onkeyup="javascript:this.value=this.value.toUpperCase();" value="{{old('apellidop')}}" name="apellidop" autocomplete="off">
 								{!!$errors->first('apellidop','<div class="alert alert-danger alert-dismissible">
 										<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
 										<small><i class="icon fas fa-ban"></i> Alerta!:message</small>
 									  </div>')!!} <br>
 
 								<label for="ape-m">Apellido Materno</label>
-								<input type="text" class="form-control" value="{{old('apellidom')}}" name="apellidom" autocomplete="off">
+								<input type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" value="{{old('apellidom')}}" name="apellidom" autocomplete="off">
 								<label for="genero">Genero</label>
 								<select name="genero"  class="form-control">
 									<option value="Femenino">Femenino</option>

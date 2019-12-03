@@ -25,15 +25,21 @@ class DocenteproyectoController extends Controller
             } else {
                 if (auth()->user()->role->nombrerol === "Dir. Ciencias Economicas y Empresariales") {
                     # code...
+                    $funciones = Proyecto::where('materia_id','=',4)
+                    ->orWhere('materia_id', 6)->get();
                 } else {
                     # code...
                     if (auth()->user()->role->nombrerol === "Dir. Ciencias Contables, Financieras y Economicas") {
                         # code...
+                        $funciones = Proyecto::where('materia_id','=',2)
+                        ->orWhere('materia_id', 1)->get();
                     } else {
                     if (auth()->user()->role->nombrerol === "Dir. Ciencias Agronomicas") {
                         # code...
+                        $funciones = Proyecto::where('materia_id','=',3)
+                        ->get();
                     } else {
-                        # code...
+                        return redirect('/') ;
                     }
                     
                     }
@@ -74,7 +80,7 @@ class DocenteproyectoController extends Controller
         //
         $proyectos = Proyecto::find($request->proyecto);
         if($proyectos){
-            $proyectos->docentes()->syncWithoutDetaching([$request->input('docente')=>['funcion' => $request->funcion]]);
+            $proyectos->docentes()->syncWithoutDetaching([$request->input('docente')=>['funcion' => $request->funcion,'consejo' => $request->consejo]]);
         }
 
         return redirect()->route('funcion.index');  

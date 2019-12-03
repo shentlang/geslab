@@ -42,12 +42,12 @@
 					<div class="col-md-6">
 					  <div class="form-group">
 							<label for="nombre">Nombres:</label>
-					<input type="text" class="form-control tuInput"   name="nombre" autocomplete="off" >
+					<input type="text" class="form-control tuInput" onkeyup="javascript:this.value=this.value.toUpperCase();"  name="nombre" autocomplete="off" >
 					 <br>
 					<label for="ape-p">Apellido Paterno:</label>
-					<input type="text" class="form-control tuInput" name="apellidop" autocomplete="off">
+					<input type="text" class="form-control tuInput" onkeyup="javascript:this.value=this.value.toUpperCase();" name="apellidop" autocomplete="off">
 					<label for="ape-m">Apellido Materno</label>
-					<input type="text" class="form-control" name="apellidom" autocomplete="off">
+					<input type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" name="apellidom" autocomplete="off">
 					<label for="genero">Genero</label>
 					<select name="genero" class="form-control">
 						<option value="Femenino" selected>Femenino</option>

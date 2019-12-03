@@ -46,20 +46,20 @@
 							<div class="form-group">
 								<label for="nombre">Nombres:</label>
 								<input type="text" class="form-control tuInput"
-									value="{{$estudiantes->persona->nombre}}" name="nombre" autocomplete="off">
+									value="{{$estudiantes->persona->nombre}}" onkeyup="javascript:this.value=this.value.toUpperCase();" name="nombre" autocomplete="off">
 									{!!$errors->first('nombre','<div class="alert alert-danger alert-dismissible">
 											<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
 											<small><i class="icon fas fa-ban"></i> Alerta!:message</small>
 										  </div>')!!} <br>
 								<label for="ape-p">Apellido Paterno:</label>
-								<input type="text" class="form-control tuInput" name="apellidop"
+								<input type="text" class="form-control tuInput" onkeyup="javascript:this.value=this.value.toUpperCase();" name="apellidop"
 									value="{{$estudiantes->persona->apellidop}}" autocomplete="off">
 									{!!$errors->first('apellidop','<div class="alert alert-danger alert-dismissible">
 											<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
 											<small><i class="icon fas fa-ban"></i> Alerta!:message</small>
 										  </div>')!!} <br>
 								<label for="ape-m">Apellido Materno</label>
-								<input type="text" class="form-control" name="apellidom"
+								<input type="text" class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" name="apellidom"
 									value="{{$estudiantes->persona->apellidom}}" autocomplete="off">
 								<label for="genero">Genero</label>
 								<select name="genero" class="form-control">
