@@ -16,7 +16,7 @@
 
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">listado estudiantil</h3>
+              <h3 class="card-title">listado de proyecto asignacion de fechas de defensa</h3>
               <p class="float-right"><a href="{{ route('proyecto.create') }}" class="btn btn-outline-primary">Registrar
                   Proyecto</a></p>
             </div>
@@ -28,12 +28,12 @@
                     <th>id</th>
 
                     <th width="220" class="text-center">nombre del proyecto</th>
-                    <th>lugar de defensa</th>
-                    <th class="text-center">fecha de defensa</th>
+                    <th width="200">lugar de defensa</th>
+                    <th class="text-center">fecha y hora de defensa</th>
                     <th>estado</th>
                     <th>sigla</th>
                     <th  class="text-center">autores</th>
-                    <th width="200" class="text-center">informes</th>
+                    <th  class="text-center">defensa</th>
 
                   </tr>
                 </thead>
@@ -54,15 +54,13 @@
                    
                     <td>{{ $proyecto->lugar }}</td>
                     
-                    <td width="155" class="text-center" style="display: table-cell;
-                    vertical-align: middle;">
-                        <small class="badge badge-success"><i class="far fa-clock"></i> {{ date('d-m-Y', strtotime($proyecto->fechadefensa)) }}  </small>
-                   
+                    <td width="155" class="text-center">
+                        <small class="badge badge-secondary"><i class="far fa-calendar"></i> {{ date('d-m-Y', strtotime($proyecto->fechadefensa)) }}  </small>
+                   <br>
+                   <small class="badge badge-success"><i class="far fa-clock"></i> {{$proyecto->hora}}  </small>
                     </td>
-                  <td style="display: table-cell;
-                  vertical-align: middle;">{{$proyecto->estado}}</td>
-                  <td style="display: table-cell;
-                  vertical-align: middle;"><span class="badge badge-primary">{{$proyecto->materia->sigla}}</span> </td>
+                  <td>{{$proyecto->estado}}</td>
+                  <td><span class="badge badge-primary">{{$proyecto->materia->sigla}}</span> </td>
                     <td class="text-center">
                       <ul class="list-unstyled">
                         @foreach($proyecto->estudiantes as $estudiante)
@@ -71,22 +69,14 @@
                       </ul>
 
                     </td>
-                    <td class="project-actions text-right">
-                      <a class="btn btn-primary btn-sm" href="{{ route ('muestra.show', $proyecto->id)}}">
-                          <i class="fas fa-eye">
-                          </i>
-                          listar informes
-                      </a><br><br>
-                      <a class="btn btn-info btn-sm" href="{{ route ('proyecto.edit', $proyecto->id)}}">
+                    <td>
+                     
+                      <a class="btn btn-info btn-sm" href="{{ route ('defensa.asignar', $proyecto->id)}}">
                           <i class="fas fa-pencil-alt">
                           </i>
-                          Editar
+                          asignar defensa
                       </a>
-                      <a class="btn btn-danger btn-sm" href="#">
-                          <i class="fas fa-trash">
-                          </i>
-                          Delete
-                      </a>
+                     
                   </td>
 
                   </tr>

@@ -42,21 +42,10 @@
 							<div class="form-group">
 								<label for="nombre">Nombre del proyecto:</label>
 								<input type="text" class="form-control tuInput" name="nombre" autocomplete="off">
-								<label for="nombre">lugar de defensa:</label>
-								<input type="text" class="form-control tuInput" name="lugar" autocomplete="off">
+							
 
 							</div>
-							<!-- /.form-group estudiante -->
-							<div class="form-group">
-								<label for="estado">Estado proyecto</label>
-								<select name="estado" class="form-control">
-									<option value="A">APROBADO</option>
-									<option value="R" selected>REPROBADO</option>
-									<option value="P" selected>PENDIENTE</option>
-								</select>
-
-							</div>
-							<!-- /.form-group -->
+						
 						</div>
 						<!-- /.col -->
 
@@ -72,15 +61,12 @@
 									@endforeach()
 								</select>
 							</div>
-							<div class="form-group">
-								<label for="curso">fecha de defensa</label>
-								<input type="date" class="form-control" name="fechadefensa" required>
-							</div>
+						
 
 
 							<div class="form-group">
 								<label>seleccionar autores</label>
-								<select class="select2" multiple="multiple" name="estudiantes[]" id="estudiantes" 
+								<select class="select2" multiple="multiple" name="estudiantes[]" 
 									data-placeholder="Seleccione Estudiantes" style="width: 100%;">
 
 									@foreach($estudiantes as $author)

@@ -16,7 +16,7 @@
 
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">listado tutores</h3>
+              <h3 class="card-title">Notificaciones de Programacion de defensa publica</h3>
               <p class="float-right"><a href="" class="btn btn-outline-primary">Registrar
                   tutor</a></p>
             </div>

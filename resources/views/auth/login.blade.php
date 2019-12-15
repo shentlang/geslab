@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="container">
+<div class="container animated fadeInLeftBig fast delay-2s">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">

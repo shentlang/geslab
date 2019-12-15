@@ -1,24 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html  lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Memorandum</title>
-    
+    <style>
+        @page {
+            margin-top: 0.1em;
+            margin-left: 0.6em;
+        }
+            .page-break {
+                page-break-after: always;
+                
+            }
+            </style>
+            
 </head>
 
-<body style="background-image: url({{asset("assets/lte/dist/img/plantillas.jpg")}})">
-    <hr>
+<body style="
+background: url({{asset("assets/lte/dist/img/plantillas.jpg")}}) no-repeat center center fixed;
+-webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;   
+
+">
+   
    <p style="margin-bottom: 100px; width: 250px"></p><br><br><br><br><br><br><br><br>
 <p style="float:left; width: 20%"> <br><br><br><br><br><br><br><br><br>
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <br></p>
    <div >
 
-        <h1 style="text-align: center">Memorandum Nro</h1>
-        <h2 style="text-align: right">fecha <?php echo date("d-m-Y");?></h2>
+   <h1 style="text-align: center">Memorandum Nro {{$numerito}}</h1>
+        <h2 style="float: right; width: 30%">fecha <?php echo date("d-m-Y");?></h2><br>
         <h2>Señor(a): 
             {{$tutor->docente->persona->nombre}} 
             {{$tutor->docente->persona->apellidop}}
@@ -73,7 +90,8 @@
         <br>
         <h2>facultad de ciencias integradas del gran chaco</h2>
    </div>
-
+   <div class="page-break"></div>
+   <h1>Page 2</h1>
 
 </body>
 

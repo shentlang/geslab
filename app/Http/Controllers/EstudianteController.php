@@ -8,7 +8,7 @@ use App\Http\Requests\CreateMessageRequest;
 use App\Persona;
 use App\Plan;
 use Illuminate\Support\Facades\Crypt;
-use DB;
+
 use Illuminate\Http\Request;
 
 class EstudianteController extends Controller

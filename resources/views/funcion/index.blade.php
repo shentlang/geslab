@@ -27,11 +27,12 @@
                   <th>cod</th>
 
                   <th>proyecto</th>
+                  <th class="text-center col-2">autores</th>
                   <th>sigla</th>
 
                   <th>docentes guias</th>
 
-                  <th class="col-3">asignacion guias</th>
+                  <th class="col-2">guias</th>
 
                 </tr>
               </thead>
@@ -41,36 +42,112 @@
 
                   <th>{{$item->id}}</th>
 
-                  <td>{{ $item->nombreproyecto }}</td>
-                <td>{{$item->materia->sigla}}</td>
+                  <td style="width: 25%">{{ $item->nombreproyecto }}</td>
                   <td class="text-center">
-                    <ul class="list-unstyled">
+                      <ul class="list-unstyled">
+                        @foreach($item->estudiantes as $estudiante)
+                       
+                        <small class="badge badge-primary">{{ $estudiante->persona->nombre }} {{ $estudiante->persona->apellidop }} {{ $estudiante->persona->apellidom }}</small>
+                      
+                        @endforeach
+                      </ul>
+  
+                    </td>
+                <td style="width:5%">{{$item->materia->sigla}}</td>
+                  <td >
+                   
                       @foreach($item->docente_proyectos as $docen)
                       @if ($docen->funcion == 'tutor')
-                      <small class="badge badge-info">
-                        {{$docen->id}} 
-                        {{$docen->funcion}}
-                        {{$docen->docente->persona->nombre}}
-                        {{$docen->docente->persona->apellidop}}
-                        
-                        
-                      </small> <big><a style="color: crimson" href="{{route('delete.clear',[$item->id,$docen->docente_id])}}">
-                          <i class="fas fa-trash"></i> </a></big><br>
-                     
+                    <ul style="list-style-type: none">
+                      <li style="float: left">
+                          <small class="badge badge-info">
+                              {{$docen->id}} 
+                              {{$docen->funcion}}
+                              {{$docen->docente->persona->nombre}}
+                              {{$docen->docente->persona->apellidop}}
+                              
+                            </small>
+                      </li>
+                      <li style="float: left">
+                          <form action="{{route('delete.clear',[$item->id,$docen->docente_id])}}" method="GET">
+                              @csrf
+    
+                              <button type="button" class="btn-danger" style="border-radius: 20px"  data-toggle="modal"
+                              data-target="#modal-primar{{$docen->id}}">
+                              <i class="fas fa-trash"></i> 
+                            </button>
+                            <div class="modal fade" id="modal-primar{{$docen->id}}">
+                                <div class="modal-dialog">
+                                  <div class="modal-content bg-danger">
+                                    <div class="modal-header">
+                                      <h4 class="modal-title">Desea eliminar asignacion??</h4>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span></button>
+                                    </div>
+                                    <div class="modal-body">
+                                      <p> se eliminara la asignacion del docente al proyecto&hellip;</p>
+                                    </div>
+                                    <div class="modal-footer justify-content-between">
+                                      <button type="button" class="btn btn-outline-light"
+                                        data-dismiss="modal">Cancelar</button>
+                                      <button type="submit" class="btn btn-outline-light">Continuar</button>
+                                    </div>
+                                  </div>
+                                  <!-- /.modal-content -->
+                                </div>
+                                <!-- /.modal-dialog -->
+                              </div>
+                          </form>
+                      </li>
+                    </ul>
+              
                       @else
-                      <small class="badge badge-success">
-                        {{$docen->id}}
-                        {{$docen->funcion}}
-                        {{$docen->docente->persona->nombre}}
-                        {{$docen->docente->persona->apellidop}}
-                      </small>
-                      <a  href="{{route('delete.clear',[$item->id,$docen->docente_id])}}">
-                          <i class="fas fa-trash"></i> </a>
-                      <br>
+                     <ul style="list-style-type: none">
+                       <li style="float: left">
+                          <small class="badge badge-success">
+                              {{$docen->id}}
+                              {{$docen->funcion}}
+                              {{$docen->docente->persona->nombre}}
+                              {{$docen->docente->persona->apellidop}}
+                            </small>
+                          
+                       </li>
+                       <li style="float: left">
+                          <form action="{{route('delete.clear',[$item->id,$docen->docente_id])}}" method="GET">
+                              @csrf
+    
+                              <button type="button" class="btn-danger" style="border-radius: 20px"  data-toggle="modal"
+                              data-target="#modal-primar{{$docen->id}}">
+                              <i class="fas fa-trash"></i> 
+                            </button>
+                            <div class="modal fade" id="modal-primar{{$docen->id}}">
+                                <div class="modal-dialog">
+                                  <div class="modal-content bg-danger">
+                                    <div class="modal-header">
+                                      <h4 class="modal-title">Desea eliminar asignacion??</h4>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span></button>
+                                    </div>
+                                    <div class="modal-body">
+                                      <p> se eliminara la asignacion del docente al proyecto&hellip;</p>
+                                    </div>
+                                    <div class="modal-footer justify-content-between">
+                                      <button type="button" class="btn btn-outline-light"
+                                        data-dismiss="modal">Cancelar</button>
+                                      <button type="submit" class="btn btn-outline-light">Continuar</button>
+                                    </div>
+                                  </div>
+                                  <!-- /.modal-content -->
+                                </div>
+                                <!-- /.modal-dialog -->
+                              </div>
+                          </form>
+                       </li>
+                     </ul>
                       
                       @endif
                       @endforeach
-                    </ul>
+                    
 
                   </td>
                   <td><a style="color: firebrick" href="{{route('funcion.show',$item->id)}}">

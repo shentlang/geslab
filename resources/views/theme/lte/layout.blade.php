@@ -24,14 +24,16 @@
   <link rel="stylesheet" href="{{asset("assets/$theme/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css")}}">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css?family=Megrim&display=swap" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css?family=Codystar&display=swap" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css?family=Akronim|Fredericka+the+Great|Londrina+Sketch|Yesteryear&display=swap" rel="stylesheet"> 
   <!-- Bootstrap4 Duallistbox -->
   <link rel="stylesheet" href="{{asset("assets/$theme/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css")}}">
-    <!-- css selec proyecto -->
+    <!-- css selec2 proyecto -->
   <link rel="stylesheet" href="{{asset("assets/$theme/plugins/select2/css/select2.min.css")}}">
   <!-- estilo de tablas -->
   <link rel="stylesheet" href="{{asset("assets/$theme/plugins/datatables/dataTables.bootstrap4.css")}}">
- <!-- date range picker -->
-  <link rel="stylesheet" href="{{asset("assets/$theme/plugins/daterangepicker/daterangepicker.css")}}">
    <!-- SweetAlert2 -->
    <link rel="stylesheet" href="{{asset("assets/$theme/plugins/sweetalert2/sweetalert2.min.css")}}">
    <!-- Toastr -->
@@ -42,7 +44,15 @@
    <link rel="stylesheet" href="{{asset("assets/$theme/plugins/bootstrap-slider/css/bootstrap-slider.min.css")}}">
 </head> 
 <body class="hold-transition sidebar-mini">
-
+    <div class="loader" style=" position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url('https://media.giphy.com/media/PUYgk3wpNk0WA/giphy.gif') 50% 50% no-repeat rgb(249,249,249);
+    opacity: .8;
+"></div>
     <!-- Site wrapper -->
   
     
@@ -74,7 +84,7 @@
 <script src="{{asset("assets/$theme/dist/js/adminlte.min.js")}}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset("assets/$theme/dist/js/demo.js")}}"></script>
-<!-- selec for proyect -->
+<!-- select2 for proyect -->
 <script src="{{asset("assets/$theme/plugins/select2/js/select2.full.min.js")}}"></script>
 <!-- listar el proyecto -->
 <script src="{{asset("assets/$theme/plugins/datatables/jquery.dataTables.js")}}"></script>
@@ -90,9 +100,6 @@
 <script src="{{asset("assets/$theme/plugins/moment/moment.min.js")}}"></script>
 <!-- Bootstrap4 Duallistbox -->
 <script src="{{asset("assets/$theme/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js")}}"></script>
-<!-- daterange picker -->
-
-<script src="{{asset("assets/$theme/plugins/daterangepicker/daterangepicker.js")}}"></script>
 
 <script src="{{asset("assets/$theme/plugins/sweetalert2/sweetalert2.min.js")}}"></script> 
 <script src="{{asset("assets/$theme/plugins/toastr/toastr.min.js")}}"></script> 
@@ -106,7 +113,14 @@
 <script src="{{asset("assets/$theme/plugins/sparkline/jquery.sparkline.min.js")}}"></script>
 <!-- ckeditor -->
 <script src="{{asset("assets/$theme/ckeditor/ckeditor.js")}}"></script>
-
+<!-- animate css -->
+<link rel="stylesheet" href="{{asset("assets/$theme/animate.min.css")}}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript">
+  $(window).load(function() {
+      $(".loader").fadeOut("slow");
+  });
+  </script>
 
 <script>
  CKEDITOR.replace( 'editor1', {
@@ -193,16 +207,7 @@
         });
       });
     </script>
-    <script>
-    var ultimoValorValido = null;
-$("#estudiantes").on("change", function() {
-  if ($("#estudiantes option:checked").length > 2) {
-    $("#estudiantes").val(ultimoValorValido);
-  } else {
-    ultimoValorValido = $("#estudiantes").val();
-  }
-});
-    </script>
+   
     <script type="text/javascript">
       $(function() {
         const Toast = Swal.mixin({

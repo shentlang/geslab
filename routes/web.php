@@ -34,3 +34,6 @@ Route::get('/notificaciones/notify','DocTutorController@notify')->name('notifica
 Route::get('/actas/crear','DocTutorController@actas')->name('actas.crear');
 Route::get('/notificaciones/{email}','EmailController@enviar')->name('notificaciones.email');
 Route::get('/designacion-pdf/{pdf}','PdfController@exportPdf')->name('designacion-pdf.pdf');
+Route::get('/defensa','DefensaController@index')->name('defensa.index');
+Route::get('/defensa/{asignar}/asignar','DefensaController@asignar')->name('defensa.asignar');
+Route::PUT('/defensa/{asignar}','DefensaController@update')->name('defensa.update');

@@ -43,32 +43,10 @@
 							<div class="form-group">
 								<label for="nombre">Nombre del proyecto:</label>
                             <input type="text" class="form-control tuInput" value="{{$proyecto->nombreproyecto}}" name="nombre" autocomplete="off">
-								<label for="nombre">lugar de defensa:</label>
-                            <input type="text" class="form-control tuInput" value="{{$proyecto->lugar}}" name="lugar" autocomplete="off">
+								
 
 							</div>
-							<!-- /.form-group estudiante -->
-							<div class="form-group">
-								<label for="estado">Estado proyecto</label>
-								<select name="estado" class="form-control">
-                                <option value="{{$proyecto->estado}}">
-                                    @if ($proyecto->estado == "P")
-                                        PENDIENTE
-                                    @else
-                                        @if ($proyecto->estado == "R")
-                                            REPROBADO
-                                        @else
-                                            APROBADO
-                                        @endif
-                                    @endif
-                                    V. anterior</option> 
-									<option value="A">APROBADO</option>
-									<option value="R">REPROBADO</option>
-									<option value="P">PENDIENTE</option>
-								</select>
-
-							</div>
-							<!-- /.form-group -->
+						
 						</div>
 						<!-- /.col -->
 
@@ -82,10 +60,7 @@
 								
 								</select>
 							</div>
-							<div class="form-group">
-								<label for="curso">fecha de defensa</label>
-                            <input type="date" class="form-control" value="{{$proyecto->fechadefensa}}" name="fechadefensa" required>
-							</div>
+						
 
 
 							<div class="form-group">

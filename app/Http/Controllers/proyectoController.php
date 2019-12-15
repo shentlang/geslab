@@ -7,7 +7,6 @@ use App\Proyecto;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Materia;
-use DB;
 class ProyectoController extends Controller
 {
     /**
@@ -130,20 +129,33 @@ class ProyectoController extends Controller
      */
     public function store(Request $request)
     {
-       $proyecto = Proyecto::create([
-            'nombreproyecto' => $request->input('nombre'), 
-            'lugar' => $request->input('lugar'), 
-            'fechadefensa' => $request->input('fechadefensa'), 
-            'estado' => $request->input('estado'),
-            'materia_id' => $request->input('sigla'),
-            'user_id' => auth()->user()->id
+      
+      
+      /* $proyectos = Proyecto::where([
+        ['fechadefensa', '=', $request->input('fechadefensa')],
+        ['hora', '=', $request->input('hora')]
+    ])->get();
+         if(count($proyectos) >= 1)  {
+            echo 'datos ya registrados'; echo $proyectos;
+        } else {
             
-        ]);
-        if($proyecto){
-            $proyecto->estudiantes()->sync($request->input('estudiantes'));
-        }
-        return redirect()->route('proyecto.index');  
-      //  return $request->all();
+        }*/
+        
+       //return $proyectos->all();
+      // return $request->all();
+
+       $proyecto = Proyecto::create([
+        'nombreproyecto' => $request->input('nombre'), 
+        'materia_id' => $request->input('sigla'),
+        'user_id' => auth()->user()->id
+        
+    ]);
+    if($proyecto){
+        $proyecto->estudiantes()->sync($request->input('estudiantes'));
+    }
+    return redirect()->route('proyecto.index');
+
+
     }
 
     /**
@@ -247,10 +259,7 @@ class ProyectoController extends Controller
         $proyecto = Proyecto::find($id);
        
         $proyecto->nombreproyecto = $request->nombre;
-        $proyecto->lugar = $request->lugar;
-        $proyecto->estado = $request->estado;
         $proyecto->materia_id = $request->sigla;
-        $proyecto->fechadefensa = $request->fechadefensa;
         $proyecto->save();
         if($proyecto){
             $proyecto->estudiantes()->sync($request->input('estudiantes'));

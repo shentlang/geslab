@@ -33,7 +33,7 @@
                     <th class="text-center">fecha de defensa </th>
                     <th>sigla</th>
                     <th>proyecto</th>
-                    <th  class="text-center">autores</th>
+                    <th  class="text-center">tribunales</th>
                     <th width="200" class="text-center">informes</th>
 
                   </tr>
@@ -71,18 +71,9 @@
                       <a class="btn btn-primary btn-sm" href="">
                           <i class="fas fa-eye">
                           </i>
-                          listar informes
-                      </a><br><br>
-                      <a class="btn btn-info btn-sm" href="">
-                          <i class="fas fa-pencil-alt">
-                          </i>
-                          Editar
-                      </a>
-                      <a class="btn btn-danger btn-sm" href="#">
-                          <i class="fas fa-trash">
-                          </i>
-                          Delete
-                      </a>
+                          elaborar Acta
+                      </a><br>
+                    
                   </td>
 
                   </tr>

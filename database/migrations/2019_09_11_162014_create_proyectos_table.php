@@ -18,6 +18,7 @@ class CreateProyectosTable extends Migration
             $table->text('nombreproyecto');
             $table->text('lugar')->nullable();
             $table->date('fechadefensa')->nullable();
+            $table->time('hora')->nullable();
             $table->string('estado')->default('Pendiente');
             $table->unsignedBigInteger('materia_id');
             $table->foreign('materia_id')->references('id')->on('materias')->onDelete('cascade');

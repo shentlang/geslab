@@ -26,15 +26,15 @@
 
           <div class="card-header">
             <h3 class="card-title">listado estudiantil</h3>
-            <p class="float-right"><a href="{{ route('estudiante.create') }}" class="btn btn-outline-primary">Registrar
+            <p class="float-right animated rotateInDownRight slow"><a href="{{ route('estudiante.create') }}" class="btn btn-outline-primary">Registrar
                 Estudiante</a></p>
 
           </div>
           <!-- /.card-header -->
-          <div class="card-body table-responsive p-0">
+          <div class="card-body table-responsive p-0 animated zoomInUp slow">
 
 
-            <table id="example1" class="table table-bordered table-striped">
+            <table id="example1" class="table table-bordered table-striped ">
               <thead class="thead-dark">
                 <tr>
                   <th>Nombre (es) del estudiante</th>
@@ -50,17 +50,17 @@
               <tbody>
                 @foreach ($estudiantes as $item)
                 <tr>
-                  <td><a href="{{ route ('estudiante.show', $item->id)}}">
-                      {{$item->persona->id}}
-                      --{{$item->persona->nombre}}
-                    </a>
+                  <td>
+                      
+                    {{$item->persona->nombre}}
+                      
                   </td>
                   <td>{{$item->persona->apellidop}}</td>
                   <td>{{$item->persona->apellidom}}</td>
-                  <td>{{$item->persona->cedula}}</td>
+                  <td><small>{{$item->persona->cedula}}</small></td>
                   <td>{{$item->persona->genero}}</td>
-                  <td>{{$item->id}}--{{$item->ru}}</td>
-                  <td>{{$item->carrera}}</td>
+                  <td><small class="badge badge-warning" >{{$item->ru}}</small></td>
+                  <td><small class="badge badge-info">{{$item->carrera}}</small></td>
                   <td><a class="btn btn-outline-danger btn-sm"
                       href="{{route('estudiante.edit',Crypt::encrypt($item->id))}}"><i class="fas fa-edit"></i>
                       editar</a> </td>

@@ -9,13 +9,13 @@ use Barryvdh\DomPDF\Facade as PDF;
 class PdfController extends Controller
 {
     //
-    public function exportPdf($id){
+    public function exportPdf(Request $request,$id){
 
         $tutor = Docente_proyecto::find($id);
-
-        $pdf = PDF::loadView('pdf.memot', compact('tutor'));
-       return $pdf->download('nombrepdf.pdf');
-      // return $pdf->stream();
+        $numerito = $request->input('numero');
+        $pdf = PDF::loadView('pdf.memot', compact('tutor','numerito'));
+     //  return $pdf->download('Documento.pdf');
+       return $pdf->stream();
 
     }
 }

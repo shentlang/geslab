@@ -1,11 +1,11 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="#" class="brand-link">
+    <a href="#" class="brand-link ">
       <img src="{{asset("assets/lte/dist/img/FCIGCH11.jpg")}}"
-           alt="AdminLTE Logo"
-           class="brand-image img-circle elevation-3"
+           alt="FCIGCH Logo"
+           class="brand-image img-circle elevation-3 animated infinite flip  slower"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">SGD FCIGCH</span>
+      <span class="brand-text font-weight-light ">SGD FCIGCH</span>
     </a>
 
     <!-- Sidebar -->
@@ -25,17 +25,17 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-         
+               <li class="nav-item has-treeview">
+                  <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-copy"></i>
+                    <p>
+                      Usuarios
+                      <i class="fas fa-angle-left right"></i>
+                     
+                    </p>
+                  </a> 
         @auth
-        <li class="nav-item has-treeview">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-copy"></i>
-            <p>
-              Usuarios
-              <i class="fas fa-angle-left right"></i>
-             
-            </p>
-          </a>
+        
           @if (auth()->user()->role->nombrerol === "admin")
           <ul class="nav nav-treeview">
             <li class="nav-item">
@@ -45,11 +45,11 @@
               
             </ul>
           @endif
-        </li>
-        <li class="header">----</li>
+       
             
         @endauth
-
+      </li>
+      <li class="header">----</li>
         <li class="nav-item has-treeview">
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-copy"></i>
@@ -107,9 +107,9 @@
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a href="../forms/editors.html" class="nav-link">
+                      <a href="{{route('defensa.index')}}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Editors</p>
+                        <p>defensas</p>
                       </a>
                     </li>
                   </ul>  
@@ -118,37 +118,42 @@
           </li>
           <li class="header">----</li>
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-table"></i>
-              <p>
-                ADMINISTRATIVOS
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-table"></i>
+                <p>
+                  ADMINISTRATIVOS
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+         @auth
+             @if (auth()->user()->role->nombrerol === 'admin')
              
-              <li class="nav-item">
-                  <a class="nav-link" href= "{{route('doc-tutores.index')}}">  <i class="far fa-circle nav-icon"></i><p>doc. tutores</p>   
-                  </a>
-                </li> 
-                <li class="nav-item">
-                  <a class="nav-link" href= "{{route('doc-tutores.tribunal')}}">  <i class="far fa-circle nav-icon"></i><p>doc. tribunales</p>   
-                  </a>
-                </li> 
-                <li class="nav-item">
-                  <a class="nav-link" href= "{{route('notificaciones.notify')}}">  <i class="far fa-circle nav-icon"></i><p>Notificaciones</p>   
-                  </a>
-                </li> 
-                <li class="nav-item">
-                  <a class="nav-link" href= "{{route('actas.crear')}}">  <i class="far fa-circle nav-icon"></i><p>Actas</p>   
-                  </a>
-                </li> 
-                
-                  
+                <ul class="nav nav-treeview">
+                 
+                  <li class="nav-item">
+                      <a class="nav-link" href= "{{route('doc-tutores.index')}}">  <i class="far fa-circle nav-icon"></i><p>doc. tutores</p>   
+                      </a>
+                    </li> 
+                    <li class="nav-item">
+                      <a class="nav-link" href= "{{route('doc-tutores.tribunal')}}">  <i class="far fa-circle nav-icon"></i><p>doc. tribunales</p>   
+                      </a>
+                    </li> 
+                    <li class="nav-item">
+                      <a class="nav-link" href= "{{route('notificaciones.notify')}}">  <i class="far fa-circle nav-icon"></i><p>Notificaciones</p>   
+                      </a>
+                    </li> 
+                    <li class="nav-item">
+                      <a class="nav-link" href= "{{route('actas.crear')}}">  <i class="far fa-circle nav-icon"></i><p>Actas</p>   
+                      </a>
+                    </li> 
                     
-            </ul>
-           
-          </li>
+                      
+                        
+                </ul>
+               
+              </li>  
+             @endif
+         @endauth
           <li class="header">----</li>
           <li class="nav-item has-treeview">
               <a href="#" class="nav-link">

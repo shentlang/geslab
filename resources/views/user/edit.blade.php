@@ -40,7 +40,7 @@
                     
                                                 </select><br>
                                                 <a href="{{ route('user.index') }}" class="btn btn-danger">Cancelar</a>
-                                                <button type="submit" class="btn btn-primary">editar nota</button>
+                                                <button type="submit" class="btn btn-primary">editar rol</button>
                                             </form>
                     
                                         </div>
