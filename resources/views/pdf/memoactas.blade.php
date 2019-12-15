@@ -73,7 +73,55 @@ background: url({{asset("assets/lte/dist/img/plantillas.jpg")}}) no-repeat cente
 </p>
    <div style="float: left">
 
-    
+    @php
+          $res = "";
+        $unidad = ["cero", "uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve"];
+        $decenaEspecial = ["once", "donce", "trence", "catorce", "quince", "dieciseis", "diecisiete", "dieciocho", "diecinueve"];
+        $decena = ["diez", "veinte", "treinta", "cuarenta", "cincuenta", "sesenta", "setenta", "ochenta", "noventa"];
+        $centena = ["ciento", "doscientos", "trescientos", "cuatrocientos", "quinientos", "seiscientos", "setecientos", "ochocientos", "novecientos"];
+        $pro=($estudiantes->nota)/2;
+        $numero=round($pro, 0, PHP_ROUND_HALF_UP);
+        if ($numero < 1000) {
+            $d1 = "";
+            $d2 = "";
+            $d3 = "";
+            $numtexto= (string)$numero;
+            $d1 = substr($numtexto, 0, 1);
+            $d2 = substr($numtexto, 1, 1);
+            $d3 = substr($numtexto, 2, 1);
+            //echo "DIGITO 01 : ${d1} <br> DIGIGITO 02 : ${d2} <br> DIGITO 03 : ${d3} <br>";
+            if ($numero <= 10) {
+                if ($numero < 10) {
+                    $res = $unidad[$numero];
+                } else {
+                    $res = $decena[$d2];
+                }
+            } else if ($numero < 20) {
+                $numero -= 11;
+                $res = $decenaEspecial[$numero];
+            } else if ($numero < 100) {
+                if ($d2 == 0) {
+                    $numero /= 10;
+                    $res = $decena[$numero - 1];
+                } else {
+                    $res = $decena[$d1 - 1] . " y " . $unidad[$d2];
+                }
+            } else if ($numero < 1000) {
+                if ($d2 == 0 && $d3 == 0) {
+                    $res = "Cien";
+                } else if ($d3 == 0) {
+                    $res = $centena[$d1 - 1] . " " . $decena[$d2 - 1];
+                } else if ($d2 == 0) {
+                    $res = $centena[$d1 - 1] . " " . $unidad[$d3];
+                } else {
+                    $res = $centena[$d1 - 1] . " " . $decena[$d2 - 1] . " y " . $unidad[$d3];
+                }
+            }
+        } else {
+            $res = "MIL";
+        }
+
+    @endphp
 <br><table border="1">
        
         <thead >
@@ -87,9 +135,12 @@ background: url({{asset("assets/lte/dist/img/plantillas.jpg")}}) no-repeat cente
                      </tr>
         </thead>
          <tr>
-         <td>Docente de la Materia (50%)</td><td style="text-align: center">{{$estudiantes->nota}}</td><td>@php
-           $pro=($estudiantes->nota)/2;  echo $pro;
-         @endphp</td><td></td>
+         <td>Docente de la Materia (50%)</td><td style="text-align: center">{{$estudiantes->nota}}</td>
+         <td style="text-align: center" >@php
+            echo round($pro, 0, PHP_ROUND_HALF_UP);
+         @endphp</td><td>@php
+             echo $res;
+         @endphp</td>
          </tr>
          <tr>
          <td>Tribunal de la Defensa (50%)</td><td></td><td></td><td></td>
