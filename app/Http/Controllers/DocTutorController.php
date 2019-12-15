@@ -22,11 +22,19 @@ class DocTutorController extends Controller
 
     public function tribunal(){
 
-        $docente = Docente_proyecto::where('funcion', '=','tribunal')->get();
-        return view('Doc-tutores.index', compact('docente'));
+        $docente = Docente_proyecto::get();
+        return view('Doc-tutores.tribunal', compact('docente'));
     
     
         }
+        public function defensatribunal(){
+
+            $docente = Docente_proyecto::get();
+            return view('Doc-tutores.progdefensa', compact('docente'));
+        
+        
+            }
+
         public function notify(){
 
             $docente = Docente_proyecto::get();

@@ -139,6 +139,10 @@
                       </a>
                     </li> 
                     <li class="nav-item">
+                        <a class="nav-link" href= "{{route('doc-tutores.defensa')}}">  <i class="far fa-circle nav-icon"></i><p>memo. defensa</p>   
+                        </a>
+                      </li> 
+                    <li class="nav-item">
                       <a class="nav-link" href= "{{route('notificaciones.notify')}}">  <i class="far fa-circle nav-icon"></i><p>Notificaciones</p>   
                       </a>
                     </li> 

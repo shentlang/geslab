@@ -34,7 +34,7 @@
           <div class="card-body table-responsive p-0 animated zoomInUp slow">
 
 
-            <table id="example1" class="table table-bordered table-striped ">
+            <table id="example1" class="table table-bordered table-striped">
               <thead class="thead-dark">
                 <tr>
                   <th>Nombre (es) del estudiante</th>

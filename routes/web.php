@@ -30,10 +30,14 @@ Route::get('/muestra/{muestra}','MostrarController@mostrar')->name('muestra.show
 Route::get('/delete/{delete}/{delete2}','EliminarController@destroy')->name('delete.clear');
 Route::get('/doc-tutores','DocTutorController@index')->name('doc-tutores.index');
 Route::get('/doc-tutores/tribunal','DocTutorController@tribunal')->name('doc-tutores.tribunal');
+Route::get('/doc-tutores/defensa','DocTutorController@defensatribunal')->name('doc-tutores.defensa');
 Route::get('/notificaciones/notify','DocTutorController@notify')->name('notificaciones.notify');
 Route::get('/actas/crear','DocTutorController@actas')->name('actas.crear');
 Route::get('/notificaciones/{email}','EmailController@enviar')->name('notificaciones.email');
 Route::get('/designacion-pdf/{pdf}','PdfController@exportPdf')->name('designacion-pdf.pdf');
+Route::get('/designacion-pdf2/{pdf}','PdfController@exportPdf2')->name('designacion-pdf2.pdf');
+Route::get('/designacion-pdf3/{pdf}','PdfController@exportPdf3')->name('designacion-pdf3.pdf');
+Route::get('/designacion-pdf4/{pdf}','PdfController@exportPdf4')->name('designacion-pdf4.pdf');
 Route::get('/defensa','DefensaController@index')->name('defensa.index');
 Route::get('/defensa/{asignar}/asignar','DefensaController@asignar')->name('defensa.asignar');
 Route::PUT('/defensa/{asignar}','DefensaController@update')->name('defensa.update');

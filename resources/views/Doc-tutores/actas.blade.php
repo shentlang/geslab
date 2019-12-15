@@ -25,7 +25,7 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead class="thead-dark">
                   <tr>
-                    <th>id</th>
+                    
 
                     <th width="220" class="text-center">nombre (s)</th>
                     <th>apellidos</th>
@@ -33,6 +33,7 @@
                     <th class="text-center">fecha de defensa </th>
                     <th>sigla</th>
                     <th>proyecto</th>
+                    
                     <th  class="text-center">tribunales</th>
                     <th width="200" class="text-center">informes</th>
 
@@ -41,7 +42,7 @@
                
                   @foreach($estudiante as $estudiantes)
                   <tr>
-                    <th scope="row" class="text-center">{{ $estudiantes->id }}</th>
+                   
 
                     <td >
                         <a>
@@ -59,6 +60,7 @@
                     </td>
                   <td>{{$estudiantes->proyecto->materia->sigla}}</td>
                   <td><span class="badge badge-primary">{{$estudiantes->proyecto->nombreproyecto}}</span> </td>
+                 
                     <td class="text-center">
                       <ul class="list-unstyled">
                         @foreach($estudiantes->proyecto->docente_proyectos as $tutor)
@@ -68,11 +70,19 @@
 
                     </td>
                     <td class="project-actions text-right">
-                      <a class="btn btn-primary btn-sm" href="">
-                          <i class="fas fa-eye">
-                          </i>
-                          elaborar Acta
-                      </a><br>
+                     
+                      @if ($estudiantes->proyecto->estado == "APROBADO")
+                      <form action="{{route('designacion-pdf4.pdf',$estudiantes->id)}}" method="GET">
+                          @csrf
+                          <input name="numero" type="number">
+      
+                          <button type="submit" class="btn btn-primary"><i class="far fa-fw fa-file-pdf">
+                            </i>
+                            elaborar Acta de defensa</button>
+                        </form>
+                      @else
+                      {{$estudiantes->proyecto->estado}}
+                      @endif
                     
                   </td>
 

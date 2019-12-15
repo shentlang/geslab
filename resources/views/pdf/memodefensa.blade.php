@@ -45,8 +45,10 @@ background: url({{asset("assets/lte/dist/img/plantillas.jpg")}}) no-repeat cente
         
         <p style="font-family: Lucida Console,Lucida Sans Typewriter,monaco,Bitstream Vera Sans Mono,monospace;font-size: 12pt"> De mi consideracion:</p>
         <p style="font-family: Lucida Console,Lucida Sans Typewriter,monaco,Bitstream Vera Sans Mono,monospace;font-size: 12pt">
-            Tengo a bien comunicar a Ud. que conforme a reunión del Consejo de Planeación y Seguimiento Curricular de la
-            carrera de 
+                Tengo a bien comunicar a Ud. que se ha programado la Defensa Pública del trabajo de grado de UNV(S) 
+                @foreach ($tutor->proyecto->estudiantes as $item)
+                {{$item->persona->nombre}} {{$item->persona->apellidop}} {{$item->persona->apellidom}}. 
+            @endforeach de la carrera de 
             @if ($tutor->proyecto->materia->sigla == "INF - 501")
             Ing. Informática,
             @else
@@ -76,11 +78,8 @@ background: url({{asset("assets/lte/dist/img/plantillas.jpg")}}) no-repeat cente
                     @endif
                 @endif
             @endif
-            efectuado en fecha {{ date('d-m-Y', strtotime($tutor->consejo)) }} , ha sido designado(a) {{$tutor->funcion}} del trabajo de
-            tesis titulado {{$tutor->proyecto->nombreproyecto}} presentado por UNIV. 
-            @foreach ($tutor->proyecto->estudiantes as $item)
-                {{$item->persona->nombre}} {{$item->persona->apellidop}} {{$item->persona->apellidom}}. 
-            @endforeach
+            para el dia {{ date('d-m-Y', strtotime($tutor->proyecto->fechadefensa)) }} a horas {{$tutor->proyecto->hora}} en el 
+            {{$tutor->proyecto->lugar}}
             <br>
             <br>
             Sin otro particular, saludo a Ud. atentamente.
@@ -92,10 +91,6 @@ background: url({{asset("assets/lte/dist/img/plantillas.jpg")}}) no-repeat cente
         <br>
         <h3 style="position:absolute; left: 25%">D E C A N O</h3><br>
         <h2 style="text-align: left">facultad de ciencias integradas del gran chaco</h2>
-   </div>
-  
-   
-
 </body>
 
 </html>

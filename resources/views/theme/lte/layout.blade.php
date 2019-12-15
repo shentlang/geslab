@@ -7,6 +7,9 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <STYLE>
+      .invisible { visibility : hidden }
+      </STYLE>
   <!-- Font Awesome -->
  
   <link rel="stylesheet" href="{{asset("assets/$theme/plugins/fontawesome-free/css/all.min.css")}}">
@@ -44,7 +47,7 @@
    <link rel="stylesheet" href="{{asset("assets/$theme/plugins/bootstrap-slider/css/bootstrap-slider.min.css")}}">
 </head> 
 <body class="hold-transition sidebar-mini">
-    <div class="loader" style=" position: fixed;
+    <div class="loader" id="loading" style=" position: fixed;
     left: 0px;
     top: 0px;
     width: 100%;
@@ -115,11 +118,16 @@
 <script src="{{asset("assets/$theme/ckeditor/ckeditor.js")}}"></script>
 <!-- animate css -->
 <link rel="stylesheet" href="{{asset("assets/$theme/animate.min.css")}}">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
 <script type="text/javascript">
-  $(window).load(function() {
-      $(".loader").fadeOut("slow");
-  });
+  window.addEventListener('load', () =>{
+
+  document.getElementById('loading').className = 'invisible';
+
+
+
+
+  })
   </script>
 
 <script>

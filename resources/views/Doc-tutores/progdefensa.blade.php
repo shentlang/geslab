@@ -16,7 +16,7 @@
 
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Notificaciones de Programacion de defensa publica</h3>
+              <h3 class="card-title">Memos de notificaciones de Programacion de defensa publica</h3>
               <p class="float-right"><a href="" class="btn btn-outline-primary">Registrar
                   tutor</a></p>
             </div>
@@ -65,10 +65,14 @@
 
                     </td>
                     <td class="project-actions text-right">
-                      <a class="btn btn-outline-primary btn-sm"
-                      href="{{route('notificaciones.email',$tutor->id)}}"><i class="far fa-envelope"></i>
-                      enviar mail</a>
-                      <br>
+                            <form action="{{route('designacion-pdf3.pdf',$tutor->id)}}" method="GET">
+                                    @csrf
+                                    <input name="numero" type="number">
+                
+                                    <button type="submit" class="btn btn-primary"><i class="far fa-fw fa-file-pdf">
+                                      </i>
+                                      elaborar documento defensa</button>
+                                  </form>
                     
                   </td>
 

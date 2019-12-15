@@ -32,9 +32,8 @@ background: url({{asset("assets/lte/dist/img/plantillas.jpg")}}) no-repeat cente
    
    <div style="width: 50%;height: 13%"></div>
 <div style="float:left; width: 20%; height: 85%"></div>
-   <div >
-
-   <h1 style="text-align: center">Memorandum Nº {{$numerito}}/<?php echo date("Y");?></h1>
+   <div>
+        <h1 style="text-align: center">Memorandum Nº {{$numerito}}/<?php echo date("Y");?></h1>
         <h3 style="float: right; width: 30%">fecha <?php echo date("d-m-Y");?></h3><br>
         <h3>Señor(a): 
             {{$tutor->docente->persona->nombre}} 
@@ -42,7 +41,6 @@ background: url({{asset("assets/lte/dist/img/plantillas.jpg")}}) no-repeat cente
             {{$tutor->docente->persona->apellidom}}</h3>
         <h3 style="position:absolute; left: 11%">Docente de la facultad</h3><br><br>
         <h2 style="font-family: Lucida Console,Lucida Sans Typewriter,monaco,Bitstream Vera Sans Mono,monospace;font-size: 12pt">Presente.-</h2>
-        
         <p style="font-family: Lucida Console,Lucida Sans Typewriter,monaco,Bitstream Vera Sans Mono,monospace;font-size: 12pt"> De mi consideracion:</p>
         <p style="font-family: Lucida Console,Lucida Sans Typewriter,monaco,Bitstream Vera Sans Mono,monospace;font-size: 12pt">
             Tengo a bien comunicar a Ud. que conforme a reunión del Consejo de Planeación y Seguimiento Curricular de la
@@ -76,24 +74,27 @@ background: url({{asset("assets/lte/dist/img/plantillas.jpg")}}) no-repeat cente
                     @endif
                 @endif
             @endif
-            efectuado en fecha {{ date('d-m-Y', strtotime($tutor->consejo)) }} , ha sido designado(a) {{$tutor->funcion}} del trabajo de
-            tesis titulado {{$tutor->proyecto->nombreproyecto}} presentado por UNIV. 
+            ha sido designado(a) tribunal del trabajo de
+            grado titulado {{$tutor->proyecto->nombreproyecto}} presentado por UNIV. 
             @foreach ($tutor->proyecto->estudiantes as $item)
                 {{$item->persona->nombre}} {{$item->persona->apellidop}} {{$item->persona->apellidom}}. 
             @endforeach
             <br>
             <br>
+            En tal sentido, se solicita a Ud. proceder a la revisión del documento adjunto y emitir el informe valorativo correspondiente, dentro del plazo establecido según reglamento de 5 días a partir de la recepción del documento.
+            <br><br>
             Sin otro particular, saludo a Ud. atentamente.
-        </p>
-        <br>
+            <br>
         <br>
         <br>
         <br>
         <br>
         <h3 style="position:absolute; left: 25%">D E C A N O</h3><br>
         <h2 style="text-align: left">facultad de ciencias integradas del gran chaco</h2>
+
+        </p>  
    </div>
-  
+
    
 
 </body>
