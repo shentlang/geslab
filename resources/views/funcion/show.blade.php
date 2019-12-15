@@ -26,11 +26,15 @@
                                <select name="proyecto" class="form-control">
                                   <option value="{{$proyectos->id}}"select>{{$proyectos->nombreproyecto}}</option>                
                     </select>
-                    <label for="docente">docente:</label>
-                    <select name="docente" class="form-control">
-                      @foreach ($docentes as $docente)
-                      <option value="{{$docente->id}}"select>{{$docente->titulado}} {{$docente->persona->nombre}}</option>       
-                      @endforeach
+                    
+                    <div class="form-group">
+                        <label for="docente">docente:</label>
+                        <select name="docente" class="form-control select2" style="width: 100%;">
+                          @foreach ($docentes as $docente)
+                          <option value="{{$docente->id}}"select>{{$docente->titulado}} {{$docente->persona->nombre}}</option>       
+                          @endforeach
+                    </div>
+                   
                                
           </select>
 
@@ -44,6 +48,10 @@
 					
 						
           </select> <br>
+         
+
+
+
           <label for="funcion">fecha del consejo curricular</label>
           <input class="form-control" type="date" name="consejo" > <br>
           

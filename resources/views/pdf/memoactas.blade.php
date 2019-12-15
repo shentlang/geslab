@@ -160,7 +160,7 @@ background: url({{asset("assets/lte/dist/img/plantillas.jpg")}}) no-repeat cente
    
     <p style="text-indent: 30px;text-align: justify; width: 90%;font-family:Arial, Helvetica, sans-serif;font-size: 12pt">
             Yacuiba ……. marzo de 2019
-    </p><br>
+    </p><br><br><br>
 
 
     <div style="background-color: blue;float: left; width: 25%; height: 13%">
@@ -169,12 +169,20 @@ background: url({{asset("assets/lte/dist/img/plantillas.jpg")}}) no-repeat cente
     <div style="background-color: brown;float: left; width: 25%; height: 13%">
 
         </div>
-    
-    <div style="background-color: blue;float: left; width: 25%; height: 13%">
+        @foreach($estudiantes->proyecto->docente_proyectos as $tutor)
+    <div style="background-color: blue; float: left; width: 25%; height: 13%">
+            <p style="text-indent: 30px;text-align: center; width: 90%;font-family:Arial, Helvetica, sans-serif;font-size: 12pt">
+                  <br>------------------------------ <br>
+                    {{ $tutor->docente->persona->nombre }} {{ $tutor->docente->persona->apellidop }} <br>    TRIBUNAL EVALUADOR
 
+            </p> 
+           
         </div>
- 
-       
+        <p style="text-indent: 30px;text-align: justify; width: 90%;font-family:Arial, Helvetica, sans-serif;font-size: 12pt">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   
+                </p>
+        @endforeach
+        
 
            
      
