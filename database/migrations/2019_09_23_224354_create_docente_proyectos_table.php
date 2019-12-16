@@ -20,7 +20,7 @@ class CreateDocenteProyectosTable extends Migration
             $table->unsignedBigInteger('proyecto_id');
             $table->foreign('proyecto_id')->references('id')->on('proyectos')->onDelete('cascade');
             $table->string('funcion', 30);
-            $table->date('consejo');
+            $table->date('consejo')->nullable();
             $table->timestamps();
         });
     }

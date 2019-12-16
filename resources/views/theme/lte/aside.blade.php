@@ -92,7 +92,7 @@
               </p>
             </a>
             @auth
-                @if (auth()->user()->role->nombrerol === 'Dir. Informatica y Ciencias Exactas'||auth()->user()->role->nombrerol === 'Dir. Ciencias Economicas y Empresariales'||auth()->user()->role->nombrerol === 'Dir. Ciencias Contables, Financieras y Economicas'||auth()->user()->role->nombrerol === 'Dir. Ciencias Agronomicas')
+                @if (auth()->user()->role->nombrerol === 'admin'||auth()->user()->role->nombrerol === 'Dir. Informatica y Ciencias Exactas'||auth()->user()->role->nombrerol === 'Dir. Ciencias Economicas y Empresariales'||auth()->user()->role->nombrerol === 'Dir. Ciencias Contables, Financieras y Economicas'||auth()->user()->role->nombrerol === 'Dir. Ciencias Agronomicas')
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
                       <a href="{{route('docente.index')}}" class="nav-link">

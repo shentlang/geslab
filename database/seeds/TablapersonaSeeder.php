@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
+use Illuminate\Support\Facades\DB;
 
 class TablapersonaSeeder extends Seeder
 {
@@ -16,7 +17,7 @@ class TablapersonaSeeder extends Seeder
        
         $faker = Faker::create();
         for ($i=0; $i < 50; $i++) {
-            \DB::table('persona')->insert(array(
+            DB::table('persona')->insert(array(
                    'nombre' => $faker->firstNameMale,
                   // 'nombre'  => $faker->randomElement(),
                    'apellidop' => $faker->lastName,

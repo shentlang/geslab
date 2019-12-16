@@ -52,7 +52,7 @@
                         </small>
                     </td>
                    
-                    <td>{{ $proyecto->lugar }}</td>
+                    <td>{{ $proyecto->lugar->aula }}</td>
                     
                     <td width="155" class="text-center">
                         <small class="badge badge-secondary"><i class="far fa-calendar"></i> {{ date('d-m-Y', strtotime($proyecto->fechadefensa)) }}  </small>

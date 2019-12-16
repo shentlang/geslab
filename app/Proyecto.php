@@ -41,4 +41,19 @@ class Proyecto extends Model
 
     return $this->belongsTo(Materia::class);
   }
+  public function pretribunal()
+  {
+
+    return $this->belongsTo(Pretribunal::class);
+  }
+  public function decano()
+  {
+
+    return $this->belongsTo(Decano::class);
+  }
+  public function lugar()
+  {
+
+    return $this->belongsTo(Lugar::class);
+  }
 }

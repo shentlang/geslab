@@ -28,7 +28,7 @@
                     <th>id</th>
 
                     <th width="220" class="text-center">nombre del proyecto</th>
-                    <th>lugar de defensa</th>
+                    
                     <th class="text-center">fecha de defensa</th>
                     <th>estado</th>
                     <th>sigla</th>
@@ -52,18 +52,16 @@
                         </small>
                     </td>
                    
-                    <td>{{ $proyecto->lugar }}</td>
+                   
                     
-                    <td width="155" class="text-center" style="display: table-cell;
-                    vertical-align: middle;">
+                    <td width="155" class="text-center" >
                         <small class="badge badge-success"><i class="far fa-clock"></i> {{ date('d-m-Y', strtotime($proyecto->fechadefensa)) }}  </small>
                    
                     </td>
-                  <td style="display: table-cell;
-                  vertical-align: middle;">{{$proyecto->estado}}</td>
-                  <td style="display: table-cell;
-                  vertical-align: middle;"><span class="badge badge-primary">{{$proyecto->materia->sigla}}</span> </td>
-                    <td class="text-center">
+                  <td style="text-align: center">{{$proyecto->estado}}</td>
+                  <td style="text-align: center"><span class="badge badge-primary">{{$proyecto->materia->sigla}}</span> </td>
+                    <td class="display: table-cell;
+                    vertical-align: middle;">
                       <ul class="list-unstyled">
                         @foreach($proyecto->estudiantes as $estudiante)
                         <small class="badge badge-info">{{ $estudiante->persona->nombre }} {{ $estudiante->persona->apellidop }} {{ $estudiante->persona->apellidom }}</small>

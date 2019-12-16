@@ -30,7 +30,7 @@
                   <th class="text-center col-2">autores</th>
                   <th>sigla</th>
 
-                  <th>docentes guias</th>
+                  <th class="col-7">docentes guias</th>
 
                   <th class="col-2">guias</th>
 
@@ -54,7 +54,7 @@
   
                     </td>
                 <td style="width:5%">{{$item->materia->sigla}}</td>
-                  <td >
+                  <td style="width: 20%" >
                    
                       @foreach($item->docente_proyectos as $docen)
                       @if ($docen->funcion == 'tutor')
@@ -98,7 +98,7 @@
                                 <!-- /.modal-dialog -->
                               </div>
                           </form>
-                      </li>
+                      </li><br>
                     </ul>
               
                       @else

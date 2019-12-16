@@ -41,3 +41,15 @@ Route::get('/designacion-pdf4/{pdf}','PdfController@exportPdf4')->name('designac
 Route::get('/defensa','DefensaController@index')->name('defensa.index');
 Route::get('/defensa/{asignar}/asignar','DefensaController@asignar')->name('defensa.asignar');
 Route::PUT('/defensa/{asignar}','DefensaController@update')->name('defensa.update');
+Route::get('/plan','PlanesController@index')->name('plan.index');
+Route::get('/plan/create','PlanesController@create')->name('plan.create');
+Route::POST('/plan','PlanesController@store')->name('plan.store');
+Route::get('/director','PretribunalController@index')->name('director.index');
+Route::get('/director/create','PretribunalController@create')->name('director.create');
+Route::POST('/director','PretribunalController@store')->name('director.store');
+Route::get('/lugar','LugarController@index')->name('lugar.index');
+Route::get('/lugar/create','LugarController@create')->name('lugar.create');
+Route::POST('/lugar','LugarController@store')->name('lugar.store');
+Route::get('/decano','DecanoController@index')->name('decano.index');
+Route::get('/decano/create','DecanoController@create')->name('decano.create');
+Route::POST('/decano','DecanoController@store')->name('decano.store');

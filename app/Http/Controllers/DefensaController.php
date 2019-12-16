@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Lugar;
 use App\Proyecto;
 use Illuminate\Http\Request;
 
@@ -13,6 +14,7 @@ class DefensaController extends Controller
     {
         if (auth()->user()->role->nombrerol === "admin") {
             $proyectos = Proyecto::all();
+            
         } else {
             
             if (auth()->user()->role->nombrerol === "Dir. Informatica y Ciencias Exactas") {
@@ -45,7 +47,7 @@ class DefensaController extends Controller
             }
             
         }
-        
+       
         return view('defensa.index', compact('proyectos'));
         
     
@@ -55,24 +57,25 @@ class DefensaController extends Controller
     public function asignar($id){
 
         $proyecto = Proyecto::find($id);
-
-        return view('defensa.asignar', compact('proyecto'));
+        $lugar = Lugar::get();
+        return view('defensa.asignar', compact('proyecto','lugar'));
 
 
     }
 
     public function update(Request $request, $id){
 
-        $proyectos = Proyecto::where([
+       $proyectos = Proyecto::where([
             ['fechadefensa', '=', $request->input('fechadefensa')],
-            ['hora', '=', $request->input('hora')]
+            ['hora', '=', $request->input('hora')],
+            ['lugar_id', '=', $request->input('lugar')]
         ])->get();
              if(count($proyectos) >= 1)  {
                 foreach ($proyectos as $key) {
                     if ($key->id == $id) {
                         $proyecto = Proyecto::find($id);
        
-                        $proyecto->lugar = $request->lugar;
+                        $proyecto->lugar_id = $request->lugar;
                         $proyecto->fechadefensa = $request->fechadefensa;
                         $proyecto->hora = $request->hora;
                         $proyecto->estado = $request->estado;
@@ -87,7 +90,7 @@ class DefensaController extends Controller
             } else {
                 $proyecto = Proyecto::find($id);
        
-        $proyecto->lugar = $request->lugar;
+        $proyecto->lugar_id = $request->lugar;
         $proyecto->fechadefensa = $request->fechadefensa;
         $proyecto->hora = $request->hora;
         $proyecto->estado = $request->estado;
@@ -96,7 +99,7 @@ class DefensaController extends Controller
         return redirect()->route('defensa.index');
                 
             }
-
+//return $request->all();
        /* $proyecto = Proyecto::find($id);
        
         $proyecto->lugar = $request->lugar;

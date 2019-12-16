@@ -19,6 +19,15 @@ return $this->hasMany(Estudiante::class);
         return $this->hasMany(Docente::class);
         
             }
+            public function pretribunals(){
 
+                return $this->hasMany(Pretribunal::class);
+                
+                    }
+                    public function decanos(){
+
+                        return $this->hasMany(Decano::class);
+                        
+                            }
    
 }

@@ -24,11 +24,11 @@
             <table id="example1" class="table table-bordered table-striped">
               <thead class="thead-dark">
                 <tr>
-                  <th width="220" class="text-center">nombre (s)</th>
+                  <th width="120" class="text-center">nombre (s)</th>
                   <th>apellidos</th>
                   <th class="text-center">C. curricular</th>
                   <th>designado</th>
-                  <th width="100">proyecto</th>
+                  <th width="220">proyecto</th>
                   <th class="text-center">autores</th>
                   <th width="200" class="text-center">informes</th>
 
@@ -55,7 +55,7 @@
 
                 </td>
                 <td>{{$tutor->funcion}} {{$tutor->proyecto->materia->sigla}} </td>
-                <td><span class="badge badge-primary">{{$tutor->proyecto->nombreproyecto}}</span> </td>
+                <td style="width:50px;"><span class="badge badge-primary">{{$tutor->proyecto->nombreproyecto}}</span> </td>
                 <td width="100" class="text-center">
                   <ul class="list-unstyled">
                     @foreach($tutor->proyecto->estudiantes as $estudiante)

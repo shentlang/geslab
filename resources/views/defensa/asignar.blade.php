@@ -63,8 +63,13 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								
-                                <label for="nombre">lugar de defensa:</label>
-                                <input type="text" class="form-control tuInput" value="{{$proyecto->lugar}}" name="lugar" autocomplete="off">
+                                <label for="lugar">lugar de defensa:</label>
+                                <select name="lugar" class="form-control">
+									@foreach ($lugar as $item)
+								<option value="{{$item->id}}">{{$item->aula}} {{$item->lugar}}</option>
+									@endforeach
+								
+								</select>
 							</div>
 						
 						</div>
@@ -75,17 +80,7 @@
                                 
 								<label for="estado">Estado proyecto</label>
 								<select name="estado" class="form-control">
-                                <option value="{{$proyecto->estado}}">
-                                    @if ($proyecto->estado == "P")
-                                        PENDIENTE
-                                    @else
-                                        @if ($proyecto->estado == "R")
-                                            REPROBADO
-                                        @else
-                                            APROBADO
-                                        @endif
-                                    @endif
-                                    V. anterior</option> 
+                                <option value="{{$proyecto->estado}}" selected	>{{$proyecto->estado}} V. anterior</option> 
 									<option value="APROBADO">APROBADO</option>
 									<option value="REPROBADO">REPROBADO</option>
 									<option value="PENDIENTE">PENDIENTE</option>

@@ -41,10 +41,35 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label for="nombre">Nombre del proyecto:</label>
-								<input type="text" class="form-control tuInput" name="nombre" autocomplete="off">
+								<input type="text" class="form-control tuInput" onkeyup="javascript:this.value=this.value.toUpperCase();" name="nombre" autocomplete="off">
 							
 
 							</div>
+							<div class="form-group">
+								<label for="nombre"> director dpto:</label>
+								<select class="form-control" name="dir" data-placeholder="Seleccione materias"
+									style="width: 100%;">
+
+									@foreach($dir as $direc)
+									<option value="{{ $direc->id }}">{{ $direc->persona->nombre }} {{ $direc->persona->apellidop }} {{ $direc->persona->apellidom }}</option>
+									@endforeach()
+								</select>
+							
+
+							</div>
+							<div class="form-group">
+								<label for="nombre">  decano:</label>
+								<select class="form-control" name="dec" data-placeholder="Seleccione materias"
+								style="width: 100%;">
+
+								@foreach($dec as $deca)
+								<option value="{{ $deca->id }}">{{ $deca->persona->nombre}} {{ $deca->persona->apellidop }} {{ $deca->persona->apellidom }}</option>
+								@endforeach()
+							</select>
+							
+
+							</div>
+
 						
 						</div>
 						<!-- /.col -->

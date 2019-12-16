@@ -46,6 +46,31 @@
 								
 
 							</div>
+							<div class="form-group">
+									<label for="nombre"> director dpto:</label>
+									<select class="form-control" name="dir" data-placeholder="Seleccione materias"
+										style="width: 100%;">
+	                             <option value="{{ $proyecto->pretribunal->id }}">{{ $proyecto->pretribunal->persona->nombre }} {{ $proyecto->pretribunal->persona->apellidop }}{{ $proyecto->pretribunal->persona->apellidom }} V.anterior</option>
+										@foreach ($dir as $item)
+							<option value="{{$item->id}}">{{$item->persona->nombre}} {{$item->persona->apellidop}} {{$item->persona->apellidom}}</option>
+										@endforeach
+									</select>
+								
+	
+								</div>
+								<div class="form-group">
+										<label for="nombre">  decano:</label>
+										<select class="form-control" name="dec" data-placeholder="Seleccione materias"
+										style="width: 100%;">
+								<option value="{{$proyecto->decano->id}}">{{$proyecto->decano->persona->nombre}} {{$proyecto->decano->persona->apellidop}}{{$proyecto->decano->persona->apellidom}} V. anterior</option>
+										@foreach($dec as $deca)
+								<option value="{{$deca->id}}">{{$deca->persona->nombre}} {{$deca->persona->apellidop}} {{$deca->persona->apellidom}}</option>
+										@endforeach()
+									</select>
+									
+		
+									</div>
+
 						
 						</div>
 						<!-- /.col -->

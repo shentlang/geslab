@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDecanosTable extends Migration
+class CreatePretribunalsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateDecanosTable extends Migration
      */
     public function up()
     {
-        Schema::create('decanos', function (Blueprint $table) {
+        Schema::create('pretribunals', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('titulo');
+            $table->string('funciond',100);
             $table->unsignedBigInteger('persona_id');
-            $table->string('titulado', 30);
             $table->foreign('persona_id')->references('id')->on('personas')->onDelete('cascade');
             $table->timestamps();
         });
@@ -29,6 +30,6 @@ class CreateDecanosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('decanos');
+        Schema::dropIfExists('pretribunals');
     }
 }

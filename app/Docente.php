@@ -22,7 +22,7 @@ class Docente extends Model
     
             public function docente_proyectos(){
     
-                return $this->hasMany(docente_proyectos::class);
+                return $this->hasMany(Docente_proyecto::class);
                 
                     }
 

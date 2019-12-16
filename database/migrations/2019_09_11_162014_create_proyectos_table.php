@@ -16,14 +16,19 @@ class CreateProyectosTable extends Migration
         Schema::create('proyectos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('nombreproyecto');
-            $table->text('lugar')->nullable();
             $table->date('fechadefensa')->nullable();
             $table->time('hora')->nullable();
             $table->string('estado')->default('Pendiente');
+            $table->unsignedBigInteger('lugar_id')->default(1);
+            $table->foreign('lugar_id')->references('id')->on('lugars')->onDelete('cascade');
             $table->unsignedBigInteger('materia_id');
             $table->foreign('materia_id')->references('id')->on('materias')->onDelete('cascade');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('decano_id');
+            $table->foreign('decano_id')->references('id')->on('decanos')->onDelete('cascade');
+            $table->unsignedBigInteger('pretribunal_id');
+            $table->foreign('pretribunal_id')->references('id')->on('pretribunals')->onDelete('cascade');
             $table->timestamps();
         });
     }

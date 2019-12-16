@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Decano;
 use App\Estudiante;
 use App\Proyecto;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Lugar;
 use App\Materia;
+use App\Pretribunal;
+
 class ProyectoController extends Controller
 {
     /**
@@ -58,34 +62,58 @@ class ProyectoController extends Controller
             if (auth()->user()->role->nombrerol === "admin") {
                 $estudiantes = Estudiante::get();
                 $materia = Materia::get();
+                $dec = Decano::get();
+                $dir = Pretribunal::get();
+                $lug = Lugar::get();
             } else {
                 if (auth()->user()->role->nombrerol === "informatica") {
                     $estudiantes = Estudiante::where('user_id','=', auth()->user()->id)->get();
                     $materia = Materia::all()->where('sigla','=', "INF - 501");
+                    $dec = Decano::get();
+                    $dir = Pretribunal::get();
+                    $lug = Lugar::get();
                 } else {
                     if (auth()->user()->role->nombrerol === "comercial") {
                         $estudiantes = Estudiante::where('user_id','=', auth()->user()->id)->get();
                         $materia = Materia::all()->where('sigla','=',"ICT - 011");
+                        $dec = Decano::get();
+                        $dir = Pretribunal::get();
+                        $lug = Lugar::get();
                     } else {
                         if (auth()->user()->role->nombrerol === "contaduria") {
                             $estudiantes = Estudiante::where('user_id','=', auth()->user()->id)->get();
                             $materia = Materia::all()->where('sigla','=',"AUD - 610");
+                            $dec = Decano::get();
+                            $lug = Lugar::get();
+                            $dir = Pretribunal::get();
                         } else {
                             if (auth()->user()->role->nombrerol === "agronomia") {
                                 $estudiantes = Estudiante::where('user_id','=', auth()->user()->id)->get();
                                 $materia = Materia::all()->where('sigla','=',"AGR - 521");
+                                $dec = Decano::get();
+                                $lug = Lugar::get();
+                                $dir = Pretribunal::get();
                             } else {
                                 if (auth()->user()->role->nombrerol === "rec.hidricos") {
                                     $estudiantes = Estudiante::where('user_id','=', auth()->user()->id)->get();
                                     $materia = Materia::all()->where('sigla','=',"IRG - 001");
+                                    $dec = Decano::get();
+                                    $lug = Lugar::get();
+                                    $dir = Pretribunal::get();
                                 } else {
                                     if (auth()->user()->role->nombrerol === "ambiental") {
                                         $estudiantes = Estudiante::where('user_id','=', auth()->user()->id)->get();
                                         $materia = Materia::all()->where('sigla','=',"ISA - 092 ");
+                                        $dec = Decano::get();
+                                        $lug = Lugar::get();
+                                        $dir = Pretribunal::get();
                                     } else {
                                           if (auth()->user()->role->nombrerol === "ges.publica") {
                                             $estudiantes = Estudiante::where('user_id','=', auth()->user()->id)->get();
                                             $materia = Materia::all()->where('sigla','=',"LAA - 100");
+                                            $dec = Decano::get();
+                                            $lug = Lugar::get();
+                                            $dir = Pretribunal::get();
                                           } else {
                                             return redirect('/') ;
                                           }
@@ -116,7 +144,7 @@ class ProyectoController extends Controller
            /* */
           
            
-            return view('proyecto.create', compact('estudiantes','materia'));
+            return view('proyecto.create', compact('estudiantes','dir','dec','lug','materia'));
 
         //
     }
@@ -142,11 +170,13 @@ class ProyectoController extends Controller
         }*/
         
        //return $proyectos->all();
-      // return $request->all();
+       //return $request->all();
 
        $proyecto = Proyecto::create([
         'nombreproyecto' => $request->input('nombre'), 
         'materia_id' => $request->input('sigla'),
+        'decano_id' => $request->input('dec'),
+        'pretribunal_id' => $request->input('dir'),
         'user_id' => auth()->user()->id
         
     ]);
@@ -178,7 +208,8 @@ class ProyectoController extends Controller
     public function edit($id)
     {
         $proyecto = Proyecto::find($id);
-
+        $dir= Pretribunal::get();
+        $dec= Decano::get();
         if(!$proyecto){
             return redirect()->route('proyecto.index');
         }
@@ -243,7 +274,7 @@ class ProyectoController extends Controller
             $selected_authors[] = $author->pivot->estudiante_id;
         }
 
-        return view('proyecto.edit', compact('proyecto', 'estudiante', 'selected_authors'));
+        return view('proyecto.edit', compact('proyecto', 'estudiante', 'selected_authors','dir','dec'));
     }
 
     /**
@@ -260,11 +291,14 @@ class ProyectoController extends Controller
        
         $proyecto->nombreproyecto = $request->nombre;
         $proyecto->materia_id = $request->sigla;
+        $proyecto->pretribunal_id = $request->dir;
+        $proyecto->decano_id = $request->dec;
         $proyecto->save();
         if($proyecto){
             $proyecto->estudiantes()->sync($request->input('estudiantes'));
         }
-        return redirect()->route('proyecto.index');  
+        return redirect()->route('proyecto.index'); 
+       // return $request->all(); 
 
     }
 
