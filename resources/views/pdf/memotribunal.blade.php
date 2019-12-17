@@ -89,6 +89,8 @@ background: url({{asset("assets/lte/dist/img/plantillas.jpg")}}) no-repeat cente
         <br>
         <br>
         <br>
+        <br>
+        <h3 style="position:absolute; left: 20%">{{$tutor->proyecto->decano->persona->nombre}} {{$tutor->proyecto->decano->persona->apellidop}}</h3>
         <h3 style="position:absolute; left: 25%">D E C A N O</h3><br>
         <h2 style="text-align: left">facultad de ciencias integradas del gran chaco</h2>
 

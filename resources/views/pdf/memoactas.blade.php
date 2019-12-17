@@ -30,22 +30,24 @@ background: url({{asset("assets/lte/dist/img/plantillas.jpg")}}) no-repeat cente
 
 ">
    
-   <div style="background-color: lawngreen; width: 50%;height: 13%"></div>
-<div style="background-color: aqua; float:left; width: 20%; height: 85%"></div>
+   <div style=" width: 50%;height: 10%"></div>
+<div style=" float:left; width: 20%; height: 85%"></div>
    <div><br>
         <h2 style="float: right; width: 30%">Nº {{$numerito}}/<?php echo date("Y");?></h2><br><br><br>
         <h3 style="text-align: center">ACTA DE DEFENSA FINAL DE TRABAJO DE <br> GRADO</h3>
         <p style="text-indent: 30px;text-align: justify; width: 90%;font-family:Arial, Helvetica, sans-serif;font-size: 12pt">
                 En la ciudad de Yacuiba a horas ………del día …….de marzo de dos mil diecinueve años,  en el paraninfo del Campus Universitario  de la Facultad de Ciencias Integradas del Gran Chaco, se dio inicio al acto público de DEFENSA FINAL DEL TRABAJO DE PROFESIONALIZACION {{$estudiantes->proyecto->materia->sigla}} {{$estudiantes->proyecto->materia->nomb}},   presentado por:
         </p>
-    <h1 style="text-align: center; width: 90%"> {{ $estudiantes->estudiante->persona->nombre }} {{ $estudiantes->estudiante->persona->apellidop }} {{ $estudiantes->estudiante->persona->apellidom }}</h1>
+    <h2 style="text-align: center; width: 90%"> {{ $estudiantes->estudiante->persona->nombre }} {{ $estudiantes->estudiante->persona->apellidop }} {{ $estudiantes->estudiante->persona->apellidom }}</h2>
         <p style="text-align: justify; width: 90%;font-family: Arial, Helvetica, sans-serif;font-size: 12pt">
                 Postulante a: LICENCIATURA EN {{$estudiantes->estudiante->carrera}} del PLAN DE ESTUDIOS {{$estudiantes->estudiante->plan->numplan}}. 
         </p> <?php $cont=2;?>
         <p style="text-align: center; width: 90%; font-family: Arial, Helvetica, sans-serif;font-size: 12pt" >
-                La comisión evaluadora es conformada por los siguientes miembros: <br><br>   
+                La comisión evaluadora es conformada por los siguientes miembros: <br> 
         </p>
         <ul>
+            <li>                      1) {{ $estudiantes->proyecto->pretribunal->persona->nombre }} {{ $estudiantes->proyecto->pretribunal->persona->apellidop }} PRESIDENTE DE MESA
+            </li>
                 @foreach($estudiantes->proyecto->docente_proyectos as $tutor)
 <li>                <?php echo $cont.')'; $cont++;?>     {{ $tutor->docente->titulado}} {{ $tutor->docente->persona->nombre }} {{ $tutor->docente->persona->apellidop }} {{ $tutor->docente->persona->apellidom }} (TRIBUNAL EVALUADOR)
 
@@ -54,7 +56,7 @@ background: url({{asset("assets/lte/dist/img/plantillas.jpg")}}) no-repeat cente
               @endforeach
         </ul>
         
-    <h3>TITULO DEL TRABAJO: “{{$estudiantes->proyecto->nombreproyecto}}”</h3>
+    <h4>TITULO DEL TRABAJO: “{{$estudiantes->proyecto->nombreproyecto}}”</h4>
         <p style="text-indent: 30px;text-align: justify; width: 90%;font-family:Arial, Helvetica, sans-serif;font-size: 12pt">
                 Leídos los artículos pertinentes del Reglamento de la Materia {{$estudiantes->proyecto->materia->sigla}} {{$estudiantes->proyecto->materia->nomb}} , se procedió a la exposición oral del postulante sobre el Trabajo, a cuya conclusión se dio paso a las consultas y debate correspondientes, con la participación de los miembros de  la Comisión Evaluadora.
         </p>
@@ -163,14 +165,18 @@ background: url({{asset("assets/lte/dist/img/plantillas.jpg")}}) no-repeat cente
     </p><br><br><br>
 
 
-    <div style="background-color: blue;float: left; width: 25%; height: 13%">
-
+    <div style="float: left; width: 25%; height: 13%">
+            <p style="text-indent: 30px;text-align: center; width: 90%;font-family:Arial, Helvetica, sans-serif;font-size: 12pt">
+                    <br>------------------------------ <br>
+                      {{ $estudiantes->proyecto->pretribunal->persona->nombre }} {{ $estudiantes->proyecto->pretribunal->persona->apellidop }} <br>     PRESIDENTE DE MESA
+  
+              </p> 
     </div>
-    <div style="background-color: brown;float: left; width: 25%; height: 13%">
+    <div style="float: left; width: 20%; height: 13%">
 
         </div>
         @foreach($estudiantes->proyecto->docente_proyectos as $tutor)
-    <div style="background-color: blue; float: left; width: 25%; height: 13%">
+    <div style="float: left; width: 25%; height: 13%">
             <p style="text-indent: 30px;text-align: center; width: 90%;font-family:Arial, Helvetica, sans-serif;font-size: 12pt">
                   <br>------------------------------ <br>
                     {{ $tutor->docente->persona->nombre }} {{ $tutor->docente->persona->apellidop }} <br>    TRIBUNAL EVALUADOR
