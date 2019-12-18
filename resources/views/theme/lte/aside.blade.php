@@ -150,6 +150,22 @@
                       <a class="nav-link" href= "{{route('actas.crear')}}">  <i class="far fa-circle nav-icon"></i><p>Actas</p>   
                       </a>
                     </li> 
+                    <li class="nav-item">
+                        <a class="nav-link" href= "{{route('director.index')}}">  <i class="far fa-circle nav-icon"></i><p> director de dpto.</p>   
+                        </a>
+                      </li> 
+                      <li class="nav-item">
+                          <a class="nav-link" href= "{{route('director.index')}}">  <i class="far fa-circle nav-icon"></i><p>decano.</p>   
+                          </a>
+                        </li> 
+                      <li class="nav-item">
+                          <a class="nav-link" href= "{{route('lugar.index')}}">  <i class="far fa-circle nav-icon"></i><p> lugares de defensa.</p>   
+                          </a>
+                        </li> 
+                        <li class="nav-item">
+                            <a class="nav-link" href= "{{route('plan.index')}}">  <i class="far fa-circle nav-icon"></i><p> plan de estudio.</p>   
+                            </a>
+                          </li>
                     
                       
                         

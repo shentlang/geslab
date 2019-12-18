@@ -53,3 +53,5 @@ Route::POST('/lugar','LugarController@store')->name('lugar.store');
 Route::get('/decano','DecanoController@index')->name('decano.index');
 Route::get('/decano/create','DecanoController@create')->name('decano.create');
 Route::POST('/decano','DecanoController@store')->name('decano.store');
+
+Route::get('/sms','SmsController@sms')->name('sms.send');

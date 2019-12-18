@@ -55,7 +55,7 @@
 
                 </td>
                 <td>{{$tutor->funcion}} {{$tutor->proyecto->materia->sigla}} </td>
-                <td style="width:50px;"><span class="badge badge-primary">{{$tutor->proyecto->nombreproyecto}}</span> </td>
+                <td style="width:100px;">{{$tutor->proyecto->nombreproyecto}} </td>
                 <td width="100" class="text-center">
                   <ul class="list-unstyled">
                     @foreach($tutor->proyecto->estudiantes as $estudiante)

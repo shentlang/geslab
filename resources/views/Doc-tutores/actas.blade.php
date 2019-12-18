@@ -16,7 +16,7 @@
 
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">listado estudianteses</h3>
+              <h3 class="card-title">listado estudiantes</h3>
               <p class="float-right"><a href="" class="btn btn-outline-primary">Registrar
                   estudiantes</a></p>
             </div>
@@ -59,7 +59,7 @@
                    
                     </td>
                   <td>{{$estudiantes->proyecto->materia->sigla}}</td>
-                  <td><span class="badge badge-primary">{{$estudiantes->proyecto->nombreproyecto}}</span> </td>
+                  <td>{{$estudiantes->proyecto->nombreproyecto}}</td>
                  
                     <td class="text-center">
                       <ul class="list-unstyled">

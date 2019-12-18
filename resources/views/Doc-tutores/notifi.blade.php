@@ -55,7 +55,7 @@
                         <small class="badge badge-success"><i class="far fa-clock"></i> {{ date('d-m-Y', strtotime( $tutor->consejo)) }} </small>
                    
                     </td>
-                  <td><span class="badge badge-primary">{{$tutor->proyecto->nombreproyecto}}</span> </td>
+                  <td>{{$tutor->proyecto->nombreproyecto}}</td>
                     <td class="text-center">
                       <ul class="list-unstyled">
                         @foreach($tutor->proyecto->estudiantes as $estudiante)

@@ -35,8 +35,9 @@ background: url({{asset("assets/lte/dist/img/plantillas.jpg")}}) no-repeat cente
    <div >
 
    <h1 style="text-align: center">Memorandum Nº {{$numerito}}/<?php echo date("Y");?></h1>
-        <h3 style="float: right; width: 30%">fecha <?php echo date("d-m-Y");?></h3><br>
+        <h3 style="float: right; width: 30%">fecha <?php echo date("d-m-Y");?></h3><br><br>
         <h3>Señor(a): 
+            {{$tutor->docente->titulado}} 
             {{$tutor->docente->persona->nombre}} 
             {{$tutor->docente->persona->apellidop}}
             {{$tutor->docente->persona->apellidom}}</h3>
@@ -79,7 +80,7 @@ background: url({{asset("assets/lte/dist/img/plantillas.jpg")}}) no-repeat cente
                 @endif
             @endif
             para el dia {{ date('d-m-Y', strtotime($tutor->proyecto->fechadefensa)) }} a horas {{$tutor->proyecto->hora}} en el 
-            {{$tutor->proyecto->lugar}}
+            {{$tutor->proyecto->lugar->aula}} {{$tutor->proyecto->lugar->lugar}}
             <br>
             <br>
             Sin otro particular, saludo a Ud. atentamente.
@@ -89,6 +90,7 @@ background: url({{asset("assets/lte/dist/img/plantillas.jpg")}}) no-repeat cente
         <br>
         <br>
         <br>
+        <br><br><br>
         <h3 style="position:absolute; left: 20%">{{$tutor->proyecto->decano->persona->nombre}} {{$tutor->proyecto->decano->persona->apellidop}}</h3><br>
         <h3 style="position:absolute; left: 25%">D E C A N O</h3><br>
         <h2 style="text-align: left">facultad de ciencias integradas del gran chaco</h2>
