@@ -55,3 +55,4 @@ Route::get('/decano/create','DecanoController@create')->name('decano.create');
 Route::POST('/decano','DecanoController@store')->name('decano.store');
 
 Route::get('/sms','SmsController@sms')->name('sms.send');
+Route::get('/listsms','SmsController@index')->name('listsms.index');

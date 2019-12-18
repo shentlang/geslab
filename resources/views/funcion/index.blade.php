@@ -54,7 +54,7 @@
   
                     </td>
                 <td style="width:5%">{{$item->materia->sigla}}</td>
-                  <td style="width: 20%" >
+                  <td style="width: 30%" >
                    
                       @foreach($item->docente_proyectos as $docen)
                       @if ($docen->funcion == 'tutor')

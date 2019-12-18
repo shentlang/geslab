@@ -61,7 +61,12 @@
                                   
                                   <div class="row content">
                                     <div class="col-sm-12">
-                                      <input id="range_5" type="text" name="avance" value="">
+                                      <label for="">Porcentage de avance</label>
+                                      <input type="number" class="form-control" min="0" max="100" required name="avance" value="">
+                                    </div>
+                                    <div class="col-sm-12">
+                                      <label for="">Nota de avance</label>
+                                      <input type="number" class="form-control" min="0" max="100" required name="nota" value="">
                                     </div>
                                   
                                   </div>

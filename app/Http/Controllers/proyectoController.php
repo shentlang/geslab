@@ -103,7 +103,7 @@ class ProyectoController extends Controller
                                 } else {
                                     if (auth()->user()->role->nombrerol === "ambiental") {
                                         $estudiantes = Estudiante::where('user_id','=', auth()->user()->id)->get();
-                                        $materia = Materia::all()->where('sigla','=',"ISA - 092 ");
+                                        $materia = Materia::all()->where('sigla','=',"ISA - 092");
                                         $dec = Decano::get();
                                         $lug = Lugar::get();
                                         $dir = Pretribunal::get();

@@ -19,6 +19,7 @@ class CreateInformesTable extends Migration
             $table->longText('comentario');
             $table->date('fpublicacion');
             $table->integer('avance');
+            $table->integer('nota')->nullable();
             $table->unsignedBigInteger('proyecto_id');
             $table->foreign('proyecto_id')->references('id')->on('proyectos');
             $table->timestamps();

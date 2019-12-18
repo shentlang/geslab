@@ -142,10 +142,7 @@
                         <a class="nav-link" href= "{{route('doc-tutores.defensa')}}">  <i class="far fa-circle nav-icon"></i><p>memo. defensa</p>   
                         </a>
                       </li> 
-                    <li class="nav-item">
-                      <a class="nav-link" href= "{{route('notificaciones.notify')}}">  <i class="far fa-circle nav-icon"></i><p>Notificaciones</p>   
-                      </a>
-                    </li> 
+                   
                     <li class="nav-item">
                       <a class="nav-link" href= "{{route('actas.crear')}}">  <i class="far fa-circle nav-icon"></i><p>Actas</p>   
                       </a>
@@ -174,6 +171,38 @@
               </li>  
              @endif
          @endauth
+         <li class="header">----</li>
+         <li class="nav-item has-treeview">
+             <a href="#" class="nav-link">
+               <i class="nav-icon fas fa-sms"></i>
+               <p>
+                 Notificaciones
+                 <i class="fas fa-angle-left right"></i>
+               </p>
+             </a>
+        @auth
+            @if (auth()->user()->role->nombrerol === 'admin')
+            
+               <ul class="nav nav-treeview">
+                
+                <li class="nav-item">
+                  <a class="nav-link" href= "{{route('notificaciones.notify')}}">  <i class="far fa-circle nav-icon"></i><p>envio de correo</p>   
+                  </a>
+                </li> 
+                
+                       <li class="nav-item">
+                           <a class="nav-link" href= "{{route('listsms.index')}}">  <i class="far fa-circle nav-icon"></i><p> envio de sms.</p>   
+                           </a>
+                         </li>
+                   
+                     
+                       
+               </ul>
+              
+             </li>  
+            @endif
+        @endauth
+
           <li class="header">----</li>
           <li class="nav-item has-treeview">
               <a href="#" class="nav-link">

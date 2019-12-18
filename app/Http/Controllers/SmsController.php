@@ -9,7 +9,16 @@ class SmsController extends Controller
 {
     //
 
+public function index(){
 
+    $proyectos = Proyecto::where('fechadefensa','=', date('Y-m-d'))
+    
+    ->get();
+
+    return view('smslist.index', compact('proyectos'));
+
+
+}
 
 public function sms(){
   
@@ -21,7 +30,7 @@ $client = new Client($sid, $token);
     $numeros = Proyecto::where('fechadefensa','=', date('Y-m-d'))
     
     ->get();
-
+$count = 0;
     foreach ($numeros as $key) {
     
 $hora = date('H:i', strtotime($key->hora ));
@@ -29,7 +38,7 @@ $lugars = $key->lugar->aula;
 $lugar2 = $key->lugar->lugar;
 foreach ($key->docente_proyectos as $key2) {
    
-    
+    $count++;
    $numerito ='+591'.$key2->docente->persona->telefono; 
    $nombrecito = $key2->docente->persona->nombre; 
    $apellido= $key2->docente->persona->apellidop;
@@ -49,6 +58,7 @@ foreach ($key->docente_proyectos as $key2) {
 }
 
     }
+    return back()->with( 'mensaje', $count . " mensajes enviados!" );
 
    // return $numeros->all();
 // Required if your environment does not handle autoloading

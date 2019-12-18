@@ -19,17 +19,16 @@
         <div class="row">
           <div class="col-12 col-md-12 col-lg-8 order-2 order-md-1">
             <div class="row">
-              <div class="col-12 col-sm-4">
+              <div class="col-12 col-sm-6">
                 <div class="info-box bg-light">
                   <div class="info-box-content">
-                  <small>  <span class="info-box-text text-center text-muted">{{$proyecto->nombreproyecto}}</span>
+                   <small> <p>{{$proyecto->nombreproyecto}}</p>   </small>
                     <span
                       class="info-box-number text-center text-muted mb-0">{{$proyecto->materia->sigla}}</span></small>   
                   </div>
                 </div>
               </div>
-              <div class="col-12 col-sm-4">
-              </div>
+              
 
               <div class="col-12 col-sm-4">
                 <p class="float-right"><a href="{{ route('informe.show',$proyecto->id) }}"
@@ -53,14 +52,14 @@
                   </div>
                   <!-- /.user-block -->
                   <blockquote>
-                  {!!$infor->comentario!!}
+                 <p style="text-align: justify"> {!!$infor->comentario!!} </p>
                      
                     </blockquote>
                   <div class="row">
                     <div class="col-12 col-sm-4">
                       <div class="info-box bg-light">
                         <div class="info-box-content">
-                          <span class="info-box-text text-center text-muted">{{$proyecto->nombreproyecto}}</span>
+                         <p> {{$proyecto->nombreproyecto}}</p>
                           <span class="info-box-number text-center text-muted mb-0">avance en fecha
                             {{ date('d-m-Y', strtotime($infor->fpublicacion)) }}</span>
                         </div>
@@ -88,13 +87,31 @@
 
                       <div class="knob-label"> porcentaje de avance {{$infor->avance}}%</div>
                     </div>
+                    <div class="col-6 col-md-3 text-center">
+                      <input type="text" readonly="readonly" class="knob" data-thickness="0.2" data-angleArc="250"
+                        data-angleOffset="-125" value="{{$infor->nota}}" data-width="120" data-height="120" 
+                      @if ($infor->nota>=80)
+                      data-fgColor="#17B217"
+                      @else
+                      @if ($infor->nota>=51)
+                      data-fgColor="#21D4E7"
+                      @else
+                      @if ($infor->nota>=40)
+                      data-fgColor="#F58911"
+                      @else
+                      data-fgColor="#FF0000"
+                      @endif
+                      @endif
+                      @endif
+                      >
+
+                      <div class="knob-label"> nota  de avance {{$infor->nota}}</div>
+                    </div>
                   </div>
 
 
 
-                  <p>
-                    <a href="#" class="link-black text-sm"><i class="fas fa-link mr-1"></i> Demo File 1 v2</a>
-                  </p>
+                 
                   
                 </div>
                 @endforeach
@@ -112,22 +129,19 @@
             </p>
             <br>
             <div class="text-muted">
-              <p class="text-sm">software by 
+              <p class="text-sm">software para 
                 <b class="d-block">UAJMS-FCIGCH</b>
               </p>
-              <p class="text-sm">Project Create by
+              <p class="text-sm">Project Create por
                 <b class="d-block">Daniel M. Nataly S. </b>
               </p>
             </div>
 
-            <h5 class="mt-5 text-muted">Project Function</h5>
+            <h5 class="mt-5 text-muted">funciones del proyecto</h5>
             <ul class="list-unstyled">
+             
               <li>
-                <a  class="btn-link text-secondary"><i class="far fa-fw fa-file-word"></i>
-                  elaboracion documentos</a>
-              </li>
-              <li>
-                <a class="btn-link text-secondary"><i class="far fa-fw fa-file-pdf"></i> informes pdf</a>
+                <a class="btn-link text-secondary"><i class="far fa-fw fa-file-pdf"></i> memorandum pdf</a>
               </li>
               <li>
                 <a  class="btn-link text-secondary"><i class="far fa-fw fa-envelope"></i>
@@ -138,10 +152,7 @@
                   Registro estudiantil</a>
               </li>
             </ul>
-            <div class="text-center mt-5 mb-3">
-              <a href="#" class="btn btn-sm btn-primary">Add files</a>
-              <a href="#" class="btn btn-sm btn-warning">Report contact</a>
-            </div>
+           
           </div>
         </div>
       </div>
